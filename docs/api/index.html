@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="32x32" />
+    <link rel="icon" href="/assets/paxos-favicon-192x192.png" sizes="192x192" />
+    <link rel="apple-touch-icon-precomposed" href="/assets/paxos-favicon-180x180.png" />
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,800" rel="stylesheet">
+    <title>Paxos Wallet</title>
+    <script>
+      window.global = window;
+      window.__ENV_CONFIG__ = {
+        authDomain: "paxos.auth0.com",
+        authClientId: "Mo9J6r1ckhwfGCmyVmH7nooP8oZFZKMR",
+        authRedirect: "https://account.paxos.com/auth-callback",
+        maintenanceMode: "false",
+        siteDown: "false",
+        enableTradePage: "true",
+        enableTradePageActions: "true",
+        exchangeDomains: "https://exchange.itbit.com",
+        useTestService: "false",
+        disableActivity: "false",
+        enforceWithdrawalDailyLimit: "true",
+        tradingThreshold: "BTCUSD:25000,ETHUSD:25000,LTCUSD:20000,BHCUSD:20000,PAXGUSD:25000,MATICUSD:20000,AAVEUSD:20000,UNIUSD:20000,LINKUSD:20000",
+        enableWarmWallet: "NETWORK_BTC:true,NETWORK_BCH:true,NETWORK_LTC:true,NETWORK_ETH:true",
+        enableCryptoWithdrawalFees: "true",
+        enableRequestSigning: "true",
+        enablePublicKeys: "true",
+        enableSentryWallet: "true",
+        version: "v0.25.1401",
+        envName: "prod",
+        disableNonUSIntermediary: "true",
+        enableTradingEligible: "true",
+        disableTotpEnrollment: "false",
+        enableSettlementPage: "true",
+        enableKYCRefreshPage: "true",
+        enableUSDLOnArbitrum: "false",
+        enableETHOnArbitrum: "false",
+        enableStablecoinBalanceSupport: "",
+        enableUsernamePasswordSignup: "false",
+        enableUSDGOnSolana: "false",
+        // the following are JSON stringified object so we use backticks to avoid escaping issues
+        enabledV2APIFeatures: ``,
+        assetsConfig: `{
+  "AAVE": {
+    "deposit": true,
+    "activities": true,
+    "supportedSection": true,
+    "tradeBalance": "always",
+    "balance": true,
+    "transfer": true,
+    "accountToAccountTransfer": true,
+    "toAddressTransfer": true,
+    "saveAddress": true,
+    "usdStablecoin": false
+  },
+  "ALLOCATED_GOLD": {},
+  "BCH": {
+    "balance": true,
+    "transfer": true,
+    "deposit": true,
+    "activities": true,
+    "supportedSection": true,
+    "accountToAccountTransfer": true,
+    "toAddressTransfer": true,
+    "saveAddress": true,
+    "tradeBalance": "always"
+  },
+  "BRL": {
+    "deposit": false,
+    "activities": false,
+    "tradeBalance": "withBalance",
+    "balance": true,
+    "transfer": true,
+    "accountToAccountTransfer": true,
+    "toAddressTransfer": false,
+    "usdStablecoin": false
+  },
+  "BTC": {
+    "balance": true,
+    "transfer": true,
+    "deposit": true,
+    "activities": true,
+    "supportedSection": true,
+    "accountToAccountTransfer": true,
+    "toAddressTransfer": true,
+    "saveAddress": true,
+    "tradeBalance": "always",
+    "settlement": true
+  },
+  "BUSD": {
+    "usdStablecoin": true,
+    "deposit": true,
+    "stableCoinSection": false,
+    "autotransfer": false,
+    "toAddressTransfer": false,
+    "saveAddress": false
+  },
+  "ETH": {
+    "balance": true,
+    "transfer": true,
+    "deposit": true,
+    "activities": true,
+    "accountToAccountTransfer": true,
+    "toAddressTransfer": true,
+    "supportedSection": true,
+    "saveAddress": true,
+    "tradeBalance": "always",
+    "settlement": true
+  },
+  "EUR": {
+    "balance": true,
+    "transfer": true,
+    "deposit": false,
+    "activities": false,
+    "accountToAccountTransfer": true,
+    "saveAddress": true,
+    "tradeBalance": "withBalance"
+  },
+  "GBP": {
+    "deposit": false,
+    "activities": false,
+    "tradeBalance": "withBalance",
+    "balance": true,
+    "transfer": true,
+    "accountToAccountTransfer": true,
+    "toAddressTransfer": false,
+    "usdStablecoin": false
+  },
+  "HUSD": {
+    "usdStablecoin": false,
+    "deposit": false,
+    "stableCoinSection": false,
+    "autotransfer": true,
+    "toAddressTransfer": true,
+    "saveAddress": false
+  },
+  "LINK": {
+    "deposit": true,
+    "activities": true,
+    "supportedSection": true,
+    "tradeBalance": "always",
+    "balance": true,
+    "transfer": true,
+    "accountToAccountTransfer": true,
+    "toAddressTransfer": true,
+    "saveAddress": true,
+    "usdStablecoin": false
+  },
+  "LTC": {
+    "balance": true,
+    "transfer": true,
+    "deposit": true,
+    "activities": true,
+    "supportedSection": true,
+    "accountToAccountTransfer": true,
+    "toAddressTransfer": true,
+    "saveAddress": true,
+    "tradeBalance": "always"
+  },
+  "MATIC": {
+    "deposit": true,
+    "activities": true,
+    "supportedSection": true,
+    "tradeBalance": "always",
+    "balance": true,
+    "transfer": true,
+    "accountToAccountTransfer": true,
+    "toAddressTransfer": true,
+    "saveAddress": true,
+    "usdStablecoin": false
+  },
+  "MKR": {
+    "deposit": false,
+    "activities": false,
+    "tradeBalance": "withBalance",
+    "balance": false,
+    "transfer": false,
+    "accountToAccountTransfer": false,
+    "toAddressTransfer": false,
+    "usdStablecoin": false
+  },
+  "USDP": {
+    "deposit": true,
+    "usdStablecoin": true,
+    "activities": true,
+    "stableCoinSection": true,
+    "autotransfer": true,
+    "toAddressTransfer": true,
+    "saveAddress": true,
+    "balance": true,
+    "settlement": true
+  },
+  "PAXG": {
+    "balance": true,
+    "transfer": true,
+    "deposit": true,
+    "buy": true,
+    "sell": true,
+    "activities": true,
+    "supportedSection": true,
+    "accountToAccountTransfer": true,
+    "toAddressTransfer": true,
+    "tradeBalance": "always",
+    "saveAddress": true
+  },
+  "PYUSD": {
+    "activities": true,
+    "deposit": true,
+    "usdStablecoin": true,
+    "stableCoinSection": true,
+    "autotransfer": true,
+    "toAddressTransfer": true,
+    "saveAddress": true,
+    "balance": true,
+    "settlement": true
+  },
+  "USDL": {
+    "activities": true,
+    "deposit": true,
+    "usdStablecoin": true,
+    "stableCoinSection": true,
+    "autotransfer": true,
+    "toAddressTransfer": true,
+    "saveAddress": true,
+    "balance": true,
+    "forceAutotransfer": true
+  },
+  "SGD": {
+    "balance": true,
+    "transfer": true,
+    "deposit": false,
+    "activities": false,
+    "accountToAccountTransfer": true,
+    "saveAddress": true,
+    "tradeBalance": "withBalance"
+  },
+  "SOL": {
+    "deposit": true,
+    "activities": true,
+    "supportedSection": true,
+    "tradeBalance": "always",
+    "balance": true,
+    "transfer": true,
+    "accountToAccountTransfer": true,
+    "toAddressTransfer": true,
+    "saveAddress": true,
+    "usdStablecoin": false
+  },
+  "UNALLOCATED_GOLD": {},
+  "UNI": {
+    "deposit": true,
+    "activities": true,
+    "supportedSection": true,
+    "tradeBalance": "always",
+    "balance": true,
+    "transfer": true,
+    "accountToAccountTransfer": true,
+    "toAddressTransfer": true,
+    "saveAddress": true,
+    "usdStablecoin": false
+  },
+  "USD": {
+    "deposit": true,
+    "activities": true,
+    "tradeBalance": "always",
+    "autoConversion": true,
+    "balance": true,
+    "transfer": true,
+    "accountToAccountTransfer": true,
+    "toAddressTransfer": true,
+    "saveAddress": true,
+    "autotransfer": true,
+    "settlement": true
+  },
+  "USDC": {
+    "deposit": false,
+    "activities": false,
+    "balance": true,
+    "transfer": true,
+    "accountToAccountTransfer": true,
+    "toAddressTransfer": true,
+    "usdStablecoin": false,
+    "tradeBalance": "never"
+  }
+}`,
+        banksConfig: `{
+  "US_BANK": {
+    "name": "US Bank",
+    "isInstitutionOnly": false,
+    "isDepositEnabled": false,
+    "isCreateBankEnabled": true
+  },
+  "NON_US_BANK": {
+    "name": "Non-US Bank",
+    "isInstitutionOnly": false,
+    "isDepositEnabled": false,
+    "isCreateBankEnabled": true
+  },
+  "LEAD": {
+    "name": "Lead Bank",
+    "isInstitutionOnly": false,
+    "isDepositEnabled": true,
+    "isCreateBankEnabled": false
+  },
+  "CBIT": {
+    "name": "CBIT",
+    "isInstitutionOnly": true,
+    "isDepositEnabled": true,
+    "isCreateBankEnabled": true
+  },
+  "CUBI": {
+    "name": "Customers Bank",
+    "isInstitutionOnly": false,
+    "isDepositEnabled": true,
+    "isCreateBankEnabled": false
+  },
+  "LPMCL": {
+    "name": "Loco London Unallocated",
+    "isInstitutionOnly": false,
+    "isDepositEnabled": false,
+    "isCreateBankEnabled": true
+  }
+}`
+      }
+    </script>
+    <!-- Google Tag Manager (new tag) -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-W4GTR68');</script>
+    <!-- End Google Tag Manager (new tag) -->
+    <script type="module" crossorigin src="/assets/index-6c909064.js"></script>
+    <link rel="stylesheet" href="/assets/index-9505f39c.css">
+  </head>
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <div id="root"></div>
+    
+  </body>
+</html>

@@ -1,0 +1,3777 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Paxos API",
+    "version": "1.0 (DEPRECATED)",
+    "schemes": [
+      "https"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "x-logo": {
+      "url": "/docs/paxos.svg",
+      "backgroundColor": "#FFFFFF",
+      "altText": "Paxos logo"
+    },
+    "description": "<aside class=\"warning\"><b>v1 API End of Life Notification</b><br />No earlier than November 30, 2024, we are sunsetting the Paxos v1 APIs. This change ensures all Paxos customers are using supported APIs. Customers can begin migrating as most functionality available via the v1 APIs is already available in <a href=\"https://docs.paxos.com/api/v2\" target=\"_blank\">Paxos v2 APIs</a>. The remaining gaps will be closed by mid Q3, 2024. We recommend you test your integrations in Sandbox during the testing window. See <a href=\"https://docs.paxos.com/api/migrate\" target=\"_blank\">Migrating from v1 to v2 API</a>.</aside> <p><b>Production Endpoints:</b></p> <ul> <li>OAuth2 Authentication: <b>https://oauth.paxos.com</b></li> <li>API: <b>https://api.paxos.com</b></li> </ul> <p><b>Other Formats:</b></p> <ul><li><a href=\"paxos.swagger.json\" target=\"_blank\">Swagger json</a></li></ul><p></p>\n"
+  },
+  "tags": [
+    {
+      "name": "FundingPublic"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/activities": {
+      "get": {
+        "summary": "Read the transaction history associated with the end-customer's Paxos account. Returns information on deposits and withdrawals of crypto-assets and fiat currency. Apply filters as necessary.",
+        "description": "<aside class=\"warning\"><b>v1 API End of Life Notification</b><br />No earlier than November 30, 2024, we are sunsetting the Paxos v1 APIs. This change ensures all Paxos customers are using supported APIs. Customers can begin migrating as most functionality available via the v1 APIs is already available in <a href=\"https://docs.paxos.com/api/v2\" target=\"_blank\">Paxos v2 APIs</a>. The remaining gaps will be closed by mid Q3, 2024. We recommend you test your integrations in Sandbox during the testing window. See <a href=\"https://docs.paxos.com/api/migrate\" target=\"_blank\">Migrating from v1 to v2 API</a>.</aside>\n",
+        "operationId": "GetActivities",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetActivitiesResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "schema": {
+              "example": {
+                "error": "no authorization found on context metadata",
+                "message": "no authorization found on context metadata",
+                "code": 16
+              }
+            }
+          },
+          "403": {
+            "description": "Permission Denied",
+            "schema": {
+              "example": {
+                "error": "not provisioned",
+                "message": "not provisioned",
+                "code": 7
+              }
+            }
+          },
+          "500": {
+            "description": "Internal",
+            "schema": {
+              "example": {
+                "error": "internal error",
+                "message": "internal error",
+                "code": 13
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "pagination.limit",
+            "description": "Number of results to return",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pagination.offset",
+            "description": "Number of results to skip",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "assetType",
+            "description": "",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "USD",
+              "BTC",
+              "ETH",
+              "PAX",
+              "PAXG",
+              "UNALLOCATED_GOLD",
+              "ALLOCATED_GOLD",
+              "BUSD",
+              "HUSD",
+              "EUR",
+              "SGD",
+              "BCH",
+              "LTC",
+              "USDP",
+              "AAVE",
+              "UNI",
+              "MATIC",
+              "PYUSD",
+              "LINK",
+              "SOL"
+            ]
+          },
+          {
+            "name": "activityType",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "SEND_PROFILE_TRANSFER",
+                "RECV_PROFILE_TRANSFER",
+                "CRYPTO_DEPOSIT",
+                "CRYPTO_WITHDRAWAL",
+                "WIRE_DEPOSIT",
+                "WIRE_WITHDRAWAL",
+                "SEN_DEPOSIT",
+                "SEN_WITHDRAWAL",
+                "PAXOS_CREDIT",
+                "PAXOS_DEBIT",
+                "BANK_DEPOSIT",
+                "BANK_WITHDRAWAL",
+                "UNALLOCATED_GOLD_DEPOSIT",
+                "UNALLOCATED_GOLD_WITHDRAWAL",
+                "ALLOCATED_GOLD_WITHDRAWAL",
+                "TOKEN_ORDER",
+                "TO_ITBIT_TRANSFER",
+                "FROM_ITBIT_TRANSFER",
+                "SEND_PEER_TRANSFER",
+                "RECV_PEER_TRANSFER",
+                "ADMIN_SEND_PEER_TRANSFER",
+                "ADMIN_RECV_PEER_TRANSFER",
+                "SIGNET_DEPOSIT",
+                "SIGNET_WITHDRAWAL",
+                "CBIT_WITHDRAWAL",
+                "CBIT_DEPOSIT"
+              ]
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "profileId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "activityStatus",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "COMPLETE",
+                "PENDING",
+                "ERRORED",
+                "CANCELLED"
+              ]
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "externalId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "createdRange.begin",
+            "description": "Only return records after this timestamp, inclusive. RFC3339 format, like `2006-01-02T15:04:05Z`.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "createdRange.end",
+            "description": "Only return records before this timestamp, inclusive. RFC3339 format, like `2006-01-02T15:04:05Z`.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "updatedRange.begin",
+            "description": "Only return records after this timestamp, inclusive. RFC3339 format, like `2006-01-02T15:04:05Z`.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "updatedRange.end",
+            "description": "Only return records before this timestamp, inclusive. RFC3339 format, like `2006-01-02T15:04:05Z`.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "orderingPolicy",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "CREATED_AT_DESC",
+              "CREATED_AT_ASC"
+            ]
+          }
+        ],
+        "tags": [
+          "FundingPublic"
+        ],
+        "security": [
+          {
+            "paxos_auth": [
+              "funding:read_activity"
+            ]
+          }
+        ]
+      }
+    },
+    "/v1/activities/{id}": {
+      "get": {
+        "summary": "Use {id} to return the transaction details for a specific customer activity (deposit/withdrawal).",
+        "description": "<aside class=\"warning\"><b>v1 API End of Life Notification</b><br />No earlier than November 30, 2024, we are sunsetting the Paxos v1 APIs. This change ensures all Paxos customers are using supported APIs. Customers can begin migrating as most functionality available via the v1 APIs is already available in <a href=\"https://docs.paxos.com/api/v2\" target=\"_blank\">Paxos v2 APIs</a>. The remaining gaps will be closed by mid Q3, 2024. We recommend you test your integrations in Sandbox during the testing window. See <a href=\"https://docs.paxos.com/api/migrate\" target=\"_blank\">Migrating from v1 to v2 API</a>.</aside>\n",
+        "operationId": "GetActivity",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Activity"
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "schema": {
+              "example": {
+                "error": "no authorization found on context metadata",
+                "message": "no authorization found on context metadata",
+                "code": 16
+              }
+            }
+          },
+          "403": {
+            "description": "Permission Denied",
+            "schema": {
+              "example": {
+                "error": "not provisioned",
+                "message": "not provisioned",
+                "code": 7
+              }
+            }
+          },
+          "500": {
+            "description": "Internal",
+            "schema": {
+              "example": {
+                "error": "internal error",
+                "message": "internal error",
+                "code": 13
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "FundingPublic"
+        ],
+        "security": [
+          {
+            "paxos_auth": [
+              "funding:read_activity"
+            ]
+          }
+        ]
+      }
+    },
+    "/v1/auto-conversions": {
+      "get": {
+        "summary": "Returns auto-conversion history.",
+        "description": "<aside class=\"warning\"><b>v1 API End of Life Notification</b><br />No earlier than November 30, 2024, we are sunsetting the Paxos v1 APIs. This change ensures all Paxos customers are using supported APIs. Customers can begin migrating as most functionality available via the v1 APIs is already available in <a href=\"https://docs.paxos.com/api/v2\" target=\"_blank\">Paxos v2 APIs</a>. The remaining gaps will be closed by mid Q3, 2024. We recommend you test your integrations in Sandbox during the testing window. See <a href=\"https://docs.paxos.com/api/migrate\" target=\"_blank\">Migrating from v1 to v2 API</a>.</aside>\n",
+        "operationId": "ListAutoConversions",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ListAutoConversionsResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "schema": {
+              "example": {
+                "error": "no authorization found on context metadata",
+                "message": "no authorization found on context metadata",
+                "code": 16
+              }
+            }
+          },
+          "403": {
+            "description": "Permission Denied",
+            "schema": {
+              "example": {
+                "error": "not provisioned",
+                "message": "not provisioned",
+                "code": 7
+              }
+            }
+          },
+          "500": {
+            "description": "Internal",
+            "schema": {
+              "example": {
+                "error": "internal error",
+                "message": "internal error",
+                "code": 13
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "deposit.activityType",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "SEND_PROFILE_TRANSFER",
+              "RECV_PROFILE_TRANSFER",
+              "CRYPTO_DEPOSIT",
+              "CRYPTO_WITHDRAWAL",
+              "WIRE_DEPOSIT",
+              "WIRE_WITHDRAWAL",
+              "SEN_DEPOSIT",
+              "SEN_WITHDRAWAL",
+              "PAXOS_CREDIT",
+              "PAXOS_DEBIT",
+              "BANK_DEPOSIT",
+              "BANK_WITHDRAWAL",
+              "UNALLOCATED_GOLD_DEPOSIT",
+              "UNALLOCATED_GOLD_WITHDRAWAL",
+              "ALLOCATED_GOLD_WITHDRAWAL",
+              "TOKEN_ORDER",
+              "TO_ITBIT_TRANSFER",
+              "FROM_ITBIT_TRANSFER",
+              "SEND_PEER_TRANSFER",
+              "RECV_PEER_TRANSFER",
+              "ADMIN_SEND_PEER_TRANSFER",
+              "ADMIN_RECV_PEER_TRANSFER",
+              "SIGNET_DEPOSIT",
+              "SIGNET_WITHDRAWAL",
+              "CBIT_WITHDRAWAL",
+              "CBIT_DEPOSIT"
+            ]
+          },
+          {
+            "name": "deposit.txId",
+            "description": "Raw txHash",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "FundingPublic"
+        ],
+        "security": [
+          {
+            "paxos_auth": [
+              "funding:read_activity"
+            ]
+          }
+        ]
+      }
+    },
+    "/v1/bank-account/{id}/auto-conversion-instructions/{targetAsset}": {
+      "get": {
+        "summary": "Returns a specific Paxos-issued deposit address. This address is associated with the bank account where the customer wants their funds sent. Tokens sent to this address will be automatically converted to USD and sent to the corresponding bank account of the customer. Each bank account saved by the user will be assigned its own unique redemption address.",
+        "description": "<aside class=\"warning\"><b>v1 API End of Life Notification</b><br />No earlier than November 30, 2024, we are sunsetting the Paxos v1 APIs. This change ensures all Paxos customers are using supported APIs. Customers can begin migrating as most functionality available via the v1 APIs is already available in <a href=\"https://docs.paxos.com/api/v2\" target=\"_blank\">Paxos v2 APIs</a>. The remaining gaps will be closed by mid Q3, 2024. We recommend you test your integrations in Sandbox during the testing window. See <a href=\"https://docs.paxos.com/api/migrate\" target=\"_blank\">Migrating from v1 to v2 API</a>.</aside>\n",
+        "operationId": "GetBankAccountAutoConversionInstructions",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetBankAccountAutoConversionInstructionsResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid Argument",
+            "schema": {
+              "example": {
+                "error": "invalid customer bank account id abc",
+                "message": "invalid customer bank account id abc",
+                "code": 3
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "schema": {
+              "example": {
+                "error": "no authorization found on context metadata",
+                "message": "no authorization found on context metadata",
+                "code": 16
+              }
+            }
+          },
+          "403": {
+            "description": "Permission Denied",
+            "schema": {
+              "example": {
+                "error": "not provisioned",
+                "message": "not provisioned",
+                "code": 7
+              }
+            }
+          },
+          "500": {
+            "description": "Internal",
+            "schema": {
+              "example": {
+                "error": "internal error",
+                "message": "internal error",
+                "code": 13
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "targetAsset",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "USD",
+              "BTC",
+              "ETH",
+              "PAX",
+              "PAXG",
+              "UNALLOCATED_GOLD",
+              "ALLOCATED_GOLD",
+              "BUSD",
+              "HUSD",
+              "EUR",
+              "SGD",
+              "BCH",
+              "LTC",
+              "USDP",
+              "AAVE",
+              "UNI",
+              "MATIC",
+              "PYUSD",
+              "LINK",
+              "SOL"
+            ]
+          },
+          {
+            "name": "network",
+            "description": "",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "NETWORK_BTC",
+              "NETWORK_ETH",
+              "NETWORK_BCH",
+              "NETWORK_LTC",
+              "NETWORK_SOL"
+            ]
+          }
+        ],
+        "tags": [
+          "FundingPublic"
+        ],
+        "security": [
+          {
+            "paxos_auth": [
+              "funding:read_bank_account"
+            ]
+          }
+        ]
+      }
+    },
+    "/v1/bank-accounts": {
+      "get": {
+        "summary": "Returns a comprehensive list of bank accounts that have been saved by the customer. Used to enable the customer to designate which bank account they want their funds sent to after token redemption.",
+        "description": "<aside class=\"warning\"><b>v1 API End of Life Notification</b><br />No earlier than November 30, 2024, we are sunsetting the Paxos v1 APIs. This change ensures all Paxos customers are using supported APIs. Customers can begin migrating as most functionality available via the v1 APIs is already available in <a href=\"https://docs.paxos.com/api/v2\" target=\"_blank\">Paxos v2 APIs</a>. The remaining gaps will be closed by mid Q3, 2024. We recommend you test your integrations in Sandbox during the testing window. See <a href=\"https://docs.paxos.com/api/migrate\" target=\"_blank\">Migrating from v1 to v2 API</a>.</aside>\n",
+        "operationId": "ListBankAccounts",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ListBankAccountsResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "schema": {
+              "example": {
+                "error": "no authorization found on context metadata",
+                "message": "no authorization found on context metadata",
+                "code": 16
+              }
+            }
+          },
+          "403": {
+            "description": "Permission Denied",
+            "schema": {
+              "example": {
+                "error": "not provisioned",
+                "message": "not provisioned",
+                "code": 7
+              }
+            }
+          },
+          "500": {
+            "description": "Internal",
+            "schema": {
+              "example": {
+                "error": "internal error",
+                "message": "internal error",
+                "code": 13
+              }
+            }
+          }
+        },
+        "tags": [
+          "FundingPublic"
+        ],
+        "security": [
+          {
+            "paxos_auth": [
+              "funding:read_bank_account"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "summary": "Creates a new saved bank account for the customer, where the proceeds of a token redemption can be sent.",
+        "description": "<aside class=\"warning\"><b>v1 API End of Life Notification</b><br />No earlier than November 30, 2024, we are sunsetting the Paxos v1 APIs. This change ensures all Paxos customers are using supported APIs. Customers can begin migrating as most functionality available via the v1 APIs is already available in <a href=\"https://docs.paxos.com/api/v2\" target=\"_blank\">Paxos v2 APIs</a>. The remaining gaps will be closed by mid Q3, 2024. We recommend you test your integrations in Sandbox during the testing window. See <a href=\"https://docs.paxos.com/api/migrate\" target=\"_blank\">Migrating from v1 to v2 API</a>.</aside>\n",
+        "operationId": "CreateBankAccount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CustomerBankAccount"
+            }
+          },
+          "400": {
+            "description": "Invalid Argument",
+            "schema": {
+              "example": {
+                "error": "nickname must be set",
+                "message": "nickname must be set",
+                "code": 3
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "schema": {
+              "example": {
+                "error": "no authorization found on context metadata",
+                "message": "no authorization found on context metadata",
+                "code": 16
+              }
+            }
+          },
+          "403": {
+            "description": "Permission Denied",
+            "schema": {
+              "example": {
+                "error": "not provisioned",
+                "message": "not provisioned",
+                "code": 7
+              }
+            }
+          },
+          "409": {
+            "description": "Already Exists",
+            "schema": {
+              "example": {
+                "error": "nickname already exists",
+                "message": "nickname already exists",
+                "code": 6
+              }
+            }
+          },
+          "500": {
+            "description": "Internal",
+            "schema": {
+              "example": {
+                "error": "internal error",
+                "message": "internal error",
+                "code": 13
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateBankAccountRequest"
+            }
+          }
+        ],
+        "tags": [
+          "FundingPublic"
+        ],
+        "security": [
+          {
+            "paxos_auth": [
+              "funding:write_bank_account"
+            ]
+          }
+        ]
+      }
+    },
+    "/v1/bank-accounts/{id}": {
+      "get": {
+        "summary": "Returns a single saved bank account of the customer, specified by id.",
+        "description": "<aside class=\"warning\"><b>v1 API End of Life Notification</b><br />No earlier than November 30, 2024, we are sunsetting the Paxos v1 APIs. This change ensures all Paxos customers are using supported APIs. Customers can begin migrating as most functionality available via the v1 APIs is already available in <a href=\"https://docs.paxos.com/api/v2\" target=\"_blank\">Paxos v2 APIs</a>. The remaining gaps will be closed by mid Q3, 2024. We recommend you test your integrations in Sandbox during the testing window. See <a href=\"https://docs.paxos.com/api/migrate\" target=\"_blank\">Migrating from v1 to v2 API</a>.</aside>\n",
+        "operationId": "GetBankAccount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CustomerBankAccount"
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "schema": {
+              "example": {
+                "error": "no authorization found on context metadata",
+                "message": "no authorization found on context metadata",
+                "code": 16
+              }
+            }
+          },
+          "403": {
+            "description": "Permission Denied",
+            "schema": {
+              "example": {
+                "error": "not provisioned",
+                "message": "not provisioned",
+                "code": 7
+              }
+            }
+          },
+          "500": {
+            "description": "Internal",
+            "schema": {
+              "example": {
+                "error": "internal error",
+                "message": "internal error",
+                "code": 13
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "FundingPublic"
+        ],
+        "security": [
+          {
+            "paxos_auth": [
+              "funding:read_bank_account"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Removes a specific bank account from the list of accounts previously saved by the customer.",
+        "description": "<aside class=\"warning\"><b>v1 API End of Life Notification</b><br />No earlier than November 30, 2024, we are sunsetting the Paxos v1 APIs. This change ensures all Paxos customers are using supported APIs. Customers can begin migrating as most functionality available via the v1 APIs is already available in <a href=\"https://docs.paxos.com/api/v2\" target=\"_blank\">Paxos v2 APIs</a>. The remaining gaps will be closed by mid Q3, 2024. We recommend you test your integrations in Sandbox during the testing window. See <a href=\"https://docs.paxos.com/api/migrate\" target=\"_blank\">Migrating from v1 to v2 API</a>.</aside>\n",
+        "operationId": "ArchiveBankAccount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ArchiveBankAccountResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "schema": {
+              "example": {
+                "error": "no authorization found on context metadata",
+                "message": "no authorization found on context metadata",
+                "code": 16
+              }
+            }
+          },
+          "403": {
+            "description": "Permission Denied",
+            "schema": {
+              "example": {
+                "error": "not provisioned",
+                "message": "not provisioned",
+                "code": 7
+              }
+            }
+          },
+          "500": {
+            "description": "Internal",
+            "schema": {
+              "example": {
+                "error": "internal error",
+                "message": "internal error",
+                "code": 13
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "FundingPublic"
+        ],
+        "security": [
+          {
+            "paxos_auth": [
+              "funding:write_bank_account"
+            ]
+          }
+        ]
+      }
+    },
+    "/v1/cbit-withdrawals": {
+      "post": {
+        "summary": "Request a withdrawal from a balance at Paxos through CBIT.",
+        "description": "<aside class=\"warning\"><b>v1 API End of Life Notification</b><br />No earlier than November 30, 2024, we are sunsetting the Paxos v1 APIs. This change ensures all Paxos customers are using supported APIs. Customers can begin migrating as most functionality available via the v1 APIs is already available in <a href=\"https://docs.paxos.com/api/v2\" target=\"_blank\">Paxos v2 APIs</a>. The remaining gaps will be closed by mid Q3, 2024. We recommend you test your integrations in Sandbox during the testing window. See <a href=\"https://docs.paxos.com/api/migrate\" target=\"_blank\">Migrating from v1 to v2 API</a>.</aside>\n",
+        "operationId": "CreateCbitWithdrawal",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CreateCbitWithdrawalResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid Argument",
+            "schema": {
+              "example": {
+                "error": "`profile_id` must be set",
+                "message": "`profile_id` must be set",
+                "code": 3
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "schema": {
+              "example": {
+                "error": "no authorization found on context metadata",
+                "message": "no authorization found on context metadata",
+                "code": 16
+              }
+            }
+          },
+          "403": {
+            "description": "Permission Denied",
+            "schema": {
+              "example": {
+                "error": "not provisioned",
+                "message": "not provisioned",
+                "code": 7
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "example": {
+                "error": "no saved account exists with ID 0cf361e1-4b44-483d-a159-54dabdf7e814",
+                "message": "no saved account exists with ID 0cf361e1-4b44-483d-a159-54dabdf7e814",
+                "code": 5
+              }
+            }
+          },
+          "409": {
+            "description": "Already Exists",
+            "schema": {
+              "example": {
+                "error": "activity already exists with id: 0cf361e1-4b44-483d-a159-54dabdf7e814",
+                "message": "activity already exists with id: 0cf361e1-4b44-483d-a159-54dabdf7e814",
+                "code": 6
+              }
+            }
+          },
+          "500": {
+            "description": "Internal",
+            "schema": {
+              "example": {
+                "error": "internal error",
+                "message": "internal error",
+                "code": 13
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateCbitWithdrawalRequest"
+            }
+          }
+        ],
+        "tags": [
+          "FundingPublic"
+        ],
+        "security": [
+          {
+            "paxos_auth": [
+              "funding:withdraw_fiat"
+            ]
+          }
+        ]
+      }
+    },
+    "/v1/crypto-addresses": {
+      "get": {
+        "summary": "Returns a list of the customer's saved destination addresses, where tokens can be sent.",
+        "description": "<aside class=\"warning\"><b>v1 API End of Life Notification</b><br />No earlier than November 30, 2024, we are sunsetting the Paxos v1 APIs. This change ensures all Paxos customers are using supported APIs. Customers can begin migrating as most functionality available via the v1 APIs is already available in <a href=\"https://docs.paxos.com/api/v2\" target=\"_blank\">Paxos v2 APIs</a>. The remaining gaps will be closed by mid Q3, 2024. We recommend you test your integrations in Sandbox during the testing window. See <a href=\"https://docs.paxos.com/api/migrate\" target=\"_blank\">Migrating from v1 to v2 API</a>.</aside>\n",
+        "operationId": "ListCryptoAddresses",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ListCryptoAddressesResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "schema": {
+              "example": {
+                "error": "no authorization found on context metadata",
+                "message": "no authorization found on context metadata",
+                "code": 16
+              }
+            }
+          },
+          "403": {
+            "description": "Permission Denied",
+            "schema": {
+              "example": {
+                "error": "not provisioned",
+                "message": "not provisioned",
+                "code": 7
+              }
+            }
+          },
+          "500": {
+            "description": "Internal",
+            "schema": {
+              "example": {
+                "error": "internal error",
+                "message": "internal error",
+                "code": 13
+              }
+            }
+          }
+        },
+        "tags": [
+          "FundingPublic"
+        ],
+        "security": [
+          {
+            "paxos_auth": [
+              "funding:read_address"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "summary": "Saves the asset-specific deposit address associated with the customer on the partner's platform. This is where tokens will be sent after funding occurs. Depending on the use-case, this can also be used to save additional deposit addresses for that user.",
+        "description": "<aside class=\"warning\"><b>v1 API End of Life Notification</b><br />No earlier than November 30, 2024, we are sunsetting the Paxos v1 APIs. This change ensures all Paxos customers are using supported APIs. Customers can begin migrating as most functionality available via the v1 APIs is already available in <a href=\"https://docs.paxos.com/api/v2\" target=\"_blank\">Paxos v2 APIs</a>. The remaining gaps will be closed by mid Q3, 2024. We recommend you test your integrations in Sandbox during the testing window. See <a href=\"https://docs.paxos.com/api/migrate\" target=\"_blank\">Migrating from v1 to v2 API</a>.</aside>\n",
+        "operationId": "CreateCryptoAddress",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CustomerCryptoAddress"
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "schema": {
+              "example": {
+                "error": "no authorization found on context metadata",
+                "message": "no authorization found on context metadata",
+                "code": 16
+              }
+            }
+          },
+          "403": {
+            "description": "Permission Denied",
+            "schema": {
+              "example": {
+                "error": "not provisioned",
+                "message": "not provisioned",
+                "code": 7
+              }
+            }
+          },
+          "500": {
+            "description": "Internal",
+            "schema": {
+              "example": {
+                "error": "internal error",
+                "message": "internal error",
+                "code": 13
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CustomerCryptoAddress"
+            }
+          }
+        ],
+        "tags": [
+          "FundingPublic"
+        ],
+        "security": [
+          {
+            "paxos_auth": [
+              "funding:write_address"
+            ]
+          }
+        ]
+      }
+    },
+    "/v1/crypto-addresses/{id}": {
+      "get": {
+        "summary": "Returns a saved destination address of the customer, specified by id.",
+        "description": "<aside class=\"warning\"><b>v1 API End of Life Notification</b><br />No earlier than November 30, 2024, we are sunsetting the Paxos v1 APIs. This change ensures all Paxos customers are using supported APIs. Customers can begin migrating as most functionality available via the v1 APIs is already available in <a href=\"https://docs.paxos.com/api/v2\" target=\"_blank\">Paxos v2 APIs</a>. The remaining gaps will be closed by mid Q3, 2024. We recommend you test your integrations in Sandbox during the testing window. See <a href=\"https://docs.paxos.com/api/migrate\" target=\"_blank\">Migrating from v1 to v2 API</a>.</aside>\n",
+        "operationId": "GetCryptoAddress",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CustomerCryptoAddress"
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "schema": {
+              "example": {
+                "error": "no authorization found on context metadata",
+                "message": "no authorization found on context metadata",
+                "code": 16
+              }
+            }
+          },
+          "403": {
+            "description": "Permission Denied",
+            "schema": {
+              "example": {
+                "error": "not provisioned",
+                "message": "not provisioned",
+                "code": 7
+              }
+            }
+          },
+          "500": {
+            "description": "Internal",
+            "schema": {
+              "example": {
+                "error": "internal error",
+                "message": "internal error",
+                "code": 13
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "FundingPublic"
+        ],
+        "security": [
+          {
+            "paxos_auth": [
+              "funding:read_address"
+            ]
+          }
+        ]
+      }
+    },
+    "/v1/crypto-addresses/{id}/auto-conversion-instructions/{targetAsset}": {
+      "get": {
+        "summary": "Returns funding instruction options for the auto-creation of Paxos-issued USD-backed tokens, i.e. PAX, BUSD, HUSD. Funding can be done via either fiat-currency, or another Paxos-issued USD-backed token. For fiat-funding, a Memo ID will be provided. If funding with another Paxos-issued USD-backed token, an ETH address will be provided. Funds sent to Paxos using either of these instruction types will be automatically converted to the token requested by the customer and sent to the destination address which corresponds to the specific Memo-ID or ETH address.",
+        "description": "<aside class=\"warning\"><b>v1 API End of Life Notification</b><br />No earlier than November 30, 2024, we are sunsetting the Paxos v1 APIs. This change ensures all Paxos customers are using supported APIs. Customers can begin migrating as most functionality available via the v1 APIs is already available in <a href=\"https://docs.paxos.com/api/v2\" target=\"_blank\">Paxos v2 APIs</a>. The remaining gaps will be closed by mid Q3, 2024. We recommend you test your integrations in Sandbox during the testing window. See <a href=\"https://docs.paxos.com/api/migrate\" target=\"_blank\">Migrating from v1 to v2 API</a>.</aside>\n",
+        "operationId": "GetCryptoAddressAutoConversionInstructions",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetCryptoAddressAutoConversionInstructionsResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid Argument",
+            "schema": {
+              "example": {
+                "error": "invalid customer crypto address id abc",
+                "message": "invalid customer crypto address id abc",
+                "code": 3
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "schema": {
+              "example": {
+                "error": "no authorization found on context metadata",
+                "message": "no authorization found on context metadata",
+                "code": 16
+              }
+            }
+          },
+          "403": {
+            "description": "Permission Denied",
+            "schema": {
+              "example": {
+                "error": "not provisioned",
+                "message": "not provisioned",
+                "code": 7
+              }
+            }
+          },
+          "500": {
+            "description": "Internal",
+            "schema": {
+              "example": {
+                "error": "internal error",
+                "message": "internal error",
+                "code": 13
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "targetAsset",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "USD",
+              "BTC",
+              "ETH",
+              "PAX",
+              "PAXG",
+              "UNALLOCATED_GOLD",
+              "ALLOCATED_GOLD",
+              "BUSD",
+              "HUSD",
+              "EUR",
+              "SGD",
+              "BCH",
+              "LTC",
+              "USDP",
+              "AAVE",
+              "UNI",
+              "MATIC",
+              "PYUSD",
+              "LINK",
+              "SOL"
+            ]
+          },
+          {
+            "name": "network",
+            "description": "",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "NETWORK_BTC",
+              "NETWORK_ETH",
+              "NETWORK_BCH",
+              "NETWORK_LTC",
+              "NETWORK_SOL"
+            ]
+          }
+        ],
+        "tags": [
+          "FundingPublic"
+        ],
+        "security": [
+          {
+            "paxos_auth": [
+              "funding:read_address"
+            ]
+          }
+        ]
+      }
+    },
+    "/v1/crypto-withdrawals": {
+      "post": {
+        "summary": "Request a withdrawal from a balance at Paxos to an external crypto address.",
+        "description": "<aside class=\"warning\"><b>v1 API End of Life Notification</b><br />No earlier than November 30, 2024, we are sunsetting the Paxos v1 APIs. This change ensures all Paxos customers are using supported APIs. Customers can begin migrating as most functionality available via the v1 APIs is already available in <a href=\"https://docs.paxos.com/api/v2\" target=\"_blank\">Paxos v2 APIs</a>. The remaining gaps will be closed by mid Q3, 2024. We recommend you test your integrations in Sandbox during the testing window. See <a href=\"https://docs.paxos.com/api/migrate\" target=\"_blank\">Migrating from v1 to v2 API</a>.</aside>\n",
+        "operationId": "CreateCryptoWithdrawal",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CreateCryptoWithdrawalResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid Argument",
+            "schema": {
+              "example": {
+                "error": "Must provide uuid profile id",
+                "message": "Must provide uuid profile id",
+                "code": 3
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "schema": {
+              "example": {
+                "error": "no authorization found on context metadata",
+                "message": "no authorization found on context metadata",
+                "code": 16
+              }
+            }
+          },
+          "403": {
+            "description": "Permission Denied",
+            "schema": {
+              "example": {
+                "error": "not provisioned",
+                "message": "not provisioned",
+                "code": 7
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "example": {
+                "error": "no saved address with ID: 7f76c144-5f6c-4cc3-8540-30b95eece19d",
+                "message": "no saved address with ID: 7f76c144-5f6c-4cc3-8540-30b95eece19d",
+                "code": 5
+              }
+            }
+          },
+          "409": {
+            "description": "Already Exists",
+            "schema": {
+              "example": {
+                "error": "activity with external id 12929a09-79ad-42c6-a5d0-6318aedcabd7 already exists",
+                "message": "activity with external id 12929a09-79ad-42c6-a5d0-6318aedcabd7 already exists",
+                "code": 6
+              }
+            }
+          },
+          "500": {
+            "description": "Internal",
+            "schema": {
+              "example": {
+                "error": "internal error",
+                "message": "internal error",
+                "code": 13
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateCryptoWithdrawalRequest"
+            }
+          }
+        ],
+        "tags": [
+          "FundingPublic"
+        ],
+        "security": [
+          {
+            "paxos_auth": [
+              "funding:withdraw_crypto"
+            ]
+          }
+        ]
+      }
+    },
+    "/v1/profiles": {
+      "get": {
+        "summary": "Returns a list of profiles for the authenticated customer.",
+        "description": "<aside class=\"warning\"><b>v1 API End of Life Notification</b><br />No earlier than November 30, 2024, we are sunsetting the Paxos v1 APIs. This change ensures all Paxos customers are using supported APIs. Customers can begin migrating as most functionality available via the v1 APIs is already available in <a href=\"https://docs.paxos.com/api/v2\" target=\"_blank\">Paxos v2 APIs</a>. The remaining gaps will be closed by mid Q3, 2024. We recommend you test your integrations in Sandbox during the testing window. See <a href=\"https://docs.paxos.com/api/migrate\" target=\"_blank\">Migrating from v1 to v2 API</a>.</aside>\n",
+        "operationId": "ListProfiles",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ListProfilesResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "schema": {
+              "example": {
+                "error": "no authorization found on context metadata",
+                "message": "no authorization found on context metadata",
+                "code": 16
+              }
+            }
+          },
+          "403": {
+            "description": "Permission Denied",
+            "schema": {
+              "example": {
+                "error": "not provisioned",
+                "message": "not provisioned",
+                "code": 7
+              }
+            }
+          },
+          "500": {
+            "description": "Internal",
+            "schema": {
+              "example": {
+                "error": "internal error",
+                "message": "internal error",
+                "code": 13
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filters.id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "filters.kycId",
+            "description": "kycid",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "FundingPublic"
+        ],
+        "security": [
+          {
+            "paxos_auth": [
+              "funding:read_profile"
+            ]
+          }
+        ]
+      }
+    },
+    "/v1/profiles/{id}": {
+      "get": {
+        "summary": "Returns a profile within the customer's Paxos account, specified by id.",
+        "description": "<aside class=\"warning\"><b>v1 API End of Life Notification</b><br />No earlier than November 30, 2024, we are sunsetting the Paxos v1 APIs. This change ensures all Paxos customers are using supported APIs. Customers can begin migrating as most functionality available via the v1 APIs is already available in <a href=\"https://docs.paxos.com/api/v2\" target=\"_blank\">Paxos v2 APIs</a>. The remaining gaps will be closed by mid Q3, 2024. We recommend you test your integrations in Sandbox during the testing window. See <a href=\"https://docs.paxos.com/api/migrate\" target=\"_blank\">Migrating from v1 to v2 API</a>.</aside>\n",
+        "operationId": "GetProfile",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Profile"
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "schema": {
+              "example": {
+                "error": "no authorization found on context metadata",
+                "message": "no authorization found on context metadata",
+                "code": 16
+              }
+            }
+          },
+          "403": {
+            "description": "Permission Denied",
+            "schema": {
+              "example": {
+                "error": "not provisioned",
+                "message": "not provisioned",
+                "code": 7
+              }
+            }
+          },
+          "500": {
+            "description": "Internal",
+            "schema": {
+              "example": {
+                "error": "internal error",
+                "message": "internal error",
+                "code": 13
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "profile id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "FundingPublic"
+        ],
+        "security": [
+          {
+            "paxos_auth": [
+              "funding:read_profile"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Deactivates a given profile by id.",
+        "description": "<aside class=\"warning\"><b>v1 API End of Life Notification</b><br />No earlier than November 30, 2024, we are sunsetting the Paxos v1 APIs. This change ensures all Paxos customers are using supported APIs. Customers can begin migrating as most functionality available via the v1 APIs is already available in <a href=\"https://docs.paxos.com/api/v2\" target=\"_blank\">Paxos v2 APIs</a>. The remaining gaps will be closed by mid Q3, 2024. We recommend you test your integrations in Sandbox during the testing window. See <a href=\"https://docs.paxos.com/api/migrate\" target=\"_blank\">Migrating from v1 to v2 API</a>.</aside>\n",
+        "operationId": "ArchiveProfile",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ArchiveProfileResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "schema": {
+              "example": {
+                "error": "no authorization found on context metadata",
+                "message": "no authorization found on context metadata",
+                "code": 16
+              }
+            }
+          },
+          "403": {
+            "description": "Permission Denied",
+            "schema": {
+              "example": {
+                "error": "not provisioned",
+                "message": "not provisioned",
+                "code": 7
+              }
+            }
+          },
+          "500": {
+            "description": "Internal",
+            "schema": {
+              "example": {
+                "error": "internal error",
+                "message": "internal error",
+                "code": 13
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "FundingPublic"
+        ],
+        "security": [
+          {
+            "paxos_auth": [
+              "funding:write_profile"
+            ]
+          }
+        ]
+      }
+    },
+    "/v1/profiles/{id}/balances": {
+      "get": {
+        "summary": "Read customer balances for a specific profile\nid is one of [uuid, \"summary\", \"default\"]",
+        "description": "<aside class=\"warning\"><b>v1 API End of Life Notification</b><br />No earlier than November 30, 2024, we are sunsetting the Paxos v1 APIs. This change ensures all Paxos customers are using supported APIs. Customers can begin migrating as most functionality available via the v1 APIs is already available in <a href=\"https://docs.paxos.com/api/v2\" target=\"_blank\">Paxos v2 APIs</a>. The remaining gaps will be closed by mid Q3, 2024. We recommend you test your integrations in Sandbox during the testing window. See <a href=\"https://docs.paxos.com/api/migrate\" target=\"_blank\">Migrating from v1 to v2 API</a>.</aside>\n",
+        "operationId": "GetProfileBalances",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetProfileBalancesResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "schema": {
+              "example": {
+                "error": "no authorization found on context metadata",
+                "message": "no authorization found on context metadata",
+                "code": 16
+              }
+            }
+          },
+          "403": {
+            "description": "Permission Denied",
+            "schema": {
+              "example": {
+                "error": "not provisioned",
+                "message": "not provisioned",
+                "code": 7
+              }
+            }
+          },
+          "500": {
+            "description": "Internal",
+            "schema": {
+              "example": {
+                "error": "internal error",
+                "message": "internal error",
+                "code": 13
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "assetTypes",
+            "description": "",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "USD",
+                "BTC",
+                "ETH",
+                "PAX",
+                "PAXG",
+                "UNALLOCATED_GOLD",
+                "ALLOCATED_GOLD",
+                "BUSD",
+                "HUSD",
+                "EUR",
+                "SGD",
+                "BCH",
+                "LTC",
+                "USDP",
+                "AAVE",
+                "UNI",
+                "MATIC",
+                "PYUSD",
+                "LINK",
+                "SOL"
+              ]
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "tags": [
+          "FundingPublic"
+        ],
+        "security": [
+          {
+            "paxos_auth": [
+              "funding:read_profile"
+            ]
+          }
+        ]
+      }
+    },
+    "/v1/profiles/{id}/instructions": {
+      "get": {
+        "summary": "Returns wire deposit instructions for the given profile.",
+        "description": "<aside class=\"warning\"><b>v1 API End of Life Notification</b><br />No earlier than November 30, 2024, we are sunsetting the Paxos v1 APIs. This change ensures all Paxos customers are using supported APIs. Customers can begin migrating as most functionality available via the v1 APIs is already available in <a href=\"https://docs.paxos.com/api/v2\" target=\"_blank\">Paxos v2 APIs</a>. The remaining gaps will be closed by mid Q3, 2024. We recommend you test your integrations in Sandbox during the testing window. See <a href=\"https://docs.paxos.com/api/migrate\" target=\"_blank\">Migrating from v1 to v2 API</a>.</aside>\n",
+        "operationId": "GetProfileDepositInstructions",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ProfileDepositInstructions"
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "schema": {
+              "example": {
+                "error": "no authorization found on context metadata",
+                "message": "no authorization found on context metadata",
+                "code": 16
+              }
+            }
+          },
+          "403": {
+            "description": "Permission Denied",
+            "schema": {
+              "example": {
+                "error": "not provisioned",
+                "message": "not provisioned",
+                "code": 7
+              }
+            }
+          },
+          "500": {
+            "description": "Internal",
+            "schema": {
+              "example": {
+                "error": "internal error",
+                "message": "internal error",
+                "code": 13
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "profile id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "FundingPublic"
+        ],
+        "security": [
+          {
+            "paxos_auth": [
+              "funding:read_profile"
+            ]
+          }
+        ]
+      }
+    },
+    "/v1/sen-withdrawals": {
+      "post": {
+        "summary": "Request a withdrawal from a balance at Paxos through SEN.",
+        "description": "<aside class=\"warning\"><b>v1 API End of Life Notification</b><br />No earlier than November 30, 2024, we are sunsetting the Paxos v1 APIs. This change ensures all Paxos customers are using supported APIs. Customers can begin migrating as most functionality available via the v1 APIs is already available in <a href=\"https://docs.paxos.com/api/v2\" target=\"_blank\">Paxos v2 APIs</a>. The remaining gaps will be closed by mid Q3, 2024. We recommend you test your integrations in Sandbox during the testing window. See <a href=\"https://docs.paxos.com/api/migrate\" target=\"_blank\">Migrating from v1 to v2 API</a>.</aside>\n",
+        "operationId": "CreateSenWithdrawal",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CreateSenWithdrawalResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid Argument",
+            "schema": {
+              "example": {
+                "error": "`profile_id` must be set",
+                "message": "`profile_id` must be set",
+                "code": 3
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "schema": {
+              "example": {
+                "error": "no authorization found on context metadata",
+                "message": "no authorization found on context metadata",
+                "code": 16
+              }
+            }
+          },
+          "403": {
+            "description": "Permission Denied",
+            "schema": {
+              "example": {
+                "error": "not provisioned",
+                "message": "not provisioned",
+                "code": 7
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "example": {
+                "error": "no saved account exists with ID 0cf361e1-4b44-483d-a159-54dabdf7e814",
+                "message": "no saved account exists with ID 0cf361e1-4b44-483d-a159-54dabdf7e814",
+                "code": 5
+              }
+            }
+          },
+          "409": {
+            "description": "Already Exists",
+            "schema": {
+              "example": {
+                "error": "activity already exists with id: 0cf361e1-4b44-483d-a159-54dabdf7e814",
+                "message": "activity already exists with id: 0cf361e1-4b44-483d-a159-54dabdf7e814",
+                "code": 6
+              }
+            }
+          },
+          "500": {
+            "description": "Internal",
+            "schema": {
+              "example": {
+                "error": "internal error",
+                "message": "internal error",
+                "code": 13
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateSenWithdrawalRequest"
+            }
+          }
+        ],
+        "tags": [
+          "FundingPublic"
+        ],
+        "security": [
+          {
+            "paxos_auth": [
+              "funding:withdraw_fiat"
+            ]
+          }
+        ]
+      }
+    },
+    "/v1/signet-withdrawals": {
+      "post": {
+        "summary": "Request a withdrawal from a balance at Paxos through SIGNET.",
+        "description": "<aside class=\"warning\"><b>v1 API End of Life Notification</b><br />No earlier than November 30, 2024, we are sunsetting the Paxos v1 APIs. This change ensures all Paxos customers are using supported APIs. Customers can begin migrating as most functionality available via the v1 APIs is already available in <a href=\"https://docs.paxos.com/api/v2\" target=\"_blank\">Paxos v2 APIs</a>. The remaining gaps will be closed by mid Q3, 2024. We recommend you test your integrations in Sandbox during the testing window. See <a href=\"https://docs.paxos.com/api/migrate\" target=\"_blank\">Migrating from v1 to v2 API</a>.</aside>\n",
+        "operationId": "CreateSignetWithdrawal",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CreateSignetWithdrawalResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid Argument",
+            "schema": {
+              "example": {
+                "error": "`profile_id` must be set",
+                "message": "`profile_id` must be set",
+                "code": 3
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "schema": {
+              "example": {
+                "error": "no authorization found on context metadata",
+                "message": "no authorization found on context metadata",
+                "code": 16
+              }
+            }
+          },
+          "403": {
+            "description": "Permission Denied",
+            "schema": {
+              "example": {
+                "error": "not provisioned",
+                "message": "not provisioned",
+                "code": 7
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "example": {
+                "error": "no saved account exists with ID 0cf361e1-4b44-483d-a159-54dabdf7e814",
+                "message": "no saved account exists with ID 0cf361e1-4b44-483d-a159-54dabdf7e814",
+                "code": 5
+              }
+            }
+          },
+          "409": {
+            "description": "Already Exists",
+            "schema": {
+              "example": {
+                "error": "activity already exists with id: 0cf361e1-4b44-483d-a159-54dabdf7e814",
+                "message": "activity already exists with id: 0cf361e1-4b44-483d-a159-54dabdf7e814",
+                "code": 6
+              }
+            }
+          },
+          "500": {
+            "description": "Internal",
+            "schema": {
+              "example": {
+                "error": "internal error",
+                "message": "internal error",
+                "code": 13
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateSignetWithdrawalRequest"
+            }
+          }
+        ],
+        "tags": [
+          "FundingPublic"
+        ],
+        "security": [
+          {
+            "paxos_auth": [
+              "funding:withdraw_fiat"
+            ]
+          }
+        ]
+      }
+    },
+    "/v1/transfers/peer": {
+      "post": {
+        "summary": "Request a transfer to a peer's profile (another customer on the Paxos Platform) from the customer's provided profile ID",
+        "description": "<aside class=\"warning\"><b>v1 API End of Life Notification</b><br />No earlier than November 30, 2024, we are sunsetting the Paxos v1 APIs. This change ensures all Paxos customers are using supported APIs. Customers can begin migrating as most functionality available via the v1 APIs is already available in <a href=\"https://docs.paxos.com/api/v2\" target=\"_blank\">Paxos v2 APIs</a>. The remaining gaps will be closed by mid Q3, 2024. We recommend you test your integrations in Sandbox during the testing window. See <a href=\"https://docs.paxos.com/api/migrate\" target=\"_blank\">Migrating from v1 to v2 API</a>.</aside>\n",
+        "operationId": "CreatePeerTransfer",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CreatePeerTransferResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid Argument",
+            "schema": {
+              "example": {
+                "error": "Must provide uuid from profile id",
+                "message": "Must provide uuid from profile id",
+                "code": 3
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "schema": {
+              "example": {
+                "error": "no authorization found on context metadata",
+                "message": "no authorization found on context metadata",
+                "code": 16
+              }
+            }
+          },
+          "403": {
+            "description": "Permission Denied",
+            "schema": {
+              "example": {
+                "error": "not provisioned",
+                "message": "not provisioned",
+                "code": 7
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "example": {
+                "error": "no transfer ID: 7f76c144-5f6c-4cc3-8540-30b95eece19d",
+                "message": "no transfer ID: 7f76c144-5f6c-4cc3-8540-30b95eece19d",
+                "code": 5
+              }
+            }
+          },
+          "409": {
+            "description": "Already Exists",
+            "schema": {
+              "example": {
+                "error": "activity with external id 12929a09-79ad-42c6-a5d0-6318aedcabd7 already exists",
+                "message": "activity with external id 12929a09-79ad-42c6-a5d0-6318aedcabd7 already exists",
+                "code": 6
+              }
+            }
+          },
+          "500": {
+            "description": "Internal",
+            "schema": {
+              "example": {
+                "error": "internal error",
+                "message": "internal error",
+                "code": 13
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreatePeerTransferRequest"
+            }
+          }
+        ],
+        "tags": [
+          "FundingPublic"
+        ],
+        "security": [
+          {
+            "paxos_auth": [
+              "funding:peer_transfer"
+            ]
+          }
+        ]
+      }
+    },
+    "/v1/transfers/profile": {
+      "post": {
+        "summary": "Request a transfer from one profile to another for the same customer",
+        "description": "<aside class=\"warning\"><b>v1 API End of Life Notification</b><br />No earlier than November 30, 2024, we are sunsetting the Paxos v1 APIs. This change ensures all Paxos customers are using supported APIs. Customers can begin migrating as most functionality available via the v1 APIs is already available in <a href=\"https://docs.paxos.com/api/v2\" target=\"_blank\">Paxos v2 APIs</a>. The remaining gaps will be closed by mid Q3, 2024. We recommend you test your integrations in Sandbox during the testing window. See <a href=\"https://docs.paxos.com/api/migrate\" target=\"_blank\">Migrating from v1 to v2 API</a>.</aside>\n",
+        "operationId": "CreateProfileTransfer",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CreateProfileTransferResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid Argument",
+            "schema": {
+              "example": {
+                "error": "Must provide uuid from profile id",
+                "message": "Must provide uuid from profile id",
+                "code": 3
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "schema": {
+              "example": {
+                "error": "no authorization found on context metadata",
+                "message": "no authorization found on context metadata",
+                "code": 16
+              }
+            }
+          },
+          "403": {
+            "description": "Permission Denied",
+            "schema": {
+              "example": {
+                "error": "not provisioned",
+                "message": "not provisioned",
+                "code": 7
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "example": {
+                "error": "no profile with ID: 7f76c144-5f6c-4cc3-8540-30b95eece19d",
+                "message": "no profile with ID: 7f76c144-5f6c-4cc3-8540-30b95eece19d",
+                "code": 5
+              }
+            }
+          },
+          "409": {
+            "description": "Already Exists",
+            "schema": {
+              "example": {
+                "error": "activity with external id 12929a09-79ad-42c6-a5d0-6318aedcabd7 already exists",
+                "message": "activity with external id 12929a09-79ad-42c6-a5d0-6318aedcabd7 already exists",
+                "code": 6
+              }
+            }
+          },
+          "500": {
+            "description": "Internal",
+            "schema": {
+              "example": {
+                "error": "internal error",
+                "message": "internal error",
+                "code": 13
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateProfileTransferRequest"
+            }
+          }
+        ],
+        "tags": [
+          "FundingPublic"
+        ],
+        "security": [
+          {
+            "paxos_auth": [
+              "funding:profile_transfer"
+            ]
+          }
+        ]
+      }
+    },
+    "/v1/wire-withdrawals": {
+      "post": {
+        "summary": "Request a withdrawal from a balance at Paxos through ABA or SWIFT.",
+        "description": "<aside class=\"warning\"><b>v1 API End of Life Notification</b><br />No earlier than November 30, 2024, we are sunsetting the Paxos v1 APIs. This change ensures all Paxos customers are using supported APIs. Customers can begin migrating as most functionality available via the v1 APIs is already available in <a href=\"https://docs.paxos.com/api/v2\" target=\"_blank\">Paxos v2 APIs</a>. The remaining gaps will be closed by mid Q3, 2024. We recommend you test your integrations in Sandbox during the testing window. See <a href=\"https://docs.paxos.com/api/migrate\" target=\"_blank\">Migrating from v1 to v2 API</a>.</aside>\n",
+        "operationId": "CreateWireWithdrawal",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CreateWireWithdrawalResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid Argument",
+            "schema": {
+              "example": {
+                "error": "`profile_id` must be set",
+                "message": "`profile_id` must be set",
+                "code": 3
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "schema": {
+              "example": {
+                "error": "no authorization found on context metadata",
+                "message": "no authorization found on context metadata",
+                "code": 16
+              }
+            }
+          },
+          "403": {
+            "description": "Permission Denied",
+            "schema": {
+              "example": {
+                "error": "not provisioned",
+                "message": "not provisioned",
+                "code": 7
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "example": {
+                "error": "no saved account exists with ID 0cf361e1-4b44-483d-a159-54dabdf7e814",
+                "message": "no saved account exists with ID 0cf361e1-4b44-483d-a159-54dabdf7e814",
+                "code": 5
+              }
+            }
+          },
+          "409": {
+            "description": "Already Exists",
+            "schema": {
+              "example": {
+                "error": "activity already exists with id: 0cf361e1-4b44-483d-a159-54dabdf7e814",
+                "message": "activity already exists with id: 0cf361e1-4b44-483d-a159-54dabdf7e814",
+                "code": 6
+              }
+            }
+          },
+          "500": {
+            "description": "Internal",
+            "schema": {
+              "example": {
+                "error": "internal error",
+                "message": "internal error",
+                "code": 13
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateWireWithdrawalRequest"
+            }
+          }
+        ],
+        "tags": [
+          "FundingPublic"
+        ],
+        "security": [
+          {
+            "paxos_auth": [
+              "funding:withdraw_fiat"
+            ]
+          }
+        ]
+      }
+    },
+    "/v1/customer/status": {
+      "get": {
+        "summary": "Returns information on how far the customer's onboarding has progressed at Paxos.",
+        "description": "<aside class=\"warning\"><b>v1 API End of Life Notification</b><br />No earlier than November 30, 2024, we are sunsetting the Paxos v1 APIs. This change ensures all Paxos customers are using supported APIs. Customers can begin migrating as most functionality available via the v1 APIs is already available in <a href=\"https://docs.paxos.com/api/v2\" target=\"_blank\">Paxos v2 APIs</a>. The remaining gaps will be closed by mid Q3, 2024. We recommend you test your integrations in Sandbox during the testing window. See <a href=\"https://docs.paxos.com/api/migrate\" target=\"_blank\">Migrating from v1 to v2 API</a>.</aside>\n",
+        "operationId": "GetCustStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetCustStatusResponse"
+            }
+          }
+        },
+        "tags": [
+          "CustomerPublic"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "GetActivitiesRequestOrderingPolicy": {
+      "type": "string",
+      "enum": [
+        "CREATED_AT_DESC",
+        "CREATED_AT_ASC"
+      ]
+    },
+    "SWIFTWithdrawalInstructionsIntermediary": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the intermediary bank.",
+          "maxLength": 35,
+          "pattern": "^[0-9A-Za-z /?:().,&'+-]+$"
+        },
+        "swiftBic": {
+          "type": "string",
+          "description": "The SWIFT Bank Identifier Code (BIC) of the intermediary bank.",
+          "maxLength": 11,
+          "minLength": 8,
+          "pattern": "^[0-9A-Za-z]+$"
+        },
+        "address": {
+          "type": "string",
+          "title": "The mailing address of the intermediary bank in one text box.\nAll printable characters. Synonymous to [\\x20-\\x7e]",
+          "maxLength": 105
+        }
+      },
+      "description": "An intermediary bank for SWIFT withdrawals.",
+      "required": [
+        "name",
+        "swiftBic"
+      ]
+    },
+    "ABADepositInstructions": {
+      "type": "object",
+      "properties": {
+        "memoId": {
+          "type": "string",
+          "description": "A unique personal code for routing the deposited funds at Paxos.\nThe customer should put this string in the transfer memo field, for any type\nof transfer."
+        },
+        "beneficiaryName": {
+          "type": "string",
+          "description": "The Paxos entity name."
+        },
+        "accountNumber": {
+          "type": "string",
+          "description": "The Paxos account number."
+        },
+        "routingNumber": {
+          "type": "string",
+          "description": "The Paxos routing number."
+        },
+        "bankName": {
+          "type": "string",
+          "description": "The name of the Paxos bank."
+        },
+        "beneficiaryAddress": {
+          "$ref": "#/definitions/MailingAddress",
+          "description": "The Paxos entity mailing address."
+        },
+        "bankAddress": {
+          "$ref": "#/definitions/MailingAddress",
+          "description": "The mailing address of the Paxos bank."
+        }
+      },
+      "description": "The ABA transfer instructions for depositing fiat to Paxos from a US bank. Read-only.",
+      "required": [
+        "memoId",
+        "beneficiaryName",
+        "accountNumber",
+        "routingNumber",
+        "bankName",
+        "beneficiaryAddress",
+        "bankAddress"
+      ]
+    },
+    "ABAWithdrawalInstructions": {
+      "type": "object",
+      "properties": {
+        "beneficiaryName": {
+          "type": "string",
+          "description": "The name of the customer to credit.",
+          "maxLength": 35,
+          "pattern": "^[0-9A-Za-z /?:().,&'+-]+$"
+        },
+        "accountNumber": {
+          "type": "string",
+          "description": "The account number.",
+          "maxLength": 35,
+          "pattern": "^[0-9A-Za-z]+$"
+        },
+        "routingNumber": {
+          "type": "string",
+          "description": "The routing number.",
+          "maxLength": 9,
+          "minLength": 9,
+          "pattern": "^[0-9]+$"
+        },
+        "bankName": {
+          "type": "string",
+          "description": "The name of the bank.",
+          "maxLength": 35,
+          "pattern": "^[0-9A-Za-z /?:().,&'+-]+$"
+        },
+        "beneficiaryAddress": {
+          "$ref": "#/definitions/MailingAddress",
+          "description": "The mailing address of the beneficiary."
+        },
+        "forFurtherCredit": {
+          "type": "string",
+          "description": "Additional account ID. Optional.",
+          "maxLength": 105,
+          "pattern": "^[0-9A-Za-z /?:().,&'+-]*$"
+        }
+      },
+      "description": "Instructions for an ABA wire withdrawal.",
+      "required": [
+        "beneficiaryName",
+        "accountNumber",
+        "routingNumber",
+        "bankName",
+        "beneficiaryAddress"
+      ]
+    },
+    "Activity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The UUID of the activity."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "assetType": {
+          "$ref": "#/definitions/AssetType"
+        },
+        "principal": {
+          "type": "string"
+        },
+        "fee": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/ActivityStatus"
+        },
+        "activityClass": {
+          "$ref": "#/definitions/ActivityClass"
+        },
+        "activityType": {
+          "$ref": "#/definitions/ActivityType"
+        },
+        "externalId": {
+          "type": "string"
+        },
+        "txId": {
+          "type": "string"
+        },
+        "fromProfile": {
+          "$ref": "#/definitions/Profile",
+          "title": "One of the from_XXX set"
+        },
+        "fromBankAccount": {
+          "$ref": "#/definitions/OriginBankAccount"
+        },
+        "fromAddress": {
+          "$ref": "#/definitions/OriginCryptoAddress"
+        },
+        "toProfile": {
+          "$ref": "#/definitions/Profile",
+          "title": "One of the to_XXX set"
+        },
+        "toBankAccount": {
+          "$ref": "#/definitions/CustomerBankAccount"
+        },
+        "toAddress": {
+          "$ref": "#/definitions/CustomerCryptoAddress"
+        },
+        "refundedByActivityId": {
+          "type": "string"
+        },
+        "refundForActivityId": {
+          "type": "string"
+        },
+        "secondaryStatus": {
+          "$ref": "#/definitions/SecondaryStatus"
+        }
+      },
+      "description": "A customer transaction (fiat deposit, crypto deposit, fiat withdrawal, crypto withdrawal, internal transfer, etc). Read-only.",
+      "required": [
+        "id",
+        "createdAt",
+        "updatedAt",
+        "assetType",
+        "principal",
+        "fee",
+        "status",
+        "activityClass",
+        "activityType"
+      ]
+    },
+    "ActivityClass": {
+      "type": "string",
+      "enum": [
+        "DEPOSIT",
+        "WITHDRAWAL",
+        "TRANSFER"
+      ],
+      "description": "High level class of activity."
+    },
+    "ActivityFilter": {
+      "type": "object",
+      "properties": {
+        "activityType": {
+          "$ref": "#/definitions/ActivityType"
+        },
+        "txId": {
+          "type": "string",
+          "title": "Raw txHash"
+        }
+      }
+    },
+    "ActivityStatus": {
+      "type": "string",
+      "enum": [
+        "COMPLETE",
+        "PENDING",
+        "ERRORED",
+        "CANCELLED"
+      ],
+      "title": "Activity status"
+    },
+    "ActivityType": {
+      "type": "string",
+      "enum": [
+        "SEND_PROFILE_TRANSFER",
+        "RECV_PROFILE_TRANSFER",
+        "CRYPTO_DEPOSIT",
+        "CRYPTO_WITHDRAWAL",
+        "WIRE_DEPOSIT",
+        "WIRE_WITHDRAWAL",
+        "SEN_DEPOSIT",
+        "SEN_WITHDRAWAL",
+        "PAXOS_CREDIT",
+        "PAXOS_DEBIT",
+        "BANK_DEPOSIT",
+        "BANK_WITHDRAWAL",
+        "UNALLOCATED_GOLD_DEPOSIT",
+        "UNALLOCATED_GOLD_WITHDRAWAL",
+        "ALLOCATED_GOLD_WITHDRAWAL",
+        "TOKEN_ORDER",
+        "TO_ITBIT_TRANSFER",
+        "FROM_ITBIT_TRANSFER",
+        "SEND_PEER_TRANSFER",
+        "RECV_PEER_TRANSFER",
+        "ADMIN_SEND_PEER_TRANSFER",
+        "ADMIN_RECV_PEER_TRANSFER",
+        "SIGNET_DEPOSIT",
+        "SIGNET_WITHDRAWAL",
+        "CBIT_WITHDRAWAL",
+        "CBIT_DEPOSIT"
+      ],
+      "description": "Type of activity."
+    },
+    "ArchiveBankAccountResponse": {
+      "type": "object"
+    },
+    "ArchiveProfileResponse": {
+      "type": "object"
+    },
+    "AssetType": {
+      "type": "string",
+      "enum": [
+        "USD",
+        "BTC",
+        "ETH",
+        "PAX",
+        "PAXG",
+        "UNALLOCATED_GOLD",
+        "ALLOCATED_GOLD",
+        "BUSD",
+        "HUSD",
+        "EUR",
+        "SGD",
+        "BCH",
+        "LTC",
+        "USDP",
+        "AAVE",
+        "UNI",
+        "MATIC",
+        "PYUSD",
+        "LINK",
+        "SOL"
+      ],
+      "description": "",
+      "title": "AssetType"
+    },
+    "AutoConversion": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "profileId": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "depositAssetType": {
+          "$ref": "#/definitions/AssetType"
+        },
+        "withdrawalAssetType": {
+          "$ref": "#/definitions/AssetType"
+        },
+        "deposit": {
+          "$ref": "#/definitions/Activity"
+        },
+        "withdrawal": {
+          "$ref": "#/definitions/Activity"
+        },
+        "withdrawalDestAddressId": {
+          "type": "string"
+        },
+        "withdrawalDestBankAccountId": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/AutoConversionStatus"
+        }
+      }
+    },
+    "AutoConversionStatus": {
+      "type": "string",
+      "enum": [
+        "PENDING_DEPOSIT",
+        "ERROR_DEPOSIT",
+        "PENDING_WITHDRAWAL",
+        "ERROR_WITHDRAWAL",
+        "COMPLETE"
+      ]
+    },
+    "Balance": {
+      "type": "object",
+      "properties": {
+        "assetType": {
+          "$ref": "#/definitions/AssetType"
+        },
+        "available": {
+          "type": "string"
+        },
+        "pendingCredit": {
+          "type": "string"
+        },
+        "pendingDebit": {
+          "type": "string"
+        },
+        "pendingTotal": {
+          "type": "string"
+        },
+        "trading": {
+          "type": "string"
+        }
+      }
+    },
+    "BankInformation": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "routingNumber": {
+          "type": "string"
+        },
+        "recipientName": {
+          "type": "string"
+        },
+        "recipientAddress": {
+          "type": "string"
+        },
+        "accountNumber": {
+          "type": "string"
+        },
+        "swiftIntermediaryBankName": {
+          "type": "string"
+        },
+        "swiftIntermediaryBankAddress": {
+          "type": "string"
+        },
+        "swiftCode": {
+          "type": "string"
+        }
+      }
+    },
+    "Beneficiary": {
+      "type": "object",
+      "properties": {
+        "personDetails": {
+          "$ref": "#/definitions/BeneficiaryPerson",
+          "title": "Person details if beneficiary type is person"
+        },
+        "institutionDetails": {
+          "$ref": "#/definitions/BeneficiaryInstitution",
+          "title": "Institution details if beneficiary type is institution"
+        }
+      }
+    },
+    "BeneficiaryInstitution": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "BeneficiaryPerson": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "firstName",
+        "lastName"
+      ]
+    },
+    "CBITDepositInstructions": {
+      "type": "object",
+      "properties": {
+        "memoId": {
+          "type": "string",
+          "description": "A unique personal code for routing the deposited funds at Paxos.\nThe customer should use `memo_id` in the transfer-memo field for all transfer types."
+        },
+        "beneficiaryName": {
+          "type": "string",
+          "description": "The Paxos entity name."
+        },
+        "walletAddress": {
+          "type": "string",
+          "description": "The Paxos wallet address."
+        }
+      },
+      "description": "The CBIT transfer instructions for depositing to Paxos. Read-only.",
+      "required": [
+        "memoId",
+        "beneficiaryName",
+        "walletAddress"
+      ]
+    },
+    "CBITWithdrawalInstructions": {
+      "type": "object",
+      "properties": {
+        "beneficiaryName": {
+          "type": "string",
+          "description": "The withdrawal beneficiary."
+        },
+        "walletAddress": {
+          "type": "string",
+          "description": "The wallet address."
+        }
+      },
+      "description": "Instructions for a Customers Bank Network (CBIT) withdrawal.",
+      "required": [
+        "beneficiaryName",
+        "walletAddress"
+      ]
+    },
+    "CreateBankAccountRequest": {
+      "type": "object",
+      "properties": {
+        "nickname": {
+          "type": "string",
+          "description": "The display name of this saved bank account. Must be unique."
+        },
+        "aba": {
+          "$ref": "#/definitions/ABAWithdrawalInstructions",
+          "description": "For type ABA, the ABA wire instructions."
+        },
+        "swift": {
+          "$ref": "#/definitions/SWIFTWithdrawalInstructions",
+          "description": "For type SWIFT, the SWIFT transfer instructions."
+        },
+        "sen": {
+          "$ref": "#/definitions/SENWithdrawalInstructions",
+          "description": "For type SEN, the SEN transfer instructions."
+        },
+        "signet": {
+          "$ref": "#/definitions/SIGNETWithdrawalInstructions",
+          "description": "For type SIGNET, the SIGNET transfer instructions."
+        },
+        "cbit": {
+          "$ref": "#/definitions/CBITWithdrawalInstructions",
+          "description": "For type CBIT, the CBIT transfer instructions."
+        },
+        "intrabank": {
+          "$ref": "#/definitions/IntrabankWithdrawalInstructions",
+          "description": "For any generic intra-bank account (type dictates the specific network)."
+        }
+      },
+      "description": "Save a bank account. Specify exactly one instruction type. For example, \"cbit\".",
+      "required": [
+        "nickname"
+      ]
+    },
+    "CreateCbitWithdrawalRequest": {
+      "type": "object",
+      "properties": {
+        "profileId": {
+          "type": "string",
+          "title": "uuid for profile"
+        },
+        "bankAccountId": {
+          "type": "string",
+          "title": "customer bank account"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "externalId": {
+          "type": "string",
+          "description": "If the same `external_id` is supplied in multiple requests, only the first one will go through (idempotence)."
+        }
+      },
+      "required": [
+        "profileId",
+        "bankAccountId",
+        "amount",
+        "externalId"
+      ]
+    },
+    "CreateCbitWithdrawalResponse": {
+      "type": "object",
+      "properties": {
+        "withdrawal": {
+          "$ref": "#/definitions/Activity"
+        }
+      }
+    },
+    "CreateCryptoWithdrawalRequest": {
+      "type": "object",
+      "properties": {
+        "profileId": {
+          "type": "string",
+          "title": "uuid for profile"
+        },
+        "cryptoAddressId": {
+          "type": "string",
+          "title": "external id of customer crypto address"
+        },
+        "assetType": {
+          "$ref": "#/definitions/AssetType"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "externalId": {
+          "type": "string",
+          "title": "If the same external_id is supplied in multiple requests, only one will go through (idempotence)"
+        },
+        "beneficiary": {
+          "$ref": "#/definitions/Beneficiary",
+          "title": "Intended beneficiary for the withdrawal"
+        },
+        "network": {
+          "$ref": "#/definitions/Network",
+          "title": "Optional network to use for the withdrawal"
+        }
+      },
+      "title": "Withdraw request for crypto",
+      "required": [
+        "profileId",
+        "cryptoAddressId",
+        "assetType",
+        "amount",
+        "externalId"
+      ]
+    },
+    "CreateCryptoWithdrawalResponse": {
+      "type": "object",
+      "properties": {
+        "withdrawal": {
+          "$ref": "#/definitions/Activity",
+          "title": "Newly created withdrawal"
+        }
+      }
+    },
+    "CreateIntrabankWithdrawalResponse": {
+      "type": "object",
+      "properties": {
+        "withdrawal": {
+          "$ref": "#/definitions/Activity"
+        }
+      },
+      "description": "Do not use."
+    },
+    "CreatePeerTransferRequest": {
+      "type": "object",
+      "properties": {
+        "fromProfileId": {
+          "type": "string"
+        },
+        "toTransferId": {
+          "type": "string"
+        },
+        "assetType": {
+          "$ref": "#/definitions/AssetType"
+        },
+        "amount": {
+          "type": "string",
+          "pattern": "^[0-9]*\\.?[0-9]+$"
+        },
+        "externalId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "fromProfileId",
+        "toTransferId",
+        "assetType",
+        "amount",
+        "externalId"
+      ]
+    },
+    "CreatePeerTransferResponse": {
+      "type": "object",
+      "properties": {
+        "sendTransfer": {
+          "$ref": "#/definitions/Activity"
+        }
+      }
+    },
+    "CreateProfileTransferRequest": {
+      "type": "object",
+      "properties": {
+        "fromProfileId": {
+          "type": "string"
+        },
+        "toProfileId": {
+          "type": "string"
+        },
+        "assetType": {
+          "$ref": "#/definitions/AssetType"
+        },
+        "amount": {
+          "type": "string",
+          "pattern": "^[0-9]*\\.?[0-9]+$"
+        },
+        "externalId": {
+          "type": "string"
+        }
+      },
+      "title": "Internal transfer request",
+      "required": [
+        "fromProfileId",
+        "toProfileId",
+        "assetType",
+        "amount",
+        "externalId"
+      ]
+    },
+    "CreateProfileTransferResponse": {
+      "type": "object",
+      "properties": {
+        "sendTransfer": {
+          "$ref": "#/definitions/Activity"
+        },
+        "recvTransfer": {
+          "$ref": "#/definitions/Activity"
+        }
+      },
+      "title": "Returns both of the newly created activities"
+    },
+    "CreateSenWithdrawalRequest": {
+      "type": "object",
+      "properties": {
+        "profileId": {
+          "type": "string",
+          "title": "uuid for profile"
+        },
+        "bankAccountId": {
+          "type": "string",
+          "title": "customer bank account"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "externalId": {
+          "type": "string",
+          "description": "If the same `external_id` is supplied in multiple requests, only the first one will go through (idempotence)."
+        }
+      },
+      "required": [
+        "profileId",
+        "bankAccountId",
+        "amount",
+        "externalId"
+      ]
+    },
+    "CreateSenWithdrawalResponse": {
+      "type": "object",
+      "properties": {
+        "withdrawal": {
+          "$ref": "#/definitions/Activity"
+        }
+      }
+    },
+    "CreateSignetWithdrawalRequest": {
+      "type": "object",
+      "properties": {
+        "profileId": {
+          "type": "string",
+          "title": "uuid for profile"
+        },
+        "bankAccountId": {
+          "type": "string",
+          "title": "customer bank account"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "externalId": {
+          "type": "string",
+          "description": "If the same `external_id` is supplied in multiple requests, only the first one will go through (idempotence)."
+        }
+      },
+      "required": [
+        "profileId",
+        "bankAccountId",
+        "amount",
+        "externalId"
+      ]
+    },
+    "CreateSignetWithdrawalResponse": {
+      "type": "object",
+      "properties": {
+        "withdrawal": {
+          "$ref": "#/definitions/Activity"
+        }
+      }
+    },
+    "CreateWireWithdrawalRequest": {
+      "type": "object",
+      "properties": {
+        "profileId": {
+          "type": "string",
+          "title": "uuid for profile"
+        },
+        "bankAccountId": {
+          "type": "string",
+          "title": "customer bank account"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "externalId": {
+          "type": "string",
+          "description": "If the same `external_id` is supplied in multiple requests, only the first one will go through (idempotence)."
+        }
+      },
+      "title": "Withdraw request for ABA and SWIFT",
+      "required": [
+        "profileId",
+        "bankAccountId",
+        "amount",
+        "externalId"
+      ]
+    },
+    "CreateWireWithdrawalResponse": {
+      "type": "object",
+      "properties": {
+        "withdrawal": {
+          "$ref": "#/definitions/Activity"
+        }
+      }
+    },
+    "CustomerBankAccount": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "revision": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "nickname": {
+          "type": "string",
+          "description": "The display name of this saved bank account. Must be unique."
+        },
+        "type": {
+          "$ref": "#/definitions/CustomerBankAccountType",
+          "description": "The type of bank account."
+        },
+        "aba": {
+          "$ref": "#/definitions/ABAWithdrawalInstructions",
+          "description": "For type ABA, the ABA wire instructions."
+        },
+        "swift": {
+          "$ref": "#/definitions/SWIFTWithdrawalInstructions",
+          "description": "For type SWIFT, the SWIFT transfer instructions."
+        },
+        "sen": {
+          "$ref": "#/definitions/SENWithdrawalInstructions",
+          "description": "For type SEN, the SEN transfer instructions."
+        },
+        "signet": {
+          "$ref": "#/definitions/SIGNETWithdrawalInstructions",
+          "description": "For type SIGNET, the SIGNET transfer instructions."
+        },
+        "cbit": {
+          "$ref": "#/definitions/CBITWithdrawalInstructions",
+          "description": "For type CBIT, the CBIT transfer instructions."
+        },
+        "intrabank": {
+          "$ref": "#/definitions/IntrabankWithdrawalInstructions",
+          "description": "For any generic intrabank account (type dictates the specific network). For example, CBIT."
+        }
+      },
+      "description": "A customer-saved bank account used for withdrawals.",
+      "required": [
+        "id",
+        "revision",
+        "nickname",
+        "type"
+      ]
+    },
+    "CustomerBankAccountType": {
+      "type": "string",
+      "enum": [
+        "ABA",
+        "SWIFT",
+        "SEN",
+        "ACH",
+        "SIGNET",
+        "CBIT"
+      ],
+      "description": "The bank account type: The kind of transfer Paxos will perform for a withdrawal.\n\n - ABA: A U.S. domestic wire destination.\n - SWIFT: An international wire destination.\n - SEN: A destination on the \"Silvergate Exchange Network\" (between Silvergate accounts).\n - ACH: ACH\n - SIGNET: A destination on the Signet Platform (between Signature accounts).\n - CBIT: A destination on the CBIT Network (between Customers Bank accounts)."
+    },
+    "CustomerCryptoAddress": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "revision": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "nickname": {
+          "type": "string"
+        },
+        "network": {
+          "$ref": "#/definitions/Network"
+        },
+        "address": {
+          "type": "string"
+        }
+      },
+      "description": "A customer saved crypto address for withdrawals."
+    },
+    "DepositMemo": {
+      "type": "object",
+      "properties": {
+        "memo": {
+          "type": "string"
+        },
+        "destinationAssetType": {
+          "$ref": "#/definitions/AssetType"
+        }
+      }
+    },
+    "ETHDepositInstructions": {
+      "type": "object",
+      "properties": {
+        "depositAddress": {
+          "type": "string"
+        }
+      }
+    },
+    "Filters": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "kycId": {
+          "type": "string",
+          "title": "kycid"
+        }
+      }
+    },
+    "GetActivitiesResponse": {
+      "type": "object",
+      "properties": {
+        "activities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Activity"
+          }
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "GetBankAccountAutoConversionInstructionsResponse": {
+      "type": "object",
+      "properties": {
+        "eth": {
+          "$ref": "#/definitions/ETHDepositInstructions"
+        },
+        "sol": {
+          "$ref": "#/definitions/SOLDepositInstructions"
+        }
+      }
+    },
+    "GetCryptoAddressAutoConversionInstructionsResponse": {
+      "type": "object",
+      "properties": {
+        "ethNetwork": {
+          "$ref": "#/definitions/ETHDepositInstructions"
+        },
+        "wire": {
+          "$ref": "#/definitions/WireDepositInstructions",
+          "description": "DEPRECATED - Use the ABA and SWIFT instructions instead."
+        },
+        "aba": {
+          "$ref": "#/definitions/ABADepositInstructions",
+          "description": "Instructions for ABA deposits to Paxos from US banks."
+        },
+        "swift": {
+          "$ref": "#/definitions/SWIFTDepositInstructions",
+          "description": "Instructions for SWIFT deposits to Paxos from non-US banks."
+        },
+        "sen": {
+          "$ref": "#/definitions/SENDepositInstructions",
+          "description": "Instructions for SEN deposits to Paxos from Silvergate accounts."
+        },
+        "signet": {
+          "$ref": "#/definitions/SIGNETDepositInstructions",
+          "description": "Instructions for SIGNET deposits to Paxos from Signature accounts."
+        },
+        "cbit": {
+          "$ref": "#/definitions/CBITDepositInstructions",
+          "description": "Instructions for CBIT deposits to Paxos from Cubi accounts."
+        },
+        "intrabank": {
+          "$ref": "#/definitions/IntrabankDepositInstructions",
+          "description": "Instructions for a generic intra-bank deposit to Paxos. For example, a deposit to Paxos from CBIT accounts."
+        },
+        "solNetwork": {
+          "$ref": "#/definitions/SOLDepositInstructions",
+          "description": "Instructions for SOL deposits to Paxos from Solana network."
+        }
+      }
+    },
+    "GetProfileBalancesResponse": {
+      "type": "object",
+      "properties": {
+        "balances": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Balance"
+          }
+        }
+      }
+    },
+    "IntrabankDepositInstructions": {
+      "type": "object",
+      "properties": {
+        "memoId": {
+          "type": "string",
+          "description": "A unique personal code for routing the deposited funds at Paxos.\nThe customer should use `memo_id` in the transfer-memo field for all transfer types."
+        },
+        "beneficiaryName": {
+          "type": "string",
+          "description": "The Paxos entity name."
+        },
+        "accountNumber": {
+          "type": "string",
+          "description": "The Paxos account number/identifier."
+        },
+        "type": {
+          "$ref": "#/definitions/CustomerBankAccountType",
+          "description": "The specific intra-bank network."
+        }
+      },
+      "description": "The intra-bank deposit instructions for depositing to Paxos. Intra-bank includes CBIT. Read-only.",
+      "required": [
+        "memoId",
+        "beneficiaryName",
+        "accountNumber",
+        "type"
+      ]
+    },
+    "IntrabankWithdrawalInstructions": {
+      "type": "object",
+      "properties": {
+        "beneficiaryName": {
+          "type": "string",
+          "description": "The withdrawal beneficiary."
+        },
+        "accountNumber": {
+          "type": "string",
+          "description": "The account number."
+        },
+        "type": {
+          "$ref": "#/definitions/CustomerBankAccountType",
+          "description": "Bank partner/network."
+        }
+      },
+      "description": "Instructions for a generic intra-bank network withdrawal. For example, CBIT.",
+      "required": [
+        "beneficiaryName",
+        "accountNumber",
+        "type"
+      ]
+    },
+    "ListAutoConversionsResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AutoConversion"
+          }
+        }
+      }
+    },
+    "ListBankAccountsResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomerBankAccount"
+          }
+        }
+      }
+    },
+    "ListCryptoAddressesResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomerCryptoAddress"
+          }
+        }
+      }
+    },
+    "ListProfilesResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Profile"
+          }
+        }
+      }
+    },
+    "MailingAddress": {
+      "type": "object",
+      "properties": {
+        "country": {
+          "type": "string",
+          "maxLength": 35,
+          "pattern": "^[0-9A-Za-z /?:().,&'+-]+$"
+        },
+        "address1": {
+          "type": "string",
+          "maxLength": 35,
+          "pattern": "^[0-9A-Za-z /?:().,&'+-]+$"
+        },
+        "address2": {
+          "type": "string",
+          "maxLength": 35,
+          "pattern": "^[0-9A-Za-z /?:().,&'+-]+$"
+        },
+        "city": {
+          "type": "string",
+          "maxLength": 35,
+          "pattern": "^[0-9A-Za-z /?:().,&'+-]+$"
+        },
+        "province": {
+          "type": "string",
+          "maxLength": 35,
+          "pattern": "^[0-9A-Za-z /?:().,&'+-]+$"
+        },
+        "zipCode": {
+          "type": "string",
+          "maxLength": 35,
+          "pattern": "^[0-9A-Za-z /?:().,&'+-]+$"
+        }
+      },
+      "description": "A mailing address.",
+      "required": [
+        "country"
+      ]
+    },
+    "Network": {
+      "type": "string",
+      "enum": [
+        "NETWORK_BTC",
+        "NETWORK_ETH",
+        "NETWORK_BCH",
+        "NETWORK_LTC",
+        "NETWORK_SOL"
+      ],
+      "description": "Crypto network."
+    },
+    "OriginBankAccount": {
+      "type": "object",
+      "properties": {
+        "bankName": {
+          "type": "string"
+        },
+        "accountNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "OriginCryptoAddress": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/Network"
+        },
+        "address": {
+          "type": "string"
+        }
+      }
+    },
+    "Pagination": {
+      "type": "object",
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Number of results to return"
+        },
+        "offset": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Number of results to skip"
+        }
+      }
+    },
+    "PaxosBankAccount": {
+      "type": "object",
+      "properties": {
+        "memoId": {
+          "type": "string",
+          "description": "A unique personal code for routing the deposited funds at Paxos.\nThe customer should put this string in the transfer memo field, for any type\nof transfer."
+        },
+        "aba": {
+          "$ref": "#/definitions/ABADepositInstructions",
+          "description": "Instructions for ABA deposits to Paxos from US banks."
+        },
+        "swift": {
+          "$ref": "#/definitions/SWIFTDepositInstructions",
+          "description": "Instructions for SWIFT deposits to Paxos from non-US banks."
+        },
+        "sen": {
+          "$ref": "#/definitions/SENDepositInstructions",
+          "description": "Instructions for SEN deposits to Paxos from Silvergate accounts."
+        },
+        "signet": {
+          "$ref": "#/definitions/SIGNETDepositInstructions",
+          "description": "Instructions for SIGNET deposits to Paxos from Signature accounts."
+        },
+        "cbit": {
+          "$ref": "#/definitions/CBITDepositInstructions",
+          "description": "Instructions for Cubi deposits to Paxos from CBIT accounts."
+        },
+        "intrabank": {
+          "$ref": "#/definitions/IntrabankDepositInstructions",
+          "description": "Instructions for a deposit to Paxos from a generic intra-bank account. For example, CBIT."
+        }
+      },
+      "description": "PaxosBankAccount is a bank account owned by Paxos and used by customers for\ndepositing fiat. Read-only."
+    },
+    "PaxosCryptoAddress": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/Network"
+        },
+        "address": {
+          "type": "string"
+        }
+      },
+      "description": "PaxosCryptoAddress is a crypto address owned by Paxos and used by customers\nfor depositing crypto."
+    },
+    "Profile": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "nickname": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "profileType": {
+          "$ref": "#/definitions/ProfileType"
+        },
+        "kycId": {
+          "type": "string"
+        },
+        "transferId": {
+          "type": "string"
+        }
+      }
+    },
+    "ProfileDepositInstructions": {
+      "type": "object",
+      "properties": {
+        "profileId": {
+          "type": "string"
+        },
+        "transferInstructions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TransferInstructions"
+          }
+        }
+      },
+      "title": "Deposit instructions for a specific profile"
+    },
+    "ProfileType": {
+      "type": "string",
+      "enum": [
+        "NORMAL",
+        "DEFAULT",
+        "SUB_CUSTOMER"
+      ]
+    },
+    "Realm": {
+      "type": "string",
+      "enum": [
+        "FIAT",
+        "CRYPTO"
+      ],
+      "description": "Realm (FIAT or CRYPTO).\n\n - FIAT: The traditional fiat banking world.\n - CRYPTO: The cryptocurrency world."
+    },
+    "SENDepositInstructions": {
+      "type": "object",
+      "properties": {
+        "memoId": {
+          "type": "string",
+          "description": "A unique personal code for routing the deposited funds at Paxos.\nThe customer should put this string in the transfer memo field, for any type\nof transfer."
+        },
+        "senName": {
+          "type": "string",
+          "description": "The Paxos SEN network name."
+        },
+        "accountNumber": {
+          "type": "string",
+          "description": "The Paxos account number."
+        }
+      },
+      "description": "The SEN transfer instructions for depositing fiat to Paxos. Read-only.",
+      "required": [
+        "memoId",
+        "senName",
+        "accountNumber"
+      ]
+    },
+    "SENWithdrawalInstructions": {
+      "type": "object",
+      "properties": {
+        "senName": {
+          "type": "string",
+          "description": "The SEN network name."
+        },
+        "accountNumber": {
+          "type": "string",
+          "description": "The account number.",
+          "maxLength": 20,
+          "pattern": "^[0-9A-Za-z]+$"
+        }
+      },
+      "description": "Instructions for a Silvergate Exchange Network (SEN) withdrawal.",
+      "required": [
+        "senName",
+        "accountNumber"
+      ]
+    },
+    "SIGNETDepositInstructions": {
+      "type": "object",
+      "properties": {
+        "memoId": {
+          "type": "string",
+          "description": "A unique personal code for routing the deposited funds at Paxos.\nThe customer should use `memo_id` in the transfer-memo field for all transfer types."
+        },
+        "beneficiaryName": {
+          "type": "string",
+          "description": "The Paxos entity name."
+        },
+        "walletAddress": {
+          "type": "string",
+          "description": "The Paxos wallet address."
+        }
+      },
+      "description": "The SIGNET transfer instructions for depositing fiat to Paxos. Read-only.",
+      "required": [
+        "memoId",
+        "beneficiaryName",
+        "walletAddress"
+      ]
+    },
+    "SIGNETWithdrawalInstructions": {
+      "type": "object",
+      "properties": {
+        "beneficiaryName": {
+          "type": "string",
+          "description": "The withdrawal beneficiary."
+        },
+        "walletAddress": {
+          "type": "string",
+          "description": "The wallet address."
+        }
+      },
+      "description": "Instructions for a SIGNATURE Network (SIGNET) withdrawal.",
+      "required": [
+        "beneficiaryName",
+        "walletAddress"
+      ]
+    },
+    "SOLDepositInstructions": {
+      "type": "object",
+      "properties": {
+        "depositAddress": {
+          "type": "string"
+        }
+      }
+    },
+    "SWIFTDepositInstructions": {
+      "type": "object",
+      "properties": {
+        "memoId": {
+          "type": "string",
+          "description": "A unique personal code for routing the deposited funds at Paxos.\nThe customer should put this string in the transfer memo field, for any type\nof transfer."
+        },
+        "beneficiaryName": {
+          "type": "string",
+          "description": "The Paxos entity name."
+        },
+        "accountNumber": {
+          "type": "string",
+          "description": "The Paxos account number."
+        },
+        "swiftBic": {
+          "type": "string",
+          "description": "The SWIFT Bank Identifier Code (BIC) of the Paxos bank."
+        },
+        "bankName": {
+          "type": "string",
+          "description": "The name of the Paxos bank or intermediary."
+        },
+        "beneficiaryAddress": {
+          "$ref": "#/definitions/MailingAddress",
+          "description": "The Paxos entity mailing address."
+        },
+        "bankAddress": {
+          "$ref": "#/definitions/MailingAddress",
+          "description": "The mailing address of the Paxos bank."
+        }
+      },
+      "description": "The SWIFT transfer instructions for depositing fiat to Paxos from a non-US bank. Read-only.",
+      "required": [
+        "memoId",
+        "beneficiaryName",
+        "accountNumber",
+        "swiftBic",
+        "bankName",
+        "beneficiaryAddress"
+      ]
+    },
+    "SWIFTWithdrawalInstructions": {
+      "type": "object",
+      "properties": {
+        "beneficiaryName": {
+          "type": "string",
+          "description": "The name of the customer to credit.",
+          "maxLength": 35,
+          "pattern": "^[0-9A-Za-z /?:().,&'+-]+$"
+        },
+        "accountNumber": {
+          "type": "string",
+          "description": "The account number.",
+          "maxLength": 35,
+          "pattern": "^[0-9A-Za-z]+$"
+        },
+        "swiftBic": {
+          "type": "string",
+          "description": "The SWIFT Bank Identifier Code (BIC).",
+          "maxLength": 11,
+          "minLength": 8,
+          "pattern": "^[0-9A-Za-z]+$"
+        },
+        "bankName": {
+          "type": "string",
+          "description": "The name of the bank.",
+          "maxLength": 35,
+          "pattern": "^[0-9A-Za-z /?:().,&'+-]+$"
+        },
+        "beneficiaryAddress": {
+          "$ref": "#/definitions/MailingAddress",
+          "description": "The mailing address of the beneficiary."
+        },
+        "forFurtherCredit": {
+          "type": "string",
+          "description": "Additional account ID. Optional.",
+          "maxLength": 105,
+          "pattern": "^[0-9A-Za-z /?:().,&'+-]*$"
+        },
+        "intermediary": {
+          "$ref": "#/definitions/SWIFTWithdrawalInstructionsIntermediary",
+          "description": "An intermediary bank. Optional."
+        }
+      },
+      "description": "Instructions for a SWIFT wire withdrawal.",
+      "required": [
+        "beneficiaryName",
+        "accountNumber",
+        "swiftBic",
+        "bankName",
+        "beneficiaryAddress"
+      ]
+    },
+    "SecondaryStatus": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/SecondaryStatusName",
+          "description": "Identifier for secondary status."
+        },
+        "detail": {
+          "type": "string",
+          "description": "Additional information about the current status of the transfer (e.g. if information is missing)."
+        }
+      },
+      "description": "Secondary status for the transfer, used for more granular explanation of the transfer status."
+    },
+    "SecondaryStatusName": {
+      "type": "string",
+      "enum": [
+        "TRAVEL_RULE_INFO_REQUESTED"
+      ],
+      "description": "Identifier for secondary status.\n\n - TRAVEL_RULE_INFO_REQUESTED: Travel rule information is required to continue processing the transfer."
+    },
+    "TimestampRange": {
+      "type": "object",
+      "properties": {
+        "begin": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Only return records after this timestamp, inclusive. RFC3339 format, like `2006-01-02T15:04:05Z`."
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Only return records before this timestamp, inclusive. RFC3339 format, like `2006-01-02T15:04:05Z`."
+        }
+      }
+    },
+    "TransferInstructions": {
+      "type": "object",
+      "properties": {
+        "realm": {
+          "$ref": "#/definitions/Realm"
+        },
+        "cryptoNetwork": {
+          "$ref": "#/definitions/Network",
+          "description": "For realm = CRYPTO, the crypto network."
+        },
+        "autoConversion": {
+          "type": "boolean",
+          "description": "True if this transfer will trigger PAX auto-conversion."
+        },
+        "sendToBank": {
+          "$ref": "#/definitions/PaxosBankAccount",
+          "description": "For realm = FIAT, the instructions for the bank transfer to Paxos."
+        },
+        "sendToAddress": {
+          "$ref": "#/definitions/PaxosCryptoAddress",
+          "description": "For realm = CRYPTO, the Paxos address to send crypto to."
+        }
+      }
+    },
+    "WireDepositInstructions": {
+      "type": "object",
+      "properties": {
+        "depositMemo": {
+          "$ref": "#/definitions/DepositMemo"
+        },
+        "bank": {
+          "$ref": "#/definitions/BankInformation"
+        }
+      },
+      "required": [
+        "depositMemo",
+        "bank"
+      ]
+    },
+    "CustomerAccountStatus": {
+      "type": "string",
+      "enum": [
+        "APPROVED",
+        "DISABLED",
+        "KYC_NOT_SUBMITTED",
+        "KYC_IN_PROGRESS"
+      ]
+    },
+    "CustomerInstitutionality": {
+      "type": "string",
+      "enum": [
+        "INDIVIDUAL",
+        "INSTITUTION"
+      ]
+    },
+    "CustomerKycStatus": {
+      "type": "string",
+      "enum": [
+        "KYC_STATUS_NOT_STARTED",
+        "KYC_STATUS_IN_PROGRESS",
+        "KYC_STATUS_PROCESSING",
+        "KYC_STATUS_FAILED_JUMIO",
+        "KYC_STATUS_FAILED_COMPLYADVANTAGE",
+        "KYC_STATUS_DENIED",
+        "KYC_STATUS_PENDING",
+        "KYC_STATUS_PENDING_INSTITUTION",
+        "KYC_STATUS_APPROVED",
+        "KYC_STATUS_SET_FOR_CLOSURE"
+      ],
+      "description": "TODO: Admins need more visibility into KYC status."
+    },
+    "CustStatus": {
+      "type": "object",
+      "properties": {
+        "kycStatus": {
+          "$ref": "#/definitions/CustomerKycStatus"
+        },
+        "accountStatus": {
+          "$ref": "#/definitions/CustomerAccountStatus"
+        },
+        "institutionality": {
+          "$ref": "#/definitions/CustomerInstitutionality"
+        }
+      }
+    },
+    "CustomerAddress": {
+      "type": "object",
+      "properties": {
+        "country": {
+          "type": "string"
+        },
+        "address1": {
+          "type": "string"
+        },
+        "address2": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "province": {
+          "type": "string"
+        },
+        "zipCode": {
+          "type": "string"
+        }
+      }
+    },
+    "GetCustStatusResponse": {
+      "type": "object",
+      "properties": {
+        "custStatus": {
+          "$ref": "#/definitions/CustStatus"
+        },
+        "customerId": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "institutionName": {
+          "type": "string"
+        },
+        "officialName": {
+          "type": "string"
+        },
+        "address": {
+          "$ref": "#/definitions/CustomerAddress"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "paxos_auth": {
+      "type": "oauth2",
+      "description": "The Paxos API uses OAuth2 and access is limited to a subset of OAuth2 scopes. First-party integrations for a single customer is supported, and must authenticate through OAuth2's client credentials flow. Please read our full <a href=\"/docs/Paxos_OAuth2_Guide.pdf\"target=\"_blank\">Authentication Guide</a> for implementation details.\n",
+      "flow": "accessCode",
+      "authorizationUrl": "https://oauth.paxos.com/oauth2/auth",
+      "tokenUrl": "https://oauth.paxos.com/oauth2/token",
+      "scopes": {
+        "kyc:read_customer_status": "read customer account information and status",
+        "funding:write_profile": "create and update sub-accounts (first party only)",
+        "funding:read_profile": "read sub-accounts (first party only)",
+        "funding:read_activity": "read transaction history",
+        "funding:write_bank_account": "create and update bank account info",
+        "funding:read_bank_account": "read bank account info",
+        "funding:internal_transfer": "create an internal transfer from one profile to another on the same customer",
+        "funding:account_to_account_transfer": "create a transfer from one profile to another for any customer",
+        "funding:withdraw_fiat": "withdraw fiat from the paxos platform (first party only)",
+        "funding:withdraw_crypto": "withdraw crypto from the paxos platform (first party only)",
+        "funding:read_address": "read info on crypto addresses",
+        "funding:write_address": "create and update crypto addresses",
+        "funding:read_token_value": "read value of a token (first party only)"
+      }
+    }
+  }
+}

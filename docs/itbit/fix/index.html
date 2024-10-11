@@ -1,0 +1,4732 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>FIX API Reference</title><link rel="stylesheet" href="./itBit FIX API-fix_files/font-awesome.min.css"><style>@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200');.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}.right .hljs-comment{color:#969896}.right .css .hljs-class,.right .css .hljs-id,.right .css .hljs-pseudo,.right .hljs-attribute,.right .hljs-regexp,.right .hljs-tag,.right .hljs-variable,.right .html .hljs-doctype,.right .ruby .hljs-constant,.right .xml .hljs-doctype,.right .xml .hljs-pi,.right .xml .hljs-tag .hljs-title{color:#c66}.right .hljs-built_in,.right .hljs-constant,.right .hljs-literal,.right .hljs-number,.right .hljs-params,.right .hljs-pragma,.right .hljs-preprocessor{color:#de935f}.right .css .hljs-rule .hljs-attribute,.right .ruby .hljs-class .hljs-title{color:#f0c674}.right .hljs-header,.right .hljs-inheritance,.right .hljs-name,.right .hljs-string,.right .hljs-value,.right .ruby .hljs-symbol,.right .xml .hljs-cdata{color:#b5bd68}.right .css .hljs-hexcolor,.right .hljs-title{color:#8abeb7}.right .coffeescript .hljs-title,.right .hljs-function,.right .javascript .hljs-title,.right .perl .hljs-sub,.right .python .hljs-decorator,.right .python .hljs-title,.right .ruby .hljs-function .hljs-title,.right .ruby .hljs-title .hljs-keyword{color:#81a2be}.right .hljs-keyword,.right .javascript .hljs-function{color:#b294bb}.right .hljs{display:block;overflow-x:auto;background:#1d1f21;color:#c5c8c6;padding:.5em;-webkit-text-size-adjust:none}.right .coffeescript .javascript,.right .javascript .xml,.right .tex .hljs-formula,.right .xml .css,.right .xml .hljs-cdata,.right .xml .javascript,.right .xml .vbscript{opacity:.5}body{color:black;background:white;font:400 14px / 1.42 'Roboto',Helvetica,sans-serif}header{border-bottom:1px solid #f2f2f2;margin-bottom:12px}h1,h2,h3,h4,h5{color:black;margin:12px 0}h1 .permalink,h2 .permalink,h3 .permalink,h4 .permalink,h5 .permalink{margin-left:0;opacity:0;transition:opacity .25s ease}h1:hover .permalink,h2:hover .permalink,h3:hover .permalink,h4:hover .permalink,h5:hover .permalink{opacity:1}.triple h1 .permalink,.triple h2 .permalink,.triple h3 .permalink,.triple h4 .permalink,.triple h5 .permalink{opacity:.15}.triple h1:hover .permalink,.triple h2:hover .permalink,.triple h3:hover .permalink,.triple h4:hover .permalink,.triple h5:hover .permalink{opacity:.15}h1{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:36px}h2{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:30px}h3{font-size:100%;text-transform:uppercase}h5{font-size:100%;font-weight:normal}p{margin:0 0 10px}p.choices{line-height:1.6}a{color:#428bca;text-decoration:none}li p{margin:0}hr.split{border:0;height:1px;width:100%;padding-left:6px;margin:12px auto;background-image:linear-gradient(to right, rgba(0,0,0,0) 20%, rgba(0,0,0,0.2) 51.4%, rgba(255,255,255,0.2) 51.4%, rgba(255,255,255,0) 80%)}dl dt{float:left;width:130px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}dl dd{margin-left:150px}blockquote{color:rgba(0,0,0,0.5);font-size:15.5px;padding:10px 20px;margin:12px 0;border-left:5px solid #e8e8e8}blockquote p:last-child{margin-bottom:0}pre{background-color:#f5f5f5;padding:12px;border:1px solid #cfcfcf;border-radius:6px;overflow:auto}pre code{color:black;background-color:transparent;padding:0;border:none}code{color:#444;background-color:#f5f5f5;font:'Inconsolata',monospace;padding:1px 4px;border:1px solid #cfcfcf;border-radius:3px}ul,ol{padding-left:2em}table{border-collapse:collapse;border-spacing:0;margin-bottom:12px}table tr:nth-child(2n){background-color:#fafafa}table th,table td{padding:6px 12px;border:1px solid #e6e6e6}.text-muted{opacity:.5}.note,.warning{padding:.3em 1em;margin:1em 0;border-radius:2px;font-size:90%}.note h1,.warning h1,.note h2,.warning h2,.note h3,.warning h3,.note h4,.warning h4,.note h5,.warning h5,.note h6,.warning h6{font-family:200 36px 'Raleway',Helvetica,sans-serif;font-size:135%;font-weight:500}.note p,.warning p{margin:.5em 0}.note{color:black;background-color:#f0f6fb;border-left:4px solid #428bca}.note h1,.note h2,.note h3,.note h4,.note h5,.note h6{color:#428bca}.warning{color:black;background-color:#fbf1f0;border-left:4px solid #c9302c}.warning h1,.warning h2,.warning h3,.warning h4,.warning h5,.warning h6{color:#c9302c}header{margin-top:24px}nav{position:fixed;top:24px;bottom:0;overflow-y:auto}nav .resource-group{padding:0}nav .resource-group .heading{position:relative}nav .resource-group .heading .chevron{position:absolute;top:12px;right:12px;opacity:.5}nav .resource-group .heading a{display:block;color:black;opacity:.7;border-left:2px solid transparent;margin:0}nav .resource-group .heading a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid black}nav ul{list-style-type:none;padding-left:0}nav ul a{display:block;font-size:13px;color:rgba(0,0,0,0.7);padding:8px 12px;border-top:1px solid #d9d9d9;border-left:2px solid transparent;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}nav ul a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid black}nav ul>li{margin:0}nav ul>li:first-child{margin-top:-12px}nav ul>li:last-child{margin-bottom:-12px}nav ul ul a{padding-left:24px}nav ul ul li{margin:0}nav ul ul li:first-child{margin-top:0}nav ul ul li:last-child{margin-bottom:0}nav>div>div>ul>li:first-child>a{border-top:none}.preload *{transition:none !important}.pull-left{float:left}.pull-right{float:right}.badge{display:inline-block;float:right;min-width:10px;min-height:14px;padding:3px 7px;font-size:12px;color:#000;background-color:#f2f2f2;border-radius:10px;margin:-2px 0}.badge.get{color:#70bbe1;background-color:#d9edf7}.badge.head{color:#70bbe1;background-color:#d9edf7}.badge.options{color:#70bbe1;background-color:#d9edf7}.badge.put{color:#f0db70;background-color:#fcf8e3}.badge.patch{color:#f0db70;background-color:#fcf8e3}.badge.post{color:#93cd7c;background-color:#dff0d8}.badge.delete{color:#ce8383;background-color:#f2dede}.collapse-button{float:right}.collapse-button .close{display:none;color:#428bca;cursor:pointer}.collapse-button .open{color:#428bca;cursor:pointer}.collapse-button.show .close{display:inline}.collapse-button.show .open{display:none}.collapse-content{max-height:0;overflow:hidden;transition:max-height .3s ease-in-out}nav{width:220px}.container{max-width:940px;margin-left:auto;margin-right:auto}.container .row .content{margin-left:244px;width:696px}.container .row:after{content:'';display:block;clear:both}.container-fluid nav{width:22%}.container-fluid .row .content{margin-left:24%}.container-fluid.triple nav{width:16.5%;padding-right:1px}.container-fluid.triple .row .content{position:relative;margin-left:16.5%;padding-left:24px}.middle:before,.middle:after{content:'';display:table}.middle:after{clear:both}.middle{box-sizing:border-box;width:51.5%;padding-right:12px}.right{box-sizing:border-box;float:right;width:48.5%;padding-left:12px}.right a{color:#428bca}.right h1,.right h2,.right h3,.right h4,.right h5,.right p,.right div{color:white}.right pre{background-color:#1d1f21;border:1px solid #1d1f21}.right pre code{color:#c5c8c6}.right .description{margin-top:12px}.triple .resource-heading{font-size:125%}.definition{margin-top:12px;margin-bottom:12px}.definition .method{font-weight:bold}.definition .method.get{color:#2e8ab8}.definition .method.head{color:#2e8ab8}.definition .method.options{color:#2e8ab8}.definition .method.post{color:#56b82e}.definition .method.put{color:#b8a22e}.definition .method.patch{color:#b8a22e}.definition .method.delete{color:#b82e2e}.definition .uri{word-break:break-all;word-wrap:break-word}.definition .hostname{opacity:.5}.example-names{background-color:#eee;padding:12px;border-radius:6px}.example-names .tab-button{cursor:pointer;color:black;border:1px solid #ddd;padding:6px;margin-left:12px}.example-names .tab-button.active{background-color:#d5d5d5}.right .example-names{background-color:#444}.right .example-names .tab-button{color:white;border:1px solid #666;border-radius:6px}.right .example-names .tab-button.active{background-color:#5e5e5e}#nav-background{position:fixed;left:0;top:0;bottom:0;width:16.5%;padding-right:14.4px;background-color:#fbfbfb;border-right:1px solid #f0f0f0;z-index:-1}#right-panel-background{position:absolute;right:-12px;top:-12px;bottom:-12px;width:48.6%;background-color:#333;z-index:-1}@media (max-width:1200px){nav{width:198px}.container{max-width:840px}.container .row .content{margin-left:224px;width:606px}}@media (max-width:992px){nav{width:169.4px}.container{max-width:720px}.container .row .content{margin-left:194px;width:526px}}@media (max-width:768px){nav{display:none}.container{width:95%;max-width:none}.container .row .content,.container-fluid .row .content,.container-fluid.triple .row .content{margin-left:auto;margin-right:auto;width:95%}#nav-background{display:none}#right-panel-background{width:48.6%}}.back-to-top{position:fixed;z-index:1;bottom:0;right:24px;padding:4px 8px;color:rgba(0,0,0,0.5);background-color:#f2f2f2;text-decoration:none !important;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;border-top-left-radius:3px;border-top-right-radius:3px}.resource-group{padding:12px;margin-bottom:12px;background-color:white;border:1px solid #d9d9d9;border-radius:6px}.resource-group h2.group-heading,.resource-group .heading a{padding:12px;margin:-12px -12px 12px -12px;background-color:#f2f2f2;border-bottom:1px solid #d9d9d9;border-top-left-radius:6px;border-top-right-radius:6px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.triple .content .resource-group{padding:0;border:none}.triple .content .resource-group h2.group-heading,.triple .content .resource-group .heading a{margin:0 0 12px 0;border:1px solid #d9d9d9}nav .resource-group .heading a{padding:12px;margin-bottom:0}nav .resource-group .collapse-content{padding:0}.action{margin-bottom:12px;padding:12px 12px 0 12px;overflow:hidden;border:1px solid transparent;border-radius:6px}.action h4.action-heading{padding:6px 12px;margin:-12px -12px 12px -12px;border-bottom:1px solid transparent;border-top-left-radius:6px;border-top-right-radius:6px;overflow:hidden}.action h4.action-heading .name{float:right;font-weight:normal;padding:6px 0}.action h4.action-heading .method{padding:6px 12px;margin-right:12px;border-radius:3px;display:inline-block}.action h4.action-heading .method.get{color:#fff;background-color:#337ab7}.action h4.action-heading .method.head{color:#fff;background-color:#337ab7}.action h4.action-heading .method.options{color:#fff;background-color:#337ab7}.action h4.action-heading .method.put{color:#fff;background-color:#ed9c28}.action h4.action-heading .method.patch{color:#fff;background-color:#ed9c28}.action h4.action-heading .method.post{color:#fff;background-color:#5cb85c}.action h4.action-heading .method.delete{color:#fff;background-color:#d9534f}.action h4.action-heading code{color:#444;background-color:#f5f5f5;border-color:#cfcfcf;font-weight:normal;word-break:break-all;display:inline-block;margin-top:2px}.action dl.inner{padding-bottom:2px}.action .title{border-bottom:1px solid white;margin:0 -12px -1px -12px;padding:12px}.action.get{border-color:#bce8f1}.action.get h4.action-heading{color:#337ab7;background:#d9edf7;border-bottom-color:#bce8f1}.action.head{border-color:#bce8f1}.action.head h4.action-heading{color:#337ab7;background:#d9edf7;border-bottom-color:#bce8f1}.action.options{border-color:#bce8f1}.action.options h4.action-heading{color:#337ab7;background:#d9edf7;border-bottom-color:#bce8f1}.action.post{border-color:#d6e9c6}.action.post h4.action-heading{color:#5cb85c;background:#dff0d8;border-bottom-color:#d6e9c6}.action.put{border-color:#faebcc}.action.put h4.action-heading{color:#ed9c28;background:#fcf8e3;border-bottom-color:#faebcc}.action.patch{border-color:#faebcc}.action.patch h4.action-heading{color:#ed9c28;background:#fcf8e3;border-bottom-color:#faebcc}.action.delete{border-color:#ebccd1}.action.delete h4.action-heading{color:#d9534f;background:#f2dede;border-bottom-color:#ebccd1}</style>
+  <iframe src="javascript:void(0)" title="" style="width: 0px; height: 0px; border: 0px; display: none;" src="./itBit FIX API-fix_files/saved_resource.html"></iframe><script>!function(a){var e="https://s.go-mpulse.net/boomerang/",t="addEventListener";if("False"=="True")a.BOOMR_config=a.BOOMR_config||{},a.BOOMR_config.PageParams=a.BOOMR_config.PageParams||{},a.BOOMR_config.PageParams.pci=!0,e="https://s2.go-mpulse.net/boomerang/";if(window.BOOMR_API_key="E8DJR-GXBQN-2TT3M-ARVAG-8JBQ5",function(){function n(e){a.BOOMR_onload=e&&e.timeStamp||(new Date).getTime()}if(!a.BOOMR||!a.BOOMR.version&&!a.BOOMR.snippetExecuted){a.BOOMR=a.BOOMR||{},a.BOOMR.snippetExecuted=!0;var i,_,o,r=document.createElement("iframe");if(a[t])a[t]("load",n,!1);else if(a.attachEvent)a.attachEvent("onload",n);r.src="javascript:void(0)",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="width:0;height:0;border:0;display:none;",o=document.getElementsByTagName("script")[0],o.parentNode.insertBefore(r,o);try{_=r.contentWindow.document}catch(O){i=document.domain,r.src="javascript:var d=document.open();d.domain='"+i+"';void(0);",_=r.contentWindow.document}_.open()._l=function(){var a=this.createElement("script");if(i)this.domain=i;a.id="boomr-if-as",a.src=e+"E8DJR-GXBQN-2TT3M-ARVAG-8JBQ5",BOOMR_lstart=(new Date).getTime(),this.body.appendChild(a)},_.write("<bo"+'dy onload="document._l();">'),_.close()}}(),"".length>0)if(a&&"performance"in a&&a.performance&&"function"==typeof a.performance.setResourceTimingBufferSize)a.performance.setResourceTimingBufferSize();!function(){if(BOOMR=a.BOOMR||{},BOOMR.plugins=BOOMR.plugins||{},!BOOMR.plugins.AK){var e=""=="true"?1:0,t="",n="xyjhtvaxyxncyx5ud6eq-f-8d4bd48aa-clientnsv4-s.akamaihd.net",i={"ak.v":"29","ak.cp":"232450","ak.ai":parseInt("138610",10),"ak.ol":"0","ak.cr":20,"ak.ipv":4,"ak.proto":"h2","ak.rid":"3212b","ak.r":26616,"ak.a2":e,"ak.m":"b","ak.n":"essl","ak.bpcip":"190.18.121.0","ak.cport":59303,"ak.gh":"200.42.93.110","ak.quicv":"","ak.tlsv":"tls1.2","ak.0rtt":"","ak.csrc":"-","ak.acc":"","ak.t":"1605640073","ak.ak":"hOBiQwZUYzCg5VSAfCLimQ==7NCPyyayxW4fm5DwVm+PySJWMyFQZpREMjjQpmAYouGS/VI1e8zfXFleGQhIF+CMBjk+RMfK2P7Nm0QCX3FNHHBRnp3yubrmAUFGOgEtcBLZcZKc6Zd1R5DPfCDNPbPRxoxszsYg4HbXSqOmyuDTzuKDEvwciqGSkK4ubg/tQSxBLRd0QH4HVwV5rGpeDxSZSGd79IT+5DTKlMBjrmDz8nX0AYSnsiVMY2gMeQsBdsix1GBsabK3dRiuGVCAbnNNucp2/rzHkaKLdxxInGc0YcPnz+tvZ3cJ5BAthYREQAItUrJasgVO0hQ8vIZlXsItG1cKmpO4F52dyOiqGU9eoabei5r9pYzlC1pVgvokeqvqRSOwRBZbiCPnYVtc9cML47JWY2RIgtu5nQJzKxfYC8CD7DaOjexFSJ8p8Eh4Jdw=","ak.pv":"196","ak.dpoabenc":""};if(""!==t)i["ak.ruds"]=t;var _={i:!1,av:function(e){var t="http.initiator";if(e&&(!e[t]||"spa_hard"===e[t]))i["ak.feo"]=void 0!==a.aFeoApplied?1:0,BOOMR.addVar(i)},rv:function(){var a=["ak.bpcip","ak.cport","ak.cr","ak.csrc","ak.gh","ak.ipv","ak.m","ak.n","ak.ol","ak.proto","ak.quicv","ak.tlsv","ak.0rtt","ak.r","ak.acc","ak.t"];BOOMR.removeVar(a)}};BOOMR.plugins.AK={akVars:i,akDNSPreFetchDomain:n,init:function(){if(!_.i){var a=BOOMR.subscribe;a("before_beacon",_.av,null,null),a("onbeacon",_.rv,null,null),_.i=!0}return this},is_complete:function(){return!0}}}}()}(window);</script><style type="text/css">button.btn[data-v-0a2a5063]{display:inline-block;font-weight:300;line-height:1.25;text-align:center;white-space:nowrap;vertical-align:middle;user-select:none;border:1px solid transparent;cursor:pointer;letter-spacing:1px;transition:all .15s ease}button.btn.btn-sm[data-v-0a2a5063]{padding:.4rem .8rem;font-size:.8rem;border-radius:.2rem}button.btn.btn-primary[data-v-0a2a5063]{color:#fff;background-color:#45C8F1;border-color:#45C8F1}button.btn.btn-outline-primary[data-v-0a2a5063]{color:#45C8F1;background-color:transparent;border-color:#45C8F1}button.btn.btn-danger[data-v-0a2a5063]{color:#fff;background-color:#FF4949;border-color:#FF4949}.text-muted[data-v-0a2a5063]{color:#8492A6}.text-center[data-v-0a2a5063]{text-align:center}.drop-down-enter[data-v-0a2a5063],.drop-down-leave-to[data-v-0a2a5063]{transform:translateX(0) translateY(-20px);transition-timing-function:cubic-bezier(0.74, 0.04, 0.26, 1.05);opacity:0}.drop-down-enter-active[data-v-0a2a5063],.drop-down-leave-active[data-v-0a2a5063]{transition:all .15s}.move-left-enter[data-v-0a2a5063],.move-left-leave-to[data-v-0a2a5063]{transform:translateY(0) translateX(-80px);transition-timing-function:cubic-bezier(0.74, 0.04, 0.26, 1.05);opacity:0}.move-left-enter-active[data-v-0a2a5063],.move-left-leave-active[data-v-0a2a5063]{transition:all .15s}.shake[data-v-0a2a5063]{animation:shake-data-v-0a2a5063 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;transform:translate3d(0, 0, 0)}@keyframes shake-data-v-0a2a5063{10%,90%{transform:translate3d(-1px, 0, 0)}20%,80%{transform:translate3d(2px, 0, 0)}30%,50%,70%{transform:translate3d(-4px, 0, 0)}40%,60%{transform:translate3d(4px, 0, 0)}}.pulse[data-v-0a2a5063]{animation:pulse-data-v-0a2a5063 2s ease infinite}@keyframes pulse-data-v-0a2a5063{0%{opacity:.7}50%{opacity:.4}100%{opacity:.7}}.flash-once[data-v-0a2a5063]{animation:flash-once 3.5s ease 1}@keyframes fade-up-data-v-0a2a5063{0%{transform:translate3d(0, 10px, 0);opacity:0}100%{transform:translate3d(0, 0, 0);opacity:1}}.fade-in[data-v-0a2a5063]{animation:fade-in-data-v-0a2a5063 .3s ease-in-out}@keyframes fade-in-data-v-0a2a5063{0%{opacity:0}100%{opacity:1}}.spin[data-v-0a2a5063]{animation-name:spin-data-v-0a2a5063;animation-duration:2000ms;animation-iteration-count:infinite;animation-timing-function:linear}@keyframes spin-data-v-0a2a5063{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}.bounceIn[data-v-0a2a5063]{animation-name:bounceIn-data-v-0a2a5063;transform-origin:center bottom;animation-duration:1s;animation-fill-mode:both;animation-iteration-count:1}@keyframes bounceIn-data-v-0a2a5063{0%,20%,40%,60%,80%,100%{-webkit-transition-timing-function:cubic-bezier(0.215, 0.61, 0.355, 1);transition-timing-function:cubic-bezier(0.215, 0.61, 0.355, 1)}0%{opacity:1;-webkit-transform:scale3d(0.8, 0.8, 0.8);transform:scale3d(0.8, 0.8, 0.8)}20%{-webkit-transform:scale3d(1.1, 1.1, 1.1);transform:scale3d(1.1, 1.1, 1.1)}40%{-webkit-transform:scale3d(0.9, 0.9, 0.9);transform:scale3d(0.9, 0.9, 0.9)}60%{opacity:1;-webkit-transform:scale3d(1.03, 1.03, 1.03);transform:scale3d(1.03, 1.03, 1.03)}80%{-webkit-transform:scale3d(0.97, 0.97, 0.97);transform:scale3d(0.97, 0.97, 0.97)}100%{opacity:1;-webkit-transform:scale3d(1, 1, 1);transform:scale3d(1, 1, 1)}}@keyframes dots-data-v-0a2a5063{0%,20%{color:rgba(0,0,0,0);text-shadow:0.25em 0 0 rgba(0,0,0,0),0.5em 0 0 rgba(0,0,0,0)}40%{color:#8492A6;text-shadow:0.25em 0 0 rgba(0,0,0,0),0.5em 0 0 rgba(0,0,0,0)}60%{text-shadow:0.25em 0 0 #8492A6,0.5em 0 0 rgba(0,0,0,0)}80%,100%{text-shadow:.25em 0 0 #8492A6, .5em 0 0 #8492A6}}@keyframes recording-data-v-0a2a5063{0%{box-shadow:0px 0px 5px 0px rgba(173,0,0,0.3)}65%{box-shadow:0px 0px 5px 5px rgba(173,0,0,0.3)}90%{box-shadow:0px 0px 5px 5px rgba(173,0,0,0)}}html[data-v-0a2a5063]{max-height:500px}body[data-v-0a2a5063]{margin:0;font-size:100%;color:#3C4858;width:350px;max-height:500px}a[data-v-0a2a5063]{text-decoration:none;color:#45C8F1}h1[data-v-0a2a5063],h2[data-v-0a2a5063],h3[data-v-0a2a5063],h4[data-v-0a2a5063]{margin-top:0}.container_selected_area[data-v-0a2a5063]{padding:0px;position:fixed;z-index:2147483647;top:0px;left:0px;right:0px;bottom:0px;display:none;visibility:hidden}.container_selected_area.active[data-v-0a2a5063]{visibility:visible;display:block}.container_selected_area .label[data-v-0a2a5063]{font-family:"Didact Gothic Regular",sans-serif;font-size:22px;text-align:center;padding-top:15px}.container_selected_area .area[data-v-0a2a5063]{border:1px solid #1e83ff;background:rgba(30,131,255,0.1);display:none;position:fixed;z-index:2147483647;box-sizing:border-box}.container_selected_area .area.active[data-v-0a2a5063]{display:block;top:0px;left:0px}.hide[data-v-0a2a5063]{display:none}
+</style></head><body class="" data-new-gr-c-s-check-loaded="14.984.0" data-gr-ext-installed=""><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><nav><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#message-types">Message Types</a></div><div class="collapse-content" style="max-height: 0px;"><ul><li><a href="#message-types-logon">Logon</a><ul></ul></li><li><a href="#message-types-logon-with-reset-seq-num">Logon with Reset Seq Num</a><ul></ul></li><li><a href="#message-types-replay-messages">Replay Messages</a><li><a href="#message-types-heartbeat">Heartbeat</a><ul></ul></li><li><a href="#message-types-new-order">New Order</a><ul></ul></li><li><a href="#message-types-order-cancel-request">Order Cancel Request</a><ul></ul></li><li><a href="#message-types-order-cancel-reject">Order Cancel Reject</a><ul></ul></li><li><a href="#message-types-order-status-request">Order Status Request</a><ul></ul></li><li><a href="#message-types-execution-report-pending-new">Execution Report - Pending New</a><ul></ul></li><li><a href="#message-types-execution-report-new">Execution Report - New</a><ul></ul></li><li><a href="#message-types-execution-report-filled">Execution Report - Filled</a><ul></ul></li><li><a href="#message-types-execution-report-expired">Execution Report - Expired</a><ul></ul></li><li><a href="#message-types-execution-report-partial-fill">Execution Report - Partial Fill</a><ul></ul></li><li><a href="#message-types-execution-report-pending-cancel">Execution Report - Pending Cancel</a><ul></ul></li><li><a href="#message-types-execution-report-canceled">Execution Report - Canceled</a><ul></ul></li><li><a href="#message-types-execution-report-order-reject">Execution Report - Order Reject</a><ul></ul></li><li><a href="#message-types-execution-report-order-status">Execution Report - Order Status</a><ul></ul></li><li><a href="#message-types-logout">Logout</a><ul></ul></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#encoded-tags">Encoded Tags</a></div><div class="collapse-content" style="max-height: 81px;"><ul><li><a href="#header-1.-msgtype-">1. MsgType:</a></li><li><a href="#header-2.-exectype">2. ExecType</a></li></ul></div></div></nav><div class="content"><header><h1 id="top">FIX API Reference</h1></header><p>FIX (Financial Information eXchange) is an electronic messaging protocol widely adopted by financial institutions to transmit trading activity such as submitting or canceling orders and receiving execution information. The API is based on FIX 4.2 and modeled after common forex FIX implementations.</p>
+<h3 class="resource-heading">Just Getting Started?</h3>
+<p>Check out the <a href="https://docs.paxos.com/fix/onboard" target="_blank">Onboarding</a> guide in the <a href="https://docs.paxos.com/fix" target="_blank">FIX documentation</a>.</p>
+
+<section id="message-types" class="resource-group"><h2 class="group-heading">Message Types <a href="#message-types" class="permalink">¶</a></h2><p>The supported message types and corresponding fields are listed in this section.  The required fields outside of the standard headers for the message type are highlighted.</p>
+<div id="message-types-logon" class="resource"><h3 class="resource-heading">Logon <a href="#message-types-logon" class="permalink">&nbsp;¶</a></h3><p>A FIX session is initiated by the client with a Logon message.  EncryptedMethod (FIX tag 98) must be set to 0.  HeartBtInt (108) needs to be set, the default value is 30 seconds.</p>
+<h4 id="header-message-format">Message Format <a class="permalink" href="#header-message-format" aria-hidden="true">¶</a></h4>
+<p><strong>Outgoing Message</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tag</th>
+<th style="text-align:left">Field Name</th>
+<th style="text-align:left">Req.</th>
+<th style="text-align:left">Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">BeginString</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">FIX.4.2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">BodyLength</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">72</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">35</td>
+<td style="text-align:left">MsgType</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">A</td>
+<td style="text-align:left">Logon</td>
+</tr>
+<tr>
+<td style="text-align:left">49</td>
+<td style="text-align:left">SenderCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">CLIENT01</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">56</td>
+<td style="text-align:left">TargetCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">ITBIT</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">34</td>
+<td style="text-align:left">MsgSeqNum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">1</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">52</td>
+<td style="text-align:left">SendingTime</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">98</td>
+<td style="text-align:left">EncryptedMethod</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">Method of encryption</td>
+</tr>
+<tr>
+<td style="text-align:left">108</td>
+<td style="text-align:left">HeartBtInt</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">30</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">CheckSum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">078</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Message</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tag</th>
+<th style="text-align:left">Field Name</th>
+<th style="text-align:left">Req.</th>
+<th style="text-align:left">Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">BeginString</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">FIX.4.2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">BodyLength</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">72</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">35</td>
+<td style="text-align:left">MsgType</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">A</td>
+<td style="text-align:left">Logon</td>
+</tr>
+<tr>
+<td style="text-align:left">49</td>
+<td style="text-align:left">SenderCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">ITBIT</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">56</td>
+<td style="text-align:left">TargetCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">CLIENT01</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">34</td>
+<td style="text-align:left">MsgSeqNum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">1</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">52</td>
+<td style="text-align:left">SendingTime</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">98</td>
+<td style="text-align:left">EncryptedMethod</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">Method of encryption</td>
+</tr>
+<tr>
+<td style="text-align:left">108</td>
+<td style="text-align:left">HeartBtInt</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">30</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">CheckSum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">078</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+</div><div id="message-types-logon-with-reset-seq-num" class="resource"><h3 class="resource-heading">Logon with Reset Sequence Number Flag<a href="#message-types-logon-with-reset-seq-num" class="permalink">&nbsp;¶</a></h3><p>The API supports client initiated message sequence number resets via Logon with ResetSeqNumFlag (141) set to Y.</p>
+<p>Note: We recommend implementing a <a href="https://docs.paxos.com/crypto-brokerage/fix/best-practices#sequence-number-management" target="_blank">sequence number management</a> strategy to promote a stable trading environment for everyone.</p>
+<h4 id="header-message-format-1">Message Format <a class="permalink" href="#header-message-format-1" aria-hidden="true">¶</a></h4>
+<p><strong>Outgoing Message</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tag</th>
+<th style="text-align:left">Field Name</th>
+<th style="text-align:left">Req.</th>
+<th style="text-align:left">Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">BeginString</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">FIX.4.2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">BodyLength</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">78</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">35</td>
+<td style="text-align:left">MsgType</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">A</td>
+<td style="text-align:left">Logon</td>
+</tr>
+<tr>
+<td style="text-align:left">49</td>
+<td style="text-align:left">SenderCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">CLIENT01</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">56</td>
+<td style="text-align:left">TargetCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">ITBIT</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">34</td>
+<td style="text-align:left">MsgSeqNum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">1</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">52</td>
+<td style="text-align:left">SendingTime</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">98</td>
+<td style="text-align:left">EncryptedMethod</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">Method of encryption</td>
+</tr>
+<tr>
+<td style="text-align:left">108</td>
+<td style="text-align:left">HeartBtInt</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">30</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">141</td>
+<td style="text-align:left">ResetSeqNumFlag</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Yes, reset sequence numbers on both sides of the FIX connection</td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">CheckSum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">133</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Message</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tag</th>
+<th style="text-align:left">Field Name</th>
+<th style="text-align:left">Req.</th>
+<th style="text-align:left">Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">BeginString</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">FIX.4.2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">BodyLength</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">78</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">35</td>
+<td style="text-align:left">MsgType</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">A</td>
+<td style="text-align:left">Logon</td>
+</tr>
+<tr>
+<td style="text-align:left">49</td>
+<td style="text-align:left">SenderCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">ITBIT</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">56</td>
+<td style="text-align:left">TargetCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">CLIENT01</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">34</td>
+<td style="text-align:left">MsgSeqNum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">1</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">52</td>
+<td style="text-align:left">SendingTime</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">98</td>
+<td style="text-align:left">EncryptedMethod</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">Method of encryption</td>
+</tr>
+<tr>
+<td style="text-align:left">108</td>
+<td style="text-align:left">HeartBtInt</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">30</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">141</td>
+<td style="text-align:left">ResetSeqNumFlag</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Yes, reset sequence numbers on both sides of the FIX connection</td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">CheckSum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">017</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="message-types-replay-messages" class="resource">
+  <h3 class="resource-heading">Replay Messages <a href="#message-types-replay-messages" class="permalink">&nbsp;¶</a></h3>
+  <p>Replay messages, also known as resend request, logic is the session mechanism used to request a range of ordered messages be sent from the counterparty. Replaying messages can be used to request a single message, a range of messages, or all messages subsequent to a particular message. For example, the receiving application sends the replay message to initiate the retransmission of messages if:</p>
+  <ul>
+    <li>a gap in sequence numbers is detected,</li>
+    <li>the receiving application lost a message, or</li>
+    <li>higher than expected message sequence numbers are detected from the counterparty.</li>
+  </ul>
+  <p>The counterparty then resends the requested message range sequentially until both systems are back in sequence.</p>
+<h4 id="header-message-format-2">Message Format <a class="permalink" href="#header-message-format-2" aria-hidden="true">¶</a></h4>
+<p><strong>Outgoing Message</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tag</th>
+<th style="text-align:left">Field Name</th>
+<th style="text-align:left">Req.</th>
+<th style="text-align:left">Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+  <tr>
+  <td style="text-align:left">7</td>
+  <td style="text-align:left">BeginSeqNo</td>
+  <td style="text-align:left">Y</td>
+  <td style="text-align:left">To request a single message, BeginSeqNo <7> = EndSeqNo <16>
+    </br></br>
+    To request a range of messages: BeginSeqNo <7> = first message of range and EndSeqNo <16> = last message of range
+    </br></br>
+    To request all messages subsequent to a particular message, EndSeqNo <16> = 0</td>
+  <td style="text-align:left">Message sequence number of the first message in range to be resent</td>
+  </tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">BeginString</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">FIX.4.2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">BodyLength</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">72</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">16</td>
+<td style="text-align:left">EndSeqNo</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">To request a single message, BeginSeqNo <7> = EndSeqNo <16>
+  </br></br>
+  To request a range of messages: BeginSeqNo <7> = first message of range and EndSeqNo <16> = last message of range
+  </br></br>
+  To request all messages subsequent to a particular message, EndSeqNo <16> = 0</td>
+<td style="text-align:left">Message sequence number of the first message in range to be resent</td>
+</tr>
+<tr>
+<td style="text-align:left">35</td>
+<td style="text-align:left">MsgType</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Resend request</td>
+</tr>
+<tr>
+<td style="text-align:left">49</td>
+<td style="text-align:left">SenderCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">CLIENT01</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">56</td>
+<td style="text-align:left">TargetCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">ITBIT</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">34</td>
+<td style="text-align:left">MsgSeqNum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">1</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">52</td>
+<td style="text-align:left">SendingTime</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">98</td>
+<td style="text-align:left">EncryptedMethod</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">Method of encryption</td>
+</tr>
+<tr>
+<td style="text-align:left">108</td>
+<td style="text-align:left">HeartBtInt</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">30</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">CheckSum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">078</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Message</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tag</th>
+<th style="text-align:left">Field Name</th>
+<th style="text-align:left">Req.</th>
+<th style="text-align:left">Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+  <tr>
+  <td style="text-align:left">7</td>
+  <td style="text-align:left">BeginSeqNo</td>
+  <td style="text-align:left">Y</td>
+  <td style="text-align:left"></td>
+  <td style="text-align:left">Message sequence number of the first message in range to be resent</td>
+  </tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">BeginString</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">FIX.4.2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">BodyLength</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">72</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">16</td>
+<td style="text-align:left">EndSeqNo</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Message sequence number of the first message in range to be resent</td>
+</tr>
+<tr>
+<td style="text-align:left">35</td>
+<td style="text-align:left">MsgType</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Unsent execution reports</td>
+</tr>
+<tr>
+<td style="text-align:left">49</td>
+<td style="text-align:left">SenderCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">ITBIT</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">56</td>
+<td style="text-align:left">TargetCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">CLIENT01</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">34</td>
+<td style="text-align:left">MsgSeqNum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">1</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">43</td>
+<td style="text-align:left">PossDupFlag</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Indicates possible retransmission of message with this sequence number</td>
+</tr>
+<tr>
+<td style="text-align:left">122</td>
+<td style="text-align:left">OrigSendingTime</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">20220818-15:40:52</td>
+<td style="text-align:left">Original time of message transmission when transmitting orders as the result of a resend request</td>
+</tr>
+<tr>
+<td style="text-align:left">52</td>
+<td style="text-align:left">SendingTime</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">98</td>
+<td style="text-align:left">EncryptedMethod</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">Method of encryption</td>
+</tr>
+<tr>
+<td style="text-align:left">108</td>
+<td style="text-align:left">HeartBtInt</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">30</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">CheckSum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">078</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="message-types-heartbeat" class="resource"><h3 class="resource-heading">Heartbeat <a href="#message-types-heartbeat" class="permalink">&nbsp;¶</a></h3><p>In standard FIX, when either end of the FIX connection has not received a message in HeartBtInt (108) seconds, a heartbeat message will be transmitted (MsgType 0).  As noted above, the default value for HeartBtInt is 30 seconds.</p>
+<p>The (Test Request 1) message forces a heartbeat from the opposing side. The (Test Request 1) message checks sequence numbers or verifies the connection status. The opposite side then responds to the (Test Request 1) with a (Heartbeat 0) containing the TestReqID (112).</p>
+<p>The TestReqID (112) verifies that the opposite side is generating the heartbeat as the result of (Test Request 1) and not a normal timeout. The opposite side includes the TestReqID (112) in the resulting (Heartbeat 0). Any string can be used as the TestReqID (112) (one suggestion is to use a timestamp string).</p>
+<p>During periods of inactivity, FIX clients should generate a heartbeat message at regular time intervals. The Heartbeat (0) message is used by a FIX client to monitor the status of the communication link. FIX clients should reset the heartbeat interval timer <b>after every transmitted message</b> (not just heartbeats). When the client stops receiving data for the specified heartbeat interval, it should send a (Test Request 1) message to verify the connection. The counterparty should send a (Heartbeat 0) message in response. If a party receives no (Heartbeat 0) message in a reasonable amount of time, the connection should be considered lost.</p>
+<h4 id="header-message-format-2">Message Format <a class="permalink" href="#header-message-format-2" aria-hidden="true">¶</a></h4>
+<p><strong>Outgoing Message</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tag</th>
+<th style="text-align:left">Field Name</th>
+<th style="text-align:left">Req.</th>
+<th style="text-align:left">Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">BeginString</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">FIX.4.2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">BodyLength</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">60</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">35</td>
+<td style="text-align:left">MsgType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">Heartbeat</td>
+</tr>
+<tr>
+<td style="text-align:left">49</td>
+<td style="text-align:left">SenderCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">CLIENT01</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">56</td>
+<td style="text-align:left">TargetCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">ITBIT</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">34</td>
+<td style="text-align:left">MsgSeqNum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">52</td>
+<td style="text-align:left">SendingTime</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">112</td>
+<td style="text-align:left">TestReqID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left">Test Request</td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">CheckSum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">017</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Message</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tag</th>
+<th style="text-align:left">Field Name</th>
+<th style="text-align:left">Req.</th>
+<th style="text-align:left">Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">BeginString</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">FIX.4.2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">BodyLength</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">0056</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">35</td>
+<td style="text-align:left">MsgType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">Heartbeat</td>
+</tr>
+<tr>
+<td style="text-align:left">49</td>
+<td style="text-align:left">SenderCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">ITBIT</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">56</td>
+<td style="text-align:left">TargetCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">CLIENT01</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">34</td>
+<td style="text-align:left">MsgSeqNum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">52</td>
+<td style="text-align:left">SendingTime</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">20150607-15:43:16.534</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">112</td>
+<td style="text-align:left">TestReqID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left">Test Request</td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">CheckSum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">185</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+</div><div id="message-types-reject-3" class="resource"><h3 class="resource-heading">Reject (Type 3) <a href="#message-types-reject-3" class="permalink">&nbsp;¶</a></h3><p>The reject message should be issued when a message is received but cannot be properly processed due to a session-level rule violation.</p>
+  <h4 id="header-message-format-5">Message Format <a class="permalink" href="#header-message-format-5" aria-hidden="true">¶</a></h4>
+  <p><strong>Response Message</strong></p>
+  <table>
+  <thead>
+  <tr>
+  <th style="text-align:left">Tag</th>
+  <th style="text-align:left">Field Name</th>
+  <th style="text-align:left">Req.</th>
+  <th style="text-align:left">Value</th>
+  <th style="text-align:left">Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td style="text-align:left">8</td>
+  <td style="text-align:left">BeginString</td>
+  <td style="text-align:left"></td>
+  <td style="text-align:left">FIX.4.2</td>
+  <td style="text-align:left"></td>
+  </tr>
+  <tr>
+  <td style="text-align:left">9</td>
+  <td style="text-align:left">BodyLength</td>
+  <td style="text-align:left"></td>
+  <td style="text-align:left">0180</td>
+  <td style="text-align:left"></td>
+  </tr>
+  <tr>
+  <td style="text-align:left">35</td>
+  <td style="text-align:left">MsgType</td>
+  <td style="text-align:left"></td>
+  <td style="text-align:left">3</td>
+  <td style="text-align:left">Reject</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">49</td>
+  <td style="text-align:left">SenderCompID</td>
+  <td style="text-align:left"></td>
+  <td style="text-align:left">ITBIT</td>
+  <td style="text-align:left"></td>
+  </tr>
+  <tr>
+  <td style="text-align:left">56</td>
+  <td style="text-align:left">TargetCompID</td>
+  <td style="text-align:left"></td>
+  <td style="text-align:left">CLIENT01</td>
+  <td style="text-align:left"></td>
+  </tr>
+  <tr>
+  <td style="text-align:left">34</td>
+  <td style="text-align:left">MsgSeqNum</td>
+  <td style="text-align:left"></td>
+  <td style="text-align:left">221</td>
+  <td style="text-align:left"></td>
+  </tr>
+  <tr>
+  <td style="text-align:left">52</td>
+  <td style="text-align:left">SendingTime</td>
+  <td style="text-align:left"></td>
+  <td style="text-align:left">20150607-15:43:16.543</td>
+  <td style="text-align:left"></td>
+  </tr>
+  <tr>
+  <td style="text-align:left">45</td>
+  <td style="text-align:left">RefSeqNum</td>
+  <td style="text-align:left"></td>
+  <td style="text-align:left">44</td>
+  <td style="text-align:left">Reference message sequence number</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">Text</td>
+  <td style="text-align:left"></td>
+  <td style="text-align:left"></td>
+  <td style="text-align:left">Text including reason for reject message</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">373</td>
+  <td style="text-align:left">SessionRejectReason</td>
+  <td style="text-align:left"></td>
+  <td style="text-align:left">6</td>
+  <td style="text-align:left"></td>
+  </tr>
+  <tr>
+  <td style="text-align:left">10</td>
+  <td style="text-align:left">CheckSum</td>
+  <td style="text-align:left"></td>
+  <td style="text-align:left">112</td>
+  <td style="text-align:left"></td>
+  </tr>
+  </tbody>
+  </table>
+</div><div id="message-types-new-order" class="resource"><h3 class="resource-heading">New Order <a href="#message-types-new-order" class="permalink">&nbsp;¶</a></h3><p>Orders should be submitted as New Order Single (MsgType D). The API currently supports market orders (OrdType 1), limit orders (OrdType 2), stop market orders (OrdType 3) and stop limit orders (OrdType 4). Price (44) must not be specified for market and stop market orders. In addition, market buy orders must include CashOrderQty (152), specifying the amount of fiat to convert to cryptocurrency. In the case of stop market and stop limit orders (currently only sell stop loss orders are supported), StopPx (99) needs to be provided. Market sell orders, stop market sell orders, stop limit sell orders, and all limit orders must specify OrderQty 38. HandlInst (21) must be set to with a value of 1. Along with the currency pair populated in Symbol (55), the SecurityType (167) must be set to FOR.</p>
+<p>Note that limit orders for XBT and ETH have a tick size requirement. Price (44) for all XBT markets must be evenly divisible by 0.25, and for all ETH markets must be evenly divisible by 0.05. In addition, the maximum allowed notional value for a market order is 500,000 USD. The maximum allowed notional value for a limit order is 1,500,000 USD for XBTUSD and ETHUSD markets, and 1,000,000 USD for other markets.</p>
+<p>Note: Limit Orders will be rejected if order is taker and price deviates a 15% or more from the midpoint.</p>
+<h4 id="header-message-format-3">Message Format <a class="permalink" href="#header-message-format-3" aria-hidden="true">¶</a></h4>
+<p><strong>Outgoing Message</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tag</th>
+<th style="text-align:left">Field Name</th>
+<th style="text-align:left">Req.</th>
+<th style="text-align:left">Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">BeginString</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">FIX.4.2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">BodyLength</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">230</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">35</td>
+<td style="text-align:left">MsgType</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">D</td>
+<td style="text-align:left">Order Single</td>
+</tr>
+<tr>
+<td style="text-align:left">49</td>
+<td style="text-align:left">SenderCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">CLIENT01</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">56</td>
+<td style="text-align:left">TargetCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">ITBIT</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">34</td>
+<td style="text-align:left">MsgSeqNum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">209</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">52</td>
+<td style="text-align:left">SendingTime</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">11</td>
+<td style="text-align:left">ClOrdID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Order_762</td>
+<td style="text-align:left">Client order identifier. Can be reused if the order has been closed for more than 30 days. Allowed characters are<br />a-z, A-Z, 0-9 and . - _ $ : </td>
+</tr>
+<tr>
+<td style="text-align:left">109</td>
+<td style="text-align:left">ClientID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">5A196279-2203-XC44-9102-KL9E4E16A36F</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Account</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">6CKH6123-09XC-5611-671K-1900KBO6A889</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">21</td>
+<td style="text-align:left">HandlInst</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Automated execution order private no broker intervention</td>
+</tr>
+<tr>
+<td style="text-align:left">55</td>
+<td style="text-align:left">Symbol</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">XBTUSD</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">167</td>
+<td style="text-align:left">SecurityType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">FOR</td>
+<td style="text-align:left">Foreign Exchange Contract</td>
+</tr>
+<tr>
+<td style="text-align:left">54</td>
+<td style="text-align:left">Side</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1 for Buy, 2 for Sell</td>
+</tr>
+<tr>
+<td style="text-align:left">60</td>
+<td style="text-align:left">TransactTime</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">38</td>
+<td style="text-align:left">OrderQty</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Market Sell orders, Stop Market Sell orders, Stop Limit Sell orders, and all limit orders must specify OrderQty 38. Only 1 of tag 38 or tag 152 should be sent. Only supports float notation (ie. '1.005').</td>
+</tr>
+<tr>
+<td style="text-align:left">152</td>
+<td style="text-align:left">CashOrderQty</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Required for Market Buy orders; the fiat value of the order</td>
+</tr>
+<tr>
+<td style="text-align:left">40</td>
+<td style="text-align:left">OrdType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">1 for Market, 2 for Limit, 3 for Stop Market, 4 for Stop Limit</td>
+</tr>
+<tr>
+<td style="text-align:left">18</td>
+<td style="text-align:left">ExecInst</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">6</td>
+<td style="text-align:left">Optional (6) for Post-Only Limit orders</td>
+</tr>
+<tr>
+<td style="text-align:left">44</td>
+<td style="text-align:left">Price</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">230</td>
+<td style="text-align:left">Required for Limit and Stop Limit orders. Must conform to tick size - 0.25 for XBT markets and 0.05 for ETH markets</td>
+</tr>
+<tr>
+  <td style="text-align:left">99</td>
+  <td style="text-align:left">StopPx</td>
+  <td style="text-align:left">N</td>n
+  <td style="text-align:left">230</td>n
+  <td style="text-align:left">Required for Stop Market and Stop Limit orders. Must conform to tick size - 0.25 for XBT markets and 0.05 for ETH markets</td>
+</tr>
+<tr>
+<td style="text-align:left">59</td>
+<td style="text-align:left">TimeInForce</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1 (Good Till Cancel), 3 (Immediate or Cancel), 4 (Fill or Kill), 6 (Good Till Time). Limit orders can be set with a value of 1, 3, 4, or 6. Market orders can be set with a value of 3. Stop Market and Stop Limit orders can be set with a value of 1 or 6. The default values for Limit and Stop Market orders is 1, and for Market orders is 3.</td>
+</tr>
+<tr>
+<td style="text-align:left">126</td>
+<td style="text-align:left">ExpireTime</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">20210714-17:03:50</td>
+<td style="text-align:left">Required for TIF = 6, format should be  YYYYMMDD-HH:MM:SS or YYYYMMDD-HH:MM:SS.sss Note: milliseconds are ignored </td>
+</tr>
+<tr>
+<td style="text-align:left">5047</td>
+<td style="text-align:left">AllocBrokerAccountID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only (IdentityAccountId)</td>
+</tr>
+<tr>
+<td style="text-align:left">50</td>
+<td style="text-align:left">SenderSubID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only (IdentityId)</td>
+</tr>
+<tr>
+<td style="text-align:left">5074</td>
+<td style="text-align:left">FundCommissionOption</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only</td>
+</tr>
+<tr>
+  <td style="text-align:left">2362</td>
+  <td style="text-align:left">SelfMatchPreventionID</td>
+  <td style="text-align:left">N</td>
+  <td style="text-align:left">UA54dSVd-yWGB-FWj2-zHbjJMGd</td>
+  <td style="text-align:left">The string field used to prevent matching against an opposite side order submitted by the same Crypto Brokerage customer. If this field is not submitted, an order that matches against another order submitted by the same customer will cancel the original resting order. Up to 36 characters are supported. This field requires additional permissions only available to certain accounts. Reach out to your Paxos Representative for more information.</td>
+  </tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">CheckSum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">185</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+</div><div id="message-types-order-cancel-request" class="resource"><h3 class="resource-heading">Order Cancel Request <a href="#message-types-order-cancel-request" class="permalink">&nbsp;¶</a></h3><p>Orders should referenced by their ClOrdID (11) and OrigClOrdID (41)
+Note that orders can be cancelled only after “New Order” confirmation</p>
+<h4 id="header-message-format-4">Message Format <a class="permalink" href="#header-message-format-4" aria-hidden="true">¶</a></h4>
+<p><strong>Outgoing Message</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tag</th>
+<th style="text-align:left">Field Name</th>
+<th style="text-align:left">Req.</th>
+<th style="text-align:left">Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">BeginString</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">FIX.4.2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">BodyLength</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">257</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">35</td>
+<td style="text-align:left">MsgType</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">F</td>
+<td style="text-align:left">Order cancel request</td>
+</tr>
+<tr>
+<td style="text-align:left">49</td>
+<td style="text-align:left">SenderCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">CLIENT01</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">56</td>
+<td style="text-align:left">TargetCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">ITBIT</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">34</td>
+<td style="text-align:left">MsgSeqNum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">210</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">52</td>
+<td style="text-align:left">SendingTime</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">41</td>
+<td style="text-align:left">OrigClOrdID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Order_762</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">11</td>
+<td style="text-align:left">ClOrdID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Cancel763</td>
+<td style="text-align:left">Client order identifier. Can be reused if the order has been closed for more than 30 days. Allowed characters are<br />a-z, A-Z, 0-9 and . - _ $ : </td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Account</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">6CKH6123-09XC-5611-671K-1900KBO6A889</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">109</td>
+<td style="text-align:left">ClientID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">5A196279-2203-XC44-9102-KL9E4E16A36F</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">55</td>
+<td style="text-align:left">Symbol</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">XBTUSD</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">167</td>
+<td style="text-align:left">SecurityType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">FOR</td>
+<td style="text-align:left">Foreign Exchange Contract</td>
+</tr>
+<tr>
+<td style="text-align:left">54</td>
+<td style="text-align:left">Side</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Buy</td>
+</tr>
+<tr>
+<td style="text-align:left">60</td>
+<td style="text-align:left">TransactTime</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">38</td>
+<td style="text-align:left">OrderQty</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">1</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">152</td>
+<td style="text-align:left">CashOrderQty</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">CheckSum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">246</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+</div><div id="message-types-order-cancel-reject" class="resource"><h3 class="resource-heading">Order Cancel Reject <a href="#message-types-order-cancel-reject" class="permalink">&nbsp;¶</a></h3><p>If an order can not be canceled, an Order Cancel Reject message will be sent to the client with CxRejReason (102) populated with a rejection reason</p>
+<h4 id="header-message-format-5">Message Format <a class="permalink" href="#header-message-format-5" aria-hidden="true">¶</a></h4>
+<p><strong>Response Message</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tag</th>
+<th style="text-align:left">Field Name</th>
+<th style="text-align:left">Req.</th>
+<th style="text-align:left">Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">BeginString</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">FIX.4.2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">BodyLength</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">0180</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">35</td>
+<td style="text-align:left">MsgType</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">9</td>
+<td style="text-align:left">Order cancel reject</td>
+</tr>
+<tr>
+<td style="text-align:left">49</td>
+<td style="text-align:left">SenderCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">ITBIT</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">56</td>
+<td style="text-align:left">TargetCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">CLIENT01</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">34</td>
+<td style="text-align:left">MsgSeqNum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">221</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">52</td>
+<td style="text-align:left">SendingTime</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">434</td>
+<td style="text-align:left">CxlRejResponseTo</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">11</td>
+<td style="text-align:left">ClOrdID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Cancel764</td>
+<td style="text-align:left">Client order identifier. Can be reused if the order has been closed for more than 30 days. Allowed characters are<br />a-z, A-Z, 0-9 and . - _ $ : </td>
+</tr>
+<tr>
+<td style="text-align:left">39</td>
+<td style="text-align:left">OrdStatus</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">4</td>
+<td style="text-align:left">Canceled</td>
+</tr>
+<tr>
+<td style="text-align:left">41</td>
+<td style="text-align:left">OrigClOrdID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Order_762</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">37</td>
+<td style="text-align:left">OrderID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">11196679-9103-JK44-0901-XKNE4E16A12K</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Account</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">6CKH6123-09XC-5611-671K-1900KBO6A889</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">102</td>
+<td style="text-align:left">CxlRejReason</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">Too late to cancel</td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">CheckSum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">112</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+</div><div id="message-types-order-status-request" class="resource"><h3 class="resource-heading">Order Status Request <a href="#message-types-order-status-request" class="permalink">&nbsp;¶</a></h3><p>Order Status Request (MsgType H) is used to query the current status of an order.</p>
+<h4 id="header-message-format-6">Message Format <a class="permalink" href="#header-message-format-6" aria-hidden="true">¶</a></h4>
+<p><strong>Outgoing Message</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tag</th>
+<th style="text-align:left">Field Name</th>
+<th style="text-align:left">Req.</th>
+<th style="text-align:left">Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">BeginString</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">FIX.4.2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">BodyLength</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">170</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">35</td>
+<td style="text-align:left">MsgType</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">H</td>
+<td style="text-align:left">Order status request</td>
+</tr>
+<tr>
+<td style="text-align:left">49</td>
+<td style="text-align:left">SenderCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">CLIENT01</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">56</td>
+<td style="text-align:left">TargetCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">ITBIT</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">34</td>
+<td style="text-align:left">MsgSeqNum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">341</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">52</td>
+<td style="text-align:left">SendingTime</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">11</td>
+<td style="text-align:left">ClOrdID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Order_782</td>
+<td style="text-align:left">Client order identifier. Can be reused if the order has been closed for more than 30 days. Allowed characters are<br />a-z, A-Z, 0-9 and . - _ $ : </td>
+</tr>
+<tr>
+<td style="text-align:left">109</td>
+<td style="text-align:left">ClientID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">5A196279-2203-XC44-9102-KL9E4E16A36F</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Account</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">6CKH6123-09XC-5611-671K-1900KBO6A889</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">55</td>
+<td style="text-align:left">Symbol</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">XBTUSD</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">54</td>
+<td style="text-align:left">Side</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Buy</td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">CheckSum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">247</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+</div><div id="message-types-execution-report-pending-new" class="resource"><h3 class="resource-heading">Execution Report - Pending New <a href="#message-types-execution-report-pending-new" class="permalink">&nbsp;¶</a></h3><p>New Orders will return a Pending New Order Execution Report response (MsgType 8), (OrdStatus A).</p>
+<h4 id="header-message-format-7">Message Format <a class="permalink" href="#header-message-format-7" aria-hidden="true">¶</a></h4>
+<p><strong>Response Message</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tag</th>
+<th style="text-align:left">Field Name</th>
+<th style="text-align:left">Req.</th>
+<th style="text-align:left">Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">BeginString</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">FIX.4.2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">BodyLength</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">296</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">35</td>
+<td style="text-align:left">MsgType</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">8</td>
+<td style="text-align:left">Execution report</td>
+</tr>
+<tr>
+<td style="text-align:left">49</td>
+<td style="text-align:left">SenderCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">ITBIT</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">56</td>
+<td style="text-align:left">TargetCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">CLIENT01</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">34</td>
+<td style="text-align:left">MsgSeqNum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">208</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">52</td>
+<td style="text-align:left">SendingTime</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">20150607-15:43:16.500</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">54</td>
+<td style="text-align:left">Side</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Buy</td>
+</tr>
+<tr>
+<td style="text-align:left">150</td>
+<td style="text-align:left">ExecType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">A</td>
+<td style="text-align:left">Pending New</td>
+</tr>
+<tr>
+<td style="text-align:left">32</td>
+<td style="text-align:left">lastShares</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">109</td>
+<td style="text-align:left">ClientID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">5A196279-2203-XC44-9102-KL9E4E16A36F</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Account</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">6CKH6123-09XC-5611-671K-1900KBO6A889</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">31</td>
+<td style="text-align:left">LastPx</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">151</td>
+<td style="text-align:left">LeavesQty</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">12</td>
+<td style="text-align:left">Commission</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0.0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">60</td>
+<td style="text-align:left">TransactTime</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">20150607-15:43:16.500</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">58</td>
+<td style="text-align:left">Text</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Pending New Order</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">20</td>
+<td style="text-align:left">ExecTransType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">New</td>
+</tr>
+<tr>
+<td style="text-align:left">55</td>
+<td style="text-align:left">Symbol</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">XBTUSD</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">17</td>
+<td style="text-align:left">ExecID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">14</td>
+<td style="text-align:left">CumQty</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">13</td>
+<td style="text-align:left">CommType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">3</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">11</td>
+<td style="text-align:left">ClOrdID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1806809709</td>
+<td style="text-align:left">Client order identifier. Can be reused if the order has been closed for more than 30 days. Allowed characters are<br />a-z, A-Z, 0-9 and . - _ $ : </td>
+</tr>
+<tr>
+<td style="text-align:left">44</td>
+<td style="text-align:left">Price</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">6000</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<tr>
+  <td style="text-align:left">99</td>
+  <td style="text-align:left">StopPx</td>
+  <td style="text-align:left">N</td>
+  <td style="text-align:left">6000</td>
+  <td style="text-align:left">Only returned when OrdType is 3 (Stop Market) or 4 (Stop Limit)</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">AvgPx</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">41</td>
+<td style="text-align:left">OrigClOrdID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1806809709</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">40</td>
+<td style="text-align:left">OrdType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Limit</td>
+</tr>
+<tr>
+<td style="text-align:left">18</td>
+<td style="text-align:left">ExecInst</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">6</td>
+<td style="text-align:left">(6) for Post-Only</td>
+</tr>
+<tr>
+<td style="text-align:left">39</td>
+<td style="text-align:left">OrdStatus</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">A</td>
+<td style="text-align:left">Pending New</td>
+</tr>
+<tr>
+<td style="text-align:left">38</td>
+<td style="text-align:left">OrderQty</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Echoed back for Limit and Market Sell orders</td>
+</tr>
+<tr>
+<td style="text-align:left">152</td>
+<td style="text-align:left">CashOrderQty</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Echoed for Market Buy orders only</td>
+</tr>
+<tr>
+<td style="text-align:left">37</td>
+<td style="text-align:left">OrderID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">00000000-0000-0000-0000-000000000000</td>
+<td style="text-align:left">All Zeros for pending new order</td>
+</tr>
+<tr>
+<td style="text-align:left">5047</td>
+<td style="text-align:left">AllocBrokerAccountID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only (IdentityAccountId)</td>
+</tr>
+<tr>
+<td style="text-align:left">50</td>
+<td style="text-align:left">SenderSubID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only (IdentityId)</td>
+</tr>
+<tr>
+<td style="text-align:left">5074</td>
+<td style="text-align:left">FundCommissionOption</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only</td>
+</tr>
+<tr>
+<td style="text-align:left">381</td>
+<td style="text-align:left">GrossTradeAmt</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">lastShares &lt;32&gt; * LastPx &lt;31&gt; </td>
+</tr>
+<tr>
+<td style="text-align:left">59</td>
+<td style="text-align:left">TimeInForce</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1 (Good Till Cancel), 3 (Immediate or Cancel), 4 (Fill or Kill), 6 (Good Till Time)</td>
+</tr>
+<tr>
+<td style="text-align:left">126</td>
+<td style="text-align:left">ExpireTime</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">20210714-17:03:50</td>
+<td style="text-align:left">Required for TIF = 6, format should be  YYYYMMDD-HH:MM:SS or YYYYMMDD-HH:MM:SS.sss Note: milliseconds are ignored </td>
+</tr>
+<tr>
+<td style="text-align:left">5000</td>
+<td style="text-align:left">RecipientProfileId</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">761j25ca-a75e-483f-8d89-40e742dcd8c0</td>
+<td style="text-align:left">For brokerage client use only. The profileID that will receive settled currency.</td>
+</tr>
+<tr>
+  <td style="text-align:left">2362</td>
+  <td style="text-align:left">SelfMatchPreventionID</td>
+  <td style="text-align:left">N</td>
+  <td style="text-align:left">UA54dSVd-yWGB-FWj2-zHbjJMGd</td>
+  <td style="text-align:left">The string field used to prevent matching against an opposite side order submitted by the same Crypto Brokerage customer. If this field is not submitted, an order that matches against another order submitted by the same customer will cancel the original resting order. Up to 36 characters are supported. This field requires additional permissions only available to certain accounts. Reach out to your Paxos Representative for more information.</td>
+  </tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">CheckSum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">224</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+</div><div id="message-types-execution-report-new" class="resource"><h3 class="resource-heading">Execution Report - New <a href="#message-types-execution-report-new" class="permalink">&nbsp;¶</a></h3><p>New Orders will return a New Order Execution Report response (MsgType 8), (OrdStatus 0)</p>
+<h4 id="header-message-format-8">Message Format <a class="permalink" href="#header-message-format-8" aria-hidden="true">¶</a></h4>
+<p><strong>Response Message</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tag</th>
+<th style="text-align:left">Field Name</th>
+<th style="text-align:left">Req.</th>
+<th style="text-align:left">Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">BeginString</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">FIX.4.2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">BodyLength</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">230</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">35</td>
+<td style="text-align:left">MsgType</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">8</td>
+<td style="text-align:left">Execution report</td>
+</tr>
+<tr>
+<td style="text-align:left">49</td>
+<td style="text-align:left">SenderCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">ITBIT</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">56</td>
+<td style="text-align:left">TargetCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">CLIENT01</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">34</td>
+<td style="text-align:left">MsgSeqNum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">209</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">52</td>
+<td style="text-align:left">SendingTime</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">54</td>
+<td style="text-align:left">Side</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Buy</td>
+</tr>
+<tr>
+<td style="text-align:left">150</td>
+<td style="text-align:left">ExecType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0, D</td>
+<td style="text-align:left">New</br></br>When 150=D and 378=4, identifies when a Stop Limit order has been triggered</br></td>
+</tr>
+<tr>
+<td style="text-align:left">378</td>
+<td style="text-align:left">ExecRestatementReason</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">4</td>
+<td style="text-align:left">New</br></br>When 378=4 and 150=D, identifies when a Stop Limit order has been triggered</br></td>
+</tr>
+<tr>
+<td style="text-align:left">32</td>
+<td style="text-align:left">lastShares</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">109</td>
+<td style="text-align:left">ClientID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">5A196279-2203-XC44-9102-KL9E4E16A36F</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Account</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">6CKH6123-09XC-5611-671K-1900KBO6A889</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">31</td>
+<td style="text-align:left">LastPx</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">151</td>
+<td style="text-align:left">LeavesQty</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">60</td>
+<td style="text-align:left">TransactTime</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">58</td>
+<td style="text-align:left">Text</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">New Order</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">20</td>
+<td style="text-align:left">ExecTransType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">New</td>
+</tr>
+<tr>
+<td style="text-align:left">55</td>
+<td style="text-align:left">Symbol</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">XBTUSD</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">17</td>
+<td style="text-align:left">ExecID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">14</td>
+<td style="text-align:left">CumQty</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">11</td>
+<td style="text-align:left">ClOrdID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Order_762</td>
+<td style="text-align:left">Client order identifier. Can be reused if the order has been closed for more than 30 days. Allowed characters are<br />a-z, A-Z, 0-9 and . - _ $ : </td>
+</tr>
+<tr>
+<td style="text-align:left">44</td>
+<td style="text-align:left">Price</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">230</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+  <td style="text-align:left">99</td>
+  <td style="text-align:left">StopPx</td>
+  <td style="text-align:left">N</td>
+  <td style="text-align:left">6000</td>
+  <td style="text-align:left">Only returned when OrdType is 3 (Stop Market) or 4 (Stop Limit)</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">AvgPx</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">41</td>
+<td style="text-align:left">OrigClOrdID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Order_762</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">40</td>
+<td style="text-align:left">OrdType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Limit</td>
+</tr>
+<tr>
+<td style="text-align:left">18</td>
+<td style="text-align:left">ExecInst</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">6</td>
+<td style="text-align:left">(6) for Post-Only</td>
+</tr>
+<tr>
+<td style="text-align:left">39</td>
+<td style="text-align:left">OrdStatus</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">New</td>
+</tr>
+<tr>
+<td style="text-align:left">38</td>
+<td style="text-align:left">OrderQty</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Echoed back for Limit and Market Sell orders</td>
+</tr>
+<tr>
+<td style="text-align:left">152</td>
+<td style="text-align:left">CashOrderQty</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Echoed for Market Buy orders only</td>
+</tr>
+<tr>
+<td style="text-align:left">37</td>
+<td style="text-align:left">OrderID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">11196679-9103-JK44-0901-XKNE4E16A12K</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">5047</td>
+<td style="text-align:left">AllocBrokerAccountID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only (IdentityAccountId)</td>
+</tr>
+<tr>
+<td style="text-align:left">50</td>
+<td style="text-align:left">SenderSubID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only (IdentityId)</td>
+</tr>
+<tr>
+<td style="text-align:left">5074</td>
+<td style="text-align:left">FundCommissionOption</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only</td>
+</tr>
+<tr>
+<td style="text-align:left">381</td>
+<td style="text-align:left">GrossTradeAmt</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">lastShares &lt;32&gt; * LastPx &lt;31&gt; </td>
+</tr>
+<tr>
+<td style="text-align:left">59</td>
+<td style="text-align:left">TimeInForce</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1 (Good Till Cancel), 3 (Immediate or Cancel), 4 (Fill or Kill), 6 (Good Till Time)</td>
+</tr>
+<tr>
+<td style="text-align:left">126</td>
+<td style="text-align:left">ExpireTime</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">20210714-17:03:50</td>
+<td style="text-align:left">Required for TIF = 6, format should be  YYYYMMDD-HH:MM:SS or YYYYMMDD-HH:MM:SS.sss Note: milliseconds are ignored </td>
+</tr>
+<tr>
+<td style="text-align:left">5000</td>
+<td style="text-align:left">RecipientProfileId</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">761j25ca-a75e-483f-8d89-40e742dcd8c0</td>
+<td style="text-align:left">For brokerage client use only. The profileID that will receive settled currency.</td>
+</tr>
+<tr>
+  <td style="text-align:left">2362</td>
+  <td style="text-align:left">SelfMatchPreventionID</td>
+  <td style="text-align:left">N</td>
+  <td style="text-align:left">UA54dSVd-yWGB-FWj2-zHbjJMGd</td>
+  <td style="text-align:left">The string field used to prevent matching against an opposite side order submitted by the same Crypto Brokerage customer. If this field is not submitted, an order that matches against another order submitted by the same customer will cancel the original resting order. Up to 36 characters are supported. This field requires additional permissions only available to certain accounts. Reach out to your Paxos Representative for more information.</td>
+  </tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">CheckSum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">039</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+</div><div id="message-types-execution-report-filled" class="resource"><h3 class="resource-heading">Execution Report - Filled <a href="#message-types-execution-report-filled" class="permalink">&nbsp;¶</a></h3><p>Filled Order Execution Report responses are returned for entirely filled orders.<br>
+<em>Note that Market Buy Order executions are captured in partial fill messages. The fill message is a summary execution confirming that the order is closed and filled.</em></p>
+<h4 id="header-message-format-9">Message Format <a class="permalink" href="#header-message-format-9" aria-hidden="true">¶</a></h4>
+<p><strong>Response Message</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tag</th>
+<th style="text-align:left">Field Name</th>
+<th style="text-align:left">Req.</th>
+<th style="text-align:left">Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">BeginString</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">FIX.4.2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">BodyLength</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">273</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">12</td>
+<td style="text-align:left">Commission</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">0.1234</td>
+<td style="text-align:left">Commission Paid</td>
+</tr>
+<tr>
+<td style="text-align:left">13</td>
+<td style="text-align:left">CommType</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">3</td>
+<td style="text-align:left">Absolute Value</td>
+</tr>
+<tr>
+<td style="text-align:left">35</td>
+<td style="text-align:left">MsgType</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">8</td>
+<td style="text-align:left">Execution report</td>
+</tr>
+<tr>
+<td style="text-align:left">49</td>
+<td style="text-align:left">SenderCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">ITBIT</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">56</td>
+<td style="text-align:left">TargetCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">CLIENT01</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">34</td>
+<td style="text-align:left">MsgSeqNum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">262</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">52</td>
+<td style="text-align:left">SendingTime</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">54</td>
+<td style="text-align:left">Side</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Buy</td>
+</tr>
+<tr>
+<td style="text-align:left">150</td>
+<td style="text-align:left">ExecType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Filled</td>
+</tr>
+<tr>
+<td style="text-align:left">32</td>
+<td style="text-align:left">lastShares</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">109</td>
+<td style="text-align:left">ClientID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">5A196279-2203-XC44-9102-KL9E4E16A36F</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Account</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">6CKH6123-09XC-5611-671K-1900KBO6A889</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">31</td>
+<td style="text-align:left">LastPx</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">231</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">151</td>
+<td style="text-align:left">LeavesQty</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">60</td>
+<td style="text-align:left">TransactTime</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">58</td>
+<td style="text-align:left">Text</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Filled Order</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">20</td>
+<td style="text-align:left">ExecTransType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">New</td>
+</tr>
+<tr>
+<td style="text-align:left">55</td>
+<td style="text-align:left">Symbol</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">XBTUSD</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">17</td>
+<td style="text-align:left">ExecID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">11365</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">14</td>
+<td style="text-align:left">CumQty</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">11</td>
+<td style="text-align:left">ClOrdID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Order_762</td>
+<td style="text-align:left">Client order identifier. Can be reused if the order has been closed for more than 30 days. Allowed characters are<br />a-z, A-Z, 0-9 and . - _ $ : </td>
+</tr>
+<tr>
+<td style="text-align:left">44</td>
+<td style="text-align:left">Price</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">230</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+  <td style="text-align:left">99</td>
+  <td style="text-align:left">StopPx</td>
+  <td style="text-align:left">N</td>
+  <td style="text-align:left">6000</td>
+  <td style="text-align:left">Only returned when OrdType is 3 (Stop Market) or 4 (Stop Limit)</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">AvgPx</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">230</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">40</td>
+<td style="text-align:left">OrdType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Limit</td>
+</tr>
+<tr>
+<td style="text-align:left">18</td>
+<td style="text-align:left">ExecInst</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">6</td>
+<td style="text-align:left">(6) for Post-Only</td>
+</tr>
+<tr>
+<td style="text-align:left">39</td>
+<td style="text-align:left">OrdStatus</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Filled</td>
+</tr>
+<tr>
+<td style="text-align:left">38</td>
+<td style="text-align:left">OrderQty</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Echoed back for Limit and Market Sell orders</td>
+</tr>
+<tr>
+<td style="text-align:left">152</td>
+<td style="text-align:left">CashOrderQty</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Echoed for Market Buy orders only</td>
+</tr>
+<tr>
+<td style="text-align:left">37</td>
+<td style="text-align:left">OrderID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">11196679-9103-JK44-0901-XKNE4E16A12K</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">5851</td>
+<td style="text-align:left">LiquidityInd</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1-Add, 2-Remove</td>
+</tr>
+<tr>
+<td style="text-align:left">5047</td>
+<td style="text-align:left">AllocBrokerAccountID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only (IdentityAccountId)</td>
+</tr>
+<tr>
+<td style="text-align:left">50</td>
+<td style="text-align:left">SenderSubID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only (IdentityId)</td>
+</tr>
+<tr>
+<td style="text-align:left">5074</td>
+<td style="text-align:left">FundCommissionOption</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only</td>
+</tr>
+<tr>
+<td style="text-align:left">381</td>
+<td style="text-align:left">GrossTradeAmt</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">231</td>
+<td style="text-align:left">lastShares &lt;32&gt; * LastPx &lt;31&gt; </td>
+</tr>
+<tr>
+<td style="text-align:left">59</td>
+<td style="text-align:left">TimeInForce</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1 (Good Till Cancel), 3 (Immediate or Cancel), 4 (Fill or Kill), 6 (Good Till Time)</td>
+</tr>
+<tr>
+<td style="text-align:left">126</td>
+<td style="text-align:left">ExpireTime</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">20210714-17:03:50</td>
+<td style="text-align:left">Required for TIF = 6, format should be  YYYYMMDD-HH:MM:SS or YYYYMMDD-HH:MM:SS.sss Note: milliseconds are ignored </td>
+</tr>
+<tr>
+<td style="text-align:left">5000</td>
+<td style="text-align:left">RecipientProfileId</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">761j25ca-a75e-483f-8d89-40e742dcd8c0</td>
+<td style="text-align:left">For brokerage client use only. The profileID that will receive settled currency.</td>
+</tr>
+<tr>
+  <td style="text-align:left">2362</td>
+  <td style="text-align:left">SelfMatchPreventionID</td>
+  <td style="text-align:left">N</td>
+  <td style="text-align:left">UA54dSVd-yWGB-FWj2-zHbjJMGd</td>
+  <td style="text-align:left">The string field used to prevent matching against an opposite side order submitted by the same Crypto Brokerage customer. If this field is not submitted, an order that matches against another order submitted by the same customer will cancel the original resting order. Up to 36 characters are supported. This field requires additional permissions only available to certain accounts. Reach out to your Paxos Representative for more information.</td>
+  </tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">CheckSum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">026</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+</div><div id="message-types-execution-report-expired" class="resource"><h3 class="resource-heading">Execution Report - Expired <a href="#message-types-execution-report-expired" class="permalink">&nbsp;¶</a></h3><p>Expired Order Execution Report responses are returned for market buy orders that have closed with a small amount of unexecuted quote currency left over.<br>
+<em>Note that Market Buy Order executions are captured in partial fill messages. The expired message is a summary execution confirming that the order is closed.</em></p>
+<h4 id="header-message-format-9">Message Format <a class="permalink" href="#header-message-format-9" aria-hidden="true">¶</a></h4>
+<p><strong>Response Message</strong></p>
+<table aria-describedby="expired execution report fields">
+<thead>
+<tr>
+<th style="text-align:left" scope="col">Tag</th>
+<th style="text-align:left" scope="col">Field Name</th>
+<th style="text-align:left" scope="col">Req.</th>
+<th style="text-align:left" scope="col">Value</th>
+<th style="text-align:left" scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">BeginString</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">FIX.4.2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">BodyLength</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">273</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">12</td>
+<td style="text-align:left">Commission</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">Commission Paid</td>
+</tr>
+<tr>
+<td style="text-align:left">13</td>
+<td style="text-align:left">CommType</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">3</td>
+<td style="text-align:left">Absolute Value</td>
+</tr>
+<tr>
+<td style="text-align:left">35</td>
+<td style="text-align:left">MsgType</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">8</td>
+<td style="text-align:left">Execution report</td>
+</tr>
+<tr>
+<td style="text-align:left">49</td>
+<td style="text-align:left">SenderCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">ITBIT</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">56</td>
+<td style="text-align:left">TargetCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">CLIENT01</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">34</td>
+<td style="text-align:left">MsgSeqNum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">262</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">39</td>
+<td style="text-align:left">OrdStatus</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">C</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">52</td>
+<td style="text-align:left">SendingTime</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">54</td>
+<td style="text-align:left">Side</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Buy</td>
+</tr>
+<tr>
+<td style="text-align:left">150</td>
+<td style="text-align:left">ExecType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">C</td>
+<td style="text-align:left">Expired</td>
+</tr>
+<tr>
+<td style="text-align:left">32</td>
+<td style="text-align:left">lastShares</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">109</td>
+<td style="text-align:left">ClientID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">5A196279-2203-XC44-9102-KL9E4E16A36F</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Account</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">6CKH6123-09XC-5611-671K-1900KBO6A889</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">31</td>
+<td style="text-align:left">LastPx</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">231</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">151</td>
+<td style="text-align:left">LeavesQty</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">60</td>
+<td style="text-align:left">TransactTime</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">58</td>
+<td style="text-align:left">Text</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Expired Order</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">20</td>
+<td style="text-align:left">ExecTransType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">New</td>
+</tr>
+<tr>
+<td style="text-align:left">55</td>
+<td style="text-align:left">Symbol</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">XBTUSD</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">17</td>
+<td style="text-align:left">ExecID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">10821572-6806-4c95-12c2-d93293942a7d</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">14</td>
+<td style="text-align:left">CumQty</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">11</td>
+<td style="text-align:left">ClOrdID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Order_762</td>
+<td style="text-align:left">Client order identifier. Can be reused if the order has been closed for more than 30 days. Allowed characters are<br />a-z, A-Z, 0-9 and . - _ $ : </td>
+</tr>
+<tr>
+<td style="text-align:left">44</td>
+<td style="text-align:left">Price</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">230</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">AvgPx</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">230</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">40</td>
+<td style="text-align:left">OrdType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Limit</td>
+</tr>
+<tr>
+<td style="text-align:left">18</td>
+<td style="text-align:left">ExecInst</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">6</td>
+<td style="text-align:left">(6) for Post-Only</td>
+</tr>
+<tr>
+<td style="text-align:left">39</td>
+<td style="text-align:left">OrdStatus</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Filled</td>
+</tr>
+<tr>
+<td style="text-align:left">38</td>
+<td style="text-align:left">OrderQty</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Echoed back for Limit and Market Sell orders</td>
+</tr>
+<tr>
+<td style="text-align:left">152</td>
+<td style="text-align:left">CashOrderQty</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Echoed for Market Buy orders only</td>
+</tr>
+<tr>
+<td style="text-align:left">37</td>
+<td style="text-align:left">OrderID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">11196679-9103-JK44-0901-XKNE4E16A12K</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">5851</td>
+<td style="text-align:left">LiquidityInd</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1-Add, 2-Remove</td>
+</tr>
+<tr>
+<td style="text-align:left">5047</td>
+<td style="text-align:left">AllocBrokerAccountID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only (IdentityAccountId)</td>
+</tr>
+<tr>
+<td style="text-align:left">50</td>
+<td style="text-align:left">SenderSubID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only (IdentityId)</td>
+</tr>
+<tr>
+<td style="text-align:left">5074</td>
+<td style="text-align:left">FundCommissionOption</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only</td>
+</tr>
+<tr>
+<td style="text-align:left">381</td>
+<td style="text-align:left">GrossTradeAmt</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">231</td>
+<td style="text-align:left">lastShares &lt;32&gt; * LastPx &lt;31&gt; </td>
+</tr>
+<tr>
+<td style="text-align:left">59</td>
+<td style="text-align:left">TimeInForce</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1 (Good Till Cancel), 3 (Immediate or Cancel), 4 (Fill or Kill), 6 (Good Till Time)</td>
+</tr>
+<tr>
+<td style="text-align:left">126</td>
+<td style="text-align:left">ExpireTime</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">20210714-17:03:50</td>
+<td style="text-align:left">Required for TIF = 6, format should be  YYYYMMDD-HH:MM:SS or YYYYMMDD-HH:MM:SS.sss Note: milliseconds are ignored </td>
+</tr>
+<tr>
+<td style="text-align:left">5000</td>
+<td style="text-align:left">RecipientProfileId</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">761j25ca-a75e-483f-8d89-40e742dcd8c0</td>
+<td style="text-align:left">For brokerage client use only. The profileID that will receive settled currency.</td>
+</tr>
+<tr>
+  <td style="text-align:left">2362</td>
+  <td style="text-align:left">SelfMatchPreventionID</td>
+  <td style="text-align:left">N</td>
+  <td style="text-align:left">UA54dSVd-yWGB-FWj2-zHbjJMGd</td>
+  <td style="text-align:left">The string field used to prevent matching against an opposite side order submitted by the same Crypto Brokerage customer. If this field is not submitted, an order that matches against another order submitted by the same customer will cancel the original resting order. Up to 36 characters are supported. This field requires additional permissions only available to certain accounts. Reach out to your Paxos Representative for more information.</td>
+  </tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">CheckSum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">026</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+</div><div id="message-types-execution-report-partial-fill" class="resource"><h3 class="resource-heading">Execution Report - Partial Fill <a href="#message-types-execution-report-partial-fill" class="permalink">&nbsp;¶</a></h3><p>Partial Fill Execution Report responses are returned for partially filled orders.</p>
+<h4 id="header-message-format-10">Message Format <a class="permalink" href="#header-message-format-10" aria-hidden="true">¶</a></h4>
+<p><strong>Response Message</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tag</th>
+<th style="text-align:left">Field Name</th>
+<th style="text-align:left">Req.</th>
+<th style="text-align:left">Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">BeginString</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">FIX.4.2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">BodyLength</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">0279</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">12</td>
+<td style="text-align:left">Commission</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">0.1234</td>
+<td style="text-align:left">Commission Paid</td>
+</tr>
+<tr>
+<td style="text-align:left">13</td>
+<td style="text-align:left">CommType</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">3</td>
+<td style="text-align:left">Absolute Value</td>
+</tr>
+<tr>
+<td style="text-align:left">35</td>
+<td style="text-align:left">MsgType</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">8</td>
+<td style="text-align:left">Execution report</td>
+</tr>
+<tr>
+<td style="text-align:left">49</td>
+<td style="text-align:left">SenderCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">ITBIT</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">56</td>
+<td style="text-align:left">TargetCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">CLIENT01</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">34</td>
+<td style="text-align:left">MsgSeqNum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">250</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">52</td>
+<td style="text-align:left">SendingTime</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">54</td>
+<td style="text-align:left">Side</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Buy</td>
+</tr>
+<tr>
+<td style="text-align:left">150</td>
+<td style="text-align:left">ExecType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Partially Filled</td>
+</tr>
+<tr>
+<td style="text-align:left">32</td>
+<td style="text-align:left">lastShares</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0.2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">109</td>
+<td style="text-align:left">ClientID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">5A196279-2203-XC44-9102-KL9E4E16A36F</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Account</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">6CKH6123-09XC-5611-671K-1900KBO6A889</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">31</td>
+<td style="text-align:left">LastPx</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">250</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">151</td>
+<td style="text-align:left">LeavesQty</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0.8</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">60</td>
+<td style="text-align:left">TransactTime</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">58</td>
+<td style="text-align:left">Text</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Filled Order</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">20</td>
+<td style="text-align:left">ExecTransType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">New</td>
+</tr>
+<tr>
+<td style="text-align:left">55</td>
+<td style="text-align:left">Symbol</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">XBTUSD</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">17</td>
+<td style="text-align:left">ExecID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">11361</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">14</td>
+<td style="text-align:left">CumQty</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0.2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">11</td>
+<td style="text-align:left">ClOrdID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Order_774</td>
+<td style="text-align:left">Client order identifier. Can be reused if the order has been closed for more than 30 days. Allowed characters are<br />a-z, A-Z, 0-9 and . - _ $ : </td>
+</tr>
+<tr>
+<td style="text-align:left">44</td>
+<td style="text-align:left">Price</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">345</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">AvgPx</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">250</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">40</td>
+<td style="text-align:left">OrdType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Limit</td>
+</tr>
+<tr>
+<td style="text-align:left">18</td>
+<td style="text-align:left">ExecInst</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">6</td>
+<td style="text-align:left">(6) for Post-Only</td>
+</tr>
+<tr>
+<td style="text-align:left">39</td>
+<td style="text-align:left">OrdStatus</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Partially Filled</td>
+</tr>
+<tr>
+<td style="text-align:left">38</td>
+<td style="text-align:left">OrderQty</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Echoed back for Limit and Market Sell orders</td>
+</tr>
+<tr>
+<td style="text-align:left">152</td>
+<td style="text-align:left">CashOrderQty</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Echoed for Market Buy orders only</td>
+</tr>
+<tr>
+<td style="text-align:left">37</td>
+<td style="text-align:left">OrderID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">11196679-9103-JK44-0901-XKNE4E16A12K</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">5851</td>
+<td style="text-align:left">LiquidityInd</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1-Add, 2-Remove</td>
+</tr>
+<tr>
+<td style="text-align:left">5047</td>
+<td style="text-align:left">AllocBrokerAccountID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only (IdentityAccountId)</td>
+</tr>
+<tr>
+<td style="text-align:left">50</td>
+<td style="text-align:left">SenderSubID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only (IdentityId)</td>
+</tr>
+<tr>
+<td style="text-align:left">5074</td>
+<td style="text-align:left">FundCommissionOption</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only</td>
+</tr>
+<tr>
+<td style="text-align:left">381</td>
+<td style="text-align:left">GrossTradeAmt</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">50</td>
+<td style="text-align:left">lastShares &lt;32&gt; * LastPx &lt;31&gt; </td>
+</tr>
+<tr>
+<td style="text-align:left">59</td>
+<td style="text-align:left">TimeInForce</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1 (Good Till Cancel), 3 (Immediate or Cancel), 4 (Fill or Kill), 6 (Good Till Time)</td>
+</tr>
+<tr>
+<td style="text-align:left">126</td>
+<td style="text-align:left">ExpireTime</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">20210714-17:03:50</td>
+<td style="text-align:left">Required for TIF = 6, format should be  YYYYMMDD-HH:MM:SS or YYYYMMDD-HH:MM:SS.sss Note: milliseconds are ignored </td>
+</tr>
+<tr>
+<td style="text-align:left">5000</td>
+<td style="text-align:left">RecipientProfileId</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">761j25ca-a75e-483f-8d89-40e742dcd8c0</td>
+<td style="text-align:left">For brokerage client use only. The profileID that will receive settled currency.</td>
+</tr>
+<tr>
+  <td style="text-align:left">2362</td>
+  <td style="text-align:left">SelfMatchPreventionID</td>
+  <td style="text-align:left">N</td>
+  <td style="text-align:left">UA54dSVd-yWGB-FWj2-zHbjJMGd</td>
+  <td style="text-align:left">The string field used to prevent matching against an opposite side order submitted by the same Crypto Brokerage customer. If this field is not submitted, an order that matches against another order submitted by the same customer will cancel the original resting order. Up to 36 characters are supported. This field requires additional permissions only available to certain accounts. Reach out to your Paxos Representative for more information.</td>
+  </tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">CheckSum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">082</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+</div><div id="message-types-execution-report-pending-cancel" class="resource"><h3 class="resource-heading">Execution Report - Pending Cancel <a href="#message-types-execution-report-pending-cancel" class="permalink">&nbsp;¶</a></h3><p>A Pending Cancel Execution Report is an acknowledgement that a cancel request has been received.  It is not an indication the order has been canceled.</p>
+<h4 id="header-message-format-11">Message Format <a class="permalink" href="#header-message-format-11" aria-hidden="true">¶</a></h4>
+<p><strong>Response Message</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tag</th>
+<th style="text-align:left">Field Name</th>
+<th style="text-align:left">Req.</th>
+<th style="text-align:left">Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">BeginString</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">FIX.4.2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">BodyLength</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">0286</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">35</td>
+<td style="text-align:left">MsgType</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">8</td>
+<td style="text-align:left">Execution report</td>
+</tr>
+<tr>
+<td style="text-align:left">49</td>
+<td style="text-align:left">SenderCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">ITBIT</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">56</td>
+<td style="text-align:left">TargetCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">CLIENT01</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">34</td>
+<td style="text-align:left">MsgSeqNum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">218</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">52</td>
+<td style="text-align:left">SendingTime</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">54</td>
+<td style="text-align:left">Side</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Buy</td>
+</tr>
+<tr>
+<td style="text-align:left">150</td>
+<td style="text-align:left">ExecType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">6</td>
+<td style="text-align:left">Pending Cancel</td>
+</tr>
+<tr>
+<td style="text-align:left">32</td>
+<td style="text-align:left">lastShares</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">109</td>
+<td style="text-align:left">ClientID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">5A196279-2203-XC44-9102-KL9E4E16A36F</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Account</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">6CKH6123-09XC-5611-671K-1900KBO6A889</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">31</td>
+<td style="text-align:left">LastPx</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">151</td>
+<td style="text-align:left">LeavesQty</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">60</td>
+<td style="text-align:left">TransactTime</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">58</td>
+<td style="text-align:left">Text</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Order Cancel Pending</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">20</td>
+<td style="text-align:left">ExecTransType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">New</td>
+</tr>
+<tr>
+<td style="text-align:left">55</td>
+<td style="text-align:left">Symbol</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">XBTUSD</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">17</td>
+<td style="text-align:left">ExecID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">14</td>
+<td style="text-align:left">CumQty</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">11</td>
+<td style="text-align:left">ClOrdID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Cancel763</td>
+<td style="text-align:left">Client order identifier. Can be reused if the order has been closed for more than 30 days. Allowed characters are<br />a-z, A-Z, 0-9 and . - _ $ : </td>
+</tr>
+<tr>
+<td style="text-align:left">44</td>
+<td style="text-align:left">Price</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">345</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">AvgPx</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">41</td>
+<td style="text-align:left">OrigClOrdID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Order_762</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">40</td>
+<td style="text-align:left">OrdType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Limit</td>
+</tr>
+<tr>
+<td style="text-align:left">18</td>
+<td style="text-align:left">ExecInst</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">6</td>
+<td style="text-align:left">(6) for Post-Only</td>
+</tr>
+<tr>
+<td style="text-align:left">39</td>
+<td style="text-align:left">OrdStatus</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">6</td>
+<td style="text-align:left">Pending cancel</td>
+</tr>
+<tr>
+<td style="text-align:left">38</td>
+<td style="text-align:left">OrderQty</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Echoed back for Limit and Market Sell orders</td>
+</tr>
+<tr>
+<td style="text-align:left">152</td>
+<td style="text-align:left">CashOrderQty</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Echoed for Market Buy orders only</td>
+</tr>
+<tr>
+<td style="text-align:left">37</td>
+<td style="text-align:left">OrderID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">11196679-9103-JK44-0901-XKNE4E16A12K</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">5047</td>
+<td style="text-align:left">AllocBrokerAccountID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only (IdentityAccountId)</td>
+</tr>
+<tr>
+<td style="text-align:left">50</td>
+<td style="text-align:left">SenderSubID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only (IdentityId)</td>
+</tr>
+<tr>
+<td style="text-align:left">5074</td>
+<td style="text-align:left">FundCommissionOption</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only</td>
+</tr>
+<tr>
+<td style="text-align:left">381</td>
+<td style="text-align:left">GrossTradeAmt</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">lastShares &lt;32&gt; * LastPx &lt;31&gt; </td>
+</tr>
+<tr>
+<td style="text-align:left">59</td>
+<td style="text-align:left">TimeInForce</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1 (Good Till Cancel), 3 (Immediate or Cancel), 4 (Fill or Kill), 6 (Good Till Time)</td>
+</tr>
+<tr>
+<td style="text-align:left">126</td>
+<td style="text-align:left">ExpireTime</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">20210714-17:03:50</td>
+<td style="text-align:left">Required for TIF = 6, format should be  YYYYMMDD-HH:MM:SS or YYYYMMDD-HH:MM:SS.sss Note: milliseconds are ignored </td>
+</tr>
+<tr>
+<td style="text-align:left">5000</td>
+<td style="text-align:left">RecipientProfileId</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">761j25ca-a75e-483f-8d89-40e742dcd8c0</td>
+<td style="text-align:left">For brokerage client use only. The profileID that will receive settled currency.</td>
+</tr>
+<tr>
+  <td style="text-align:left">2362</td>
+  <td style="text-align:left">SelfMatchPreventionID</td>
+  <td style="text-align:left">N</td>
+  <td style="text-align:left">UA54dSVd-yWGB-FWj2-zHbjJMGd</td>
+  <td style="text-align:left">The string field used to prevent matching against an opposite side order submitted by the same Crypto Brokerage customer. If this field is not submitted, an order that matches against another order submitted by the same customer will cancel the original resting order. Up to 36 characters are supported. This field requires additional permissions only available to certain accounts. Reach out to your Paxos Representative for more information.</td>
+  </tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">CheckSum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">137</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+</div><div id="message-types-execution-report-canceled" class="resource"><h3 class="resource-heading">Execution Report - Canceled <a href="#message-types-execution-report-canceled" class="permalink">&nbsp;¶</a></h3><p>An Execution Report with OrdStatus 4 is sent when an order has been canceled.</p>
+<h4 id="header-message-format-12">Message Format <a class="permalink" href="#header-message-format-12" aria-hidden="true">¶</a></h4>
+<p><strong>Response Message</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tag</th>
+<th style="text-align:left">Field Name</th>
+<th style="text-align:left">Req.</th>
+<th style="text-align:left">Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">BeginString</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">FIX.4.2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">BodyLength</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">0314</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">35</td>
+<td style="text-align:left">MsgType</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">8</td>
+<td style="text-align:left">Execution report</td>
+</tr>
+<tr>
+<td style="text-align:left">49</td>
+<td style="text-align:left">SenderCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">ITBIT</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">56</td>
+<td style="text-align:left">TargetCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">CLIENT01</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">34</td>
+<td style="text-align:left">MsgSeqNum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">219</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">52</td>
+<td style="text-align:left">SendingTime</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">54</td>
+<td style="text-align:left">Side</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Buy</td>
+</tr>
+<tr>
+<td style="text-align:left">150</td>
+<td style="text-align:left">ExecType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">4</td>
+<td style="text-align:left">Canceled</td>
+</tr>
+<tr>
+<td style="text-align:left">32</td>
+<td style="text-align:left">lastShares</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">109</td>
+<td style="text-align:left">ClientID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">5A196279-2203-XC44-9102-KL9E4E16A36F</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Account</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">6CKH6123-09XC-5611-671K-1900KBO6A889</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">31</td>
+<td style="text-align:left">LastPx</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">151</td>
+<td style="text-align:left">LeavesQty</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">60</td>
+<td style="text-align:left">TransactTime</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">58</td>
+<td style="text-align:left">Text</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Cancelled Order</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">20</td>
+<td style="text-align:left">ExecTransType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">New</td>
+</tr>
+<tr>
+<td style="text-align:left">55</td>
+<td style="text-align:left">Symbol</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">XBTUSD</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">17</td>
+<td style="text-align:left">ExecID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">00000000-0000-0000-0000-000000000000</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">14</td>
+<td style="text-align:left">CumQty</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">11</td>
+<td style="text-align:left">ClOrdID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Cancel763</td>
+<td style="text-align:left">Client order identifier. Can be reused if the order has been closed for more than 30 days. Allowed characters are<br />a-z, A-Z, 0-9 and . - _ $ : </td>
+</tr>
+<tr>
+<td style="text-align:left">44</td>
+<td style="text-align:left">Price</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">AvgPx</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">41</td>
+<td style="text-align:left">OrigClOrdID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Order_762</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">40</td>
+<td style="text-align:left">OrdType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Limit</td>
+</tr>
+<tr>
+<td style="text-align:left">18</td>
+<td style="text-align:left">ExecInst</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">6</td>
+<td style="text-align:left">(6) for Post-Only</td>
+</tr>
+<tr>
+<td style="text-align:left">39</td>
+<td style="text-align:left">OrdStatus</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">4</td>
+<td style="text-align:left">Canceled</td>
+</tr>
+<tr>
+<td style="text-align:left">38</td>
+<td style="text-align:left">OrderQty</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Echoed back for Limit and Market Sell orders</td>
+</tr>
+<tr>
+<td style="text-align:left">152</td>
+<td style="text-align:left">CashOrderQty</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Echoed for Market Buy orders only</td>
+</tr>
+<tr>
+<td style="text-align:left">37</td>
+<td style="text-align:left">OrderID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">11196679-9103-JK44-0901-XKNE4E16A12K</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">5047</td>
+<td style="text-align:left">AllocBrokerAccountID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only (IdentityAccountId)</td>
+</tr>
+<tr>
+<td style="text-align:left">50</td>
+<td style="text-align:left">SenderSubID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only (IdentityId)</td>
+</tr>
+<tr>
+<td style="text-align:left">5074</td>
+<td style="text-align:left">FundCommissionOption</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only</td>
+</tr>
+<tr>
+<td style="text-align:left">381</td>
+<td style="text-align:left">GrossTradeAmt</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">lastShares &lt;32&gt; * LastPx &lt;31&gt; </td>
+</tr>
+<tr>
+<td style="text-align:left">59</td>
+<td style="text-align:left">TimeInForce</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1 (Good Till Cancel), 3 (Immediate or Cancel), 4 (Fill or Kill), 6 (Good Till Time)</td>
+</tr>
+<tr>
+<td style="text-align:left">126</td>
+<td style="text-align:left">ExpireTime</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">20210714-17:03:50</td>
+<td style="text-align:left">Required for TIF = 6, format should be  YYYYMMDD-HH:MM:SS or YYYYMMDD-HH:MM:SS.sss Note: milliseconds are ignored </td>
+</tr>
+<tr>
+<td style="text-align:left">5000</td>
+<td style="text-align:left">RecipientProfileId</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">761j25ca-a75e-483f-8d89-40e742dcd8c0</td>
+<td style="text-align:left">For brokerage client use only. The profileID that will receive settled currency.</td>
+</tr>
+<tr>
+  <td style="text-align:left">2362</td>
+  <td style="text-align:left">SelfMatchPreventionID</td>
+  <td style="text-align:left">N</td>
+  <td style="text-align:left">UA54dSVd-yWGB-FWj2-zHbjJMGd</td>
+  <td style="text-align:left">The string field used to prevent matching against an opposite side order submitted by the same Crypto Brokerage customer. If this field is not submitted, an order that matches against another order submitted by the same customer will cancel the original resting order. Up to 36 characters are supported. This field requires additional permissions only available to certain accounts. Reach out to your Paxos Representative for more information.</td>
+  </tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">CheckSum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">096</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+</div><div id="message-types-execution-report-order-reject" class="resource"><h3 class="resource-heading">Execution Report - Order Reject <a href="#message-types-execution-report-order-reject" class="permalink">&nbsp;¶</a></h3><p>If an order is rejected for any reason, an Order Reject Execution Report will be sent with OrdRejReason populated</p>
+<h4 id="header-message-format-13">Message Format <a class="permalink" href="#header-message-format-13" aria-hidden="true">¶</a></h4>
+<p><strong>Response Message</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tag</th>
+<th style="text-align:left">Field Name</th>
+<th style="text-align:left">Req.</th>
+<th style="text-align:left">Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">BeginString</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">FIX.4.2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">BodyLength</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">0327</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">35</td>
+<td style="text-align:left">MsgType</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">8</td>
+<td style="text-align:left">Execution report</td>
+</tr>
+<tr>
+<td style="text-align:left">49</td>
+<td style="text-align:left">SenderCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">ITBIT</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">56</td>
+<td style="text-align:left">TargetCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">CLIENT01</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">34</td>
+<td style="text-align:left">MsgSeqNum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">341</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">52</td>
+<td style="text-align:left">SendingTime</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">54</td>
+<td style="text-align:left">Side</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Buy</td>
+</tr>
+<tr>
+<td style="text-align:left">150</td>
+<td style="text-align:left">ExecType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">8</td>
+<td style="text-align:left">Rejected</td>
+</tr>
+<tr>
+<td style="text-align:left">32</td>
+<td style="text-align:left">lastShares</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">109</td>
+<td style="text-align:left">ClientID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">5A196279-2203-XC44-9102-KL9E4E16A36F</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Account</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">6CKH6123-09XC-5611-671K-1900KBO6A889</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">31</td>
+<td style="text-align:left">LastPx</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">103</td>
+<td style="text-align:left">OrdrejReason</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Refer to table below</td>
+</tr>
+<tr>
+<td style="text-align:left">151</td>
+<td style="text-align:left">LeavesQty</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">60</td>
+<td style="text-align:left">TransactTime</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">58</td>
+<td style="text-align:left">Text</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Symbol is invalid</td>
+<td style="text-align:left">Reject message</td>
+</tr>
+<tr>
+<td style="text-align:left">20</td>
+<td style="text-align:left">ExecTransType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">New</td>
+</tr>
+<tr>
+<td style="text-align:left">55</td>
+<td style="text-align:left">Symbol</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">XBTUSD</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">17</td>
+<td style="text-align:left">ExecID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">dkcyba019-1ser-ace3-0193-nlandlb0911</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">14</td>
+<td style="text-align:left">CumQty</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">11</td>
+<td style="text-align:left">ClOrdID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Cancel785</td>
+<td style="text-align:left">Client order identifier. Can be reused if the order has been closed for more than 30 days. Allowed characters are<br />a-z, A-Z, 0-9 and . - _ $ : </td>
+</tr>
+<tr>
+<td style="text-align:left">44</td>
+<td style="text-align:left">Price</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">230</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">AvgPx</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">41</td>
+<td style="text-align:left">OrigClOrdID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Order_785</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">40</td>
+<td style="text-align:left">OrdType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Limit</td>
+</tr>
+<tr>
+<td style="text-align:left">18</td>
+<td style="text-align:left">ExecInst</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">6</td>
+<td style="text-align:left">(6) for Post-Only</td>
+</tr>
+<tr>
+<td style="text-align:left">39</td>
+<td style="text-align:left">OrdStatus</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">8</td>
+<td style="text-align:left">Rejected</td>
+</tr>
+<tr>
+<td style="text-align:left">38</td>
+<td style="text-align:left">OrderQty</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Echoed back for Limit and Market Sell orders</td>
+</tr>
+<tr>
+<td style="text-align:left">152</td>
+<td style="text-align:left">CashOrderQty</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Echoed for Market Buy orders only</td>
+</tr>
+<tr>
+<td style="text-align:left">37</td>
+<td style="text-align:left">OrderID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">11196679-9103-JK44-0901-XKNE4E16A12K</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">5047</td>
+<td style="text-align:left">AllocBrokerAccountID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only (IdentityAccountId)</td>
+</tr>
+<tr>
+<td style="text-align:left">50</td>
+<td style="text-align:left">SenderSubID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only (IdentityId)</td>
+</tr>
+<tr>
+<td style="text-align:left">5074</td>
+<td style="text-align:left">FundCommissionOption</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only</td>
+</tr>
+<tr>
+<td style="text-align:left">381</td>
+<td style="text-align:left">GrossTradeAmt</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">lastShares &lt;32&gt; * LastPx &lt;31&gt; </td>
+</tr>
+<tr>
+<td style="text-align:left">59</td>
+<td style="text-align:left">TimeInForce</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1 (Good Till Cancel), 3 (Immediate or Cancel), 4 (Fill or Kill), 6 (Good Till Time)</td>
+</tr>
+<tr>
+<td style="text-align:left">126</td>
+<td style="text-align:left">ExpireTime</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">20210714-17:03:50</td>
+<td style="text-align:left">Required for TIF = 6, format should be  YYYYMMDD-HH:MM:SS or YYYYMMDD-HH:MM:SS.sss Note: milliseconds are ignored </td>
+</tr>
+<tr>
+<td style="text-align:left">5000</td>
+<td style="text-align:left">RecipientProfileId</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">761j25ca-a75e-483f-8d89-40e742dcd8c0</td>
+<td style="text-align:left">For brokerage client use only. The profileID that will receive settled currency.</td>
+</tr>
+<tr>
+  <td style="text-align:left">2362</td>
+  <td style="text-align:left">SelfMatchPreventionID</td>
+  <td style="text-align:left">N</td>
+  <td style="text-align:left">UA54dSVd-yWGB-FWj2-zHbjJMGd</td>
+  <td style="text-align:left">The string field used to prevent matching against an opposite side order submitted by the same Crypto Brokerage customer. If this field is not submitted, an order that matches against another order submitted by the same customer will cancel the original resting order. Up to 36 characters are supported. This field requires additional permissions only available to certain accounts. Reach out to your Paxos Representative for more information.</td>
+  </tr>
+<tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">CheckSum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">174</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<p>An order can be rejected for different reasons
+<strong>Reject Reason for tag 103</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tag</th>
+<th style="text-align:left">Field Name</th>
+<th style="text-align:left">Req.</th>
+<th style="text-align:left">Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">103</td>
+<td style="text-align:left">OrdrejReason</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">Broker option</td>
+</tr>
+<tr>
+<td style="text-align:left">103</td>
+<td style="text-align:left">OrdrejReason</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Unknown symbol</td>
+</tr>
+<tr>
+<td style="text-align:left">103</td>
+<td style="text-align:left">OrdrejReason</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Exchange closed</td>
+</tr>
+<tr>
+<td style="text-align:left">103</td>
+<td style="text-align:left">OrdrejReason</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">3</td>
+<td style="text-align:left">Order exceeds limit</td>
+</tr>
+<tr>
+<td style="text-align:left">103</td>
+<td style="text-align:left">OrdrejReason</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">5</td>
+<td style="text-align:left">Unknown Order</td>
+</tr>
+<tr>
+<td style="text-align:left">103</td>
+<td style="text-align:left">OrdrejReason</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">6</td>
+<td style="text-align:left">Duplicate Order</td>
+</tr>
+<tr>
+<td style="text-align:left">103</td>
+<td style="text-align:left">OrdrejReason</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">8</td>
+<td style="text-align:left">Stale Order</td>
+</tr>
+</tbody>
+</table>
+<p>Additional detailed failure reasons (tag 58)</p>
+  <table>
+  <thead>
+  <tr>
+  <th style="text-align:left">Tag</th>
+  <th style="text-align:left">Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left"> InsufficientBalance</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">InvalidTimeInForce</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">InvalidRecipientProfileId</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">InvalidIdentityId</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">InvalidIdentityAccountId</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">MissingExpirationDate</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">DisabledIdentityId</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">DisabledIdentityAccountId</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">NotionalValueTooLarge</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">InvalidFundCommissionOption</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">PendingIdentityId</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">PendingIdentityAccountId</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">ClientId Is required</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">ClientOrderId Is required</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">Account Is required</td>
+  </tr>
+  <tr></tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">Symbol Is required</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">OriginalClientOrderId Is required</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">HandlingInstructions Expected Value for this field is 1</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">Side {value} is not an acceptable value for this field</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">OrderType {value} is not an acceptable value for this field</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">CashOrderQty Must be greater than zero</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">OrderQuantity Must be greater than zero</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">StopPrice Must be zero</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">Market conditions have invalidated this order</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">ExpirationTime must be of format YYYYMMDD-HH:MM:SS or YYYYMMDD-HH:MM:SS.sss</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">TimeInForce Not supported</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">Account Is not a GUID</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">ClientId Is not a GUID</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">Invalid Message Type</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">PaxAccountingUnknownError</td>
+  </tr>
+  <tr>
+  <td style="text-align:left">58</td>
+  <td style="text-align:left">InvalidPriceForTakerOrder</td>
+  </tr>
+  </tbody>
+  </table>
+</div><div id="message-types-execution-report-order-status" class="resource"><h3 class="resource-heading">Execution Report - Order Status <a href="#message-types-execution-report-order-status" class="permalink">&nbsp;¶</a></h3><p>An order status request message will return the current status of an order.  The fields lastShares (32) and and lastPx (31) contain the price and amount of the the latest partial or full execution of the order, a completed order will have a value of 0 in the LeavesQty (151) field.  Note: lastShares (32) was relabeled as lastQty in later versions of FIX, the tag number and purpose are identical.</p>
+<h4 id="header-message-format-14">Message Format <a class="permalink" href="#header-message-format-14" aria-hidden="true">¶</a></h4>
+<p><strong>Response Message</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tag</th>
+<th style="text-align:left">Field Name</th>
+<th style="text-align:left">Req.</th>
+<th style="text-align:left">Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">BeginString</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">FIX.4.2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">BodyLength</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">0300</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">35</td>
+<td style="text-align:left">MsgType</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">8</td>
+<td style="text-align:left">Execution report</td>
+</tr>
+<tr>
+<td style="text-align:left">49</td>
+<td style="text-align:left">SenderCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">ITBIT</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">56</td>
+<td style="text-align:left">TargetCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">CLIENT01</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">34</td>
+<td style="text-align:left">MsgSeqNum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">330</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">52</td>
+<td style="text-align:left">SendingTime</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">54</td>
+<td style="text-align:left">Side</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Buy</td>
+</tr>
+<tr>
+<td style="text-align:left">150</td>
+<td style="text-align:left">ExecType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">New</td>
+</tr>
+<tr>
+<td style="text-align:left">32</td>
+<td style="text-align:left">lastShares</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">109</td>
+<td style="text-align:left">ClientID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">5A196279-2203-XC44-9102-KL9E4E16A36F</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Account</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">6CKH6123-09XC-5611-671K-1900KBO6A889</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">31</td>
+<td style="text-align:left">LastPx</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">151</td>
+<td style="text-align:left">LeavesQty</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">60</td>
+<td style="text-align:left">TransactTime</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">20150607-15:43:16.543</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">58</td>
+<td style="text-align:left">Text</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">20</td>
+<td style="text-align:left">ExecTransType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">3</td>
+<td style="text-align:left">Status</td>
+</tr>
+<tr>
+<td style="text-align:left">55</td>
+<td style="text-align:left">Symbol</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">XBTUSD</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">17</td>
+<td style="text-align:left">ExecID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">dkcyba019-1ser-ace3-0193-nlandlb0911</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">14</td>
+<td style="text-align:left">CumQty</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">11</td>
+<td style="text-align:left">ClOrdID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Order_782</td>
+<td style="text-align:left">Client order identifier. Can be reused if the order has been closed for more than 30 days. Allowed characters are<br />a-z, A-Z, 0-9 and . - _ $ : </td>
+</tr>
+<tr>
+<td style="text-align:left">44</td>
+<td style="text-align:left">Price</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">230</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">AvgPx</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">41</td>
+<td style="text-align:left">OrigClOrdID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Order_782</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">40</td>
+<td style="text-align:left">OrdType</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Limit</td>
+</tr>
+<tr>
+<td style="text-align:left">18</td>
+<td style="text-align:left">ExecInst</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">6</td>
+<td style="text-align:left">(6) for Post-Only</td>
+</tr>
+<tr>
+<td style="text-align:left">39</td>
+<td style="text-align:left">OrdStatus</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">New</td>
+</tr>
+<tr>
+<td style="text-align:left">38</td>
+<td style="text-align:left">OrderQty</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Echoed back for Limit and Market Sell orders</td>
+</tr>
+<tr>
+<td style="text-align:left">152</td>
+<td style="text-align:left">CashOrderQty</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Echoed for Market Buy orders only</td>
+</tr>
+<tr>
+<td style="text-align:left">37</td>
+<td style="text-align:left">OrderID</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">11196679-9103-JK44-0901-XKNE4E16A12K</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">5047</td>
+<td style="text-align:left">AllocBrokerAccountID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only (IdentityAccountId)</td>
+</tr>
+<tr>
+<td style="text-align:left">50</td>
+<td style="text-align:left">SenderSubID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only (IdentityId)</td>
+</tr>
+<tr>
+<td style="text-align:left">5074</td>
+<td style="text-align:left">FundCommissionOption</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">For brokerage client use only</td>
+</tr>
+<tr>
+<td style="text-align:left">381</td>
+<td style="text-align:left">GrossTradeAmt</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">lastShares &lt;32&gt; * LastPx &lt;31&gt; </td>
+</tr>
+<tr>
+<td style="text-align:left">59</td>
+<td style="text-align:left">TimeInForce</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1 (Good Till Cancel), 3 (Immediate or Cancel), 4 (Fill or Kill), 6 (Good Till Time)</td>
+</tr>
+<tr>
+<td style="text-align:left">126</td>
+<td style="text-align:left">ExpireTime</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">20210714-17:03:50</td>
+<td style="text-align:left">Required for TIF = 6, format should be  YYYYMMDD-HH:MM:SS or YYYYMMDD-HH:MM:SS.sss Note: milliseconds are ignored </td>
+</tr>
+<tr>
+<td style="text-align:left">5000</td>
+<td style="text-align:left">RecipientProfileId</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">761j25ca-a75e-483f-8d89-40e742dcd8c0</td>
+<td style="text-align:left">For brokerage client use only. The profileID that will receive settled currency.</td>
+</tr>
+<tr>
+  <td style="text-align:left">2362</td>
+  <td style="text-align:left">SelfMatchPreventionID</td>
+  <td style="text-align:left">N</td>
+  <td style="text-align:left">UA54dSVd-yWGB-FWj2-zHbjJMGd</td>
+  <td style="text-align:left">The string field used to prevent matching against an opposite side order submitted by the same Crypto Brokerage customer. If this field is not submitted, an order that matches against another order submitted by the same customer will cancel the original resting order. Up to 36 characters are supported. This field requires additional permissions only available to certain accounts. Reach out to your Paxos Representative for more information.</td>
+  </tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">CheckSum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">118</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+</div><div id="message-types-logout" class="resource"><h3 class="resource-heading">Logout <a href="#message-types-logout" class="permalink">&nbsp;¶</a></h3><p>A logout message initiates or confirms the termination of a FIX session. Disconnection without the exchange of logout messages should be interpreted as an abnormal condition. An unsolicited logout may indicate a connection or account issue, SendingTime (52) will have a human readable message indicating if there is an issue.  In some cases, a logout message may be associated with an account’s trading permissions being suspended; if you are unable to reconnect with ResetSeqNumFlag (141) set to Y, please engage with support.</p>
+<h4 id="header-message-format-15">Message Format <a class="permalink" href="#header-message-format-15" aria-hidden="true">¶</a></h4>
+<p><strong>Incoming message</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tag</th>
+<th style="text-align:left">Field Name</th>
+<th style="text-align:left">Req.</th>
+<th style="text-align:left">Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">BeginString</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">FIX.4.2</td>
+<td style="text-align:left">Logout</td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">BodyLength</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">0056</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">35</td>
+<td style="text-align:left">MsgType</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">5</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">49</td>
+<td style="text-align:left">SenderCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">CLIENT01</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">56</td>
+<td style="text-align:left">TargetCompID</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">ITBIT</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">34</td>
+<td style="text-align:left">MsgSeqNum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">52</td>
+<td style="text-align:left">SendingTime</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">20150607-15:43:16.534</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">58</td>
+<td style="text-align:left">Text</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">00140000000Wn1ynf_590- CODE: 1-200-A-141: Expected Logon Message with 141</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">CheckSum</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">107</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+</div></section><section id="encoded-tags" class="resource-group"><h2 class="group-heading">Encoded Tags <a href="#encoded-tags" class="permalink">¶</a></h2><p>Some FIX Tag short codes and their values are listed below.  The description field in the message type tables above also contain this information.</p>
+<h4 id="header-1.-msgtype-">1. MsgType: <a class="permalink" href="#header-1.-msgtype-" aria-hidden="true">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">A</td>
+<td style="text-align:left">Logon</td>
+</tr>
+<tr>
+<td style="text-align:left">D</td>
+<td style="text-align:left">New Order Single</td>
+</tr>
+<tr>
+<td style="text-align:left">F</td>
+<td style="text-align:left">Order Cancel Request</td>
+</tr>
+<tr>
+<td style="text-align:left">H</td>
+<td style="text-align:left">Order Status Request</td>
+</tr>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">Heartbeat</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Resend Request</td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">Execution Report</td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">Order Cancel Reject</td>
+</tr>
+</tbody>
+</table>
+<h4 id="header-2.-exectype">2. ExecType <a class="permalink" href="#header-2.-exectype" aria-hidden="true">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">New</td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Partially Filled</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Filled</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">Done</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">Canceled</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">Pending Cancel</td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">Rejected</td>
+</tr>
+<tr>
+<td style="text-align:left">A</td>
+<td style="text-align:left">Pending New Order</td>
+</tr>
+<tr>
+<td style="text-align:left">D</td>
+<td style="text-align:left">Order Changed</td>
+</tr>
+<tr>
+<td style="text-align:left">C</td>
+<td style="text-align:left">Order Expired</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<script>/* eslint-env browser */
+/* eslint quotes: [2, "single"] */
+'use strict';
+
+/*
+  Determine if a string ends with another string.
+*/
+function endsWith(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
+
+/*
+  Get a list of direct child elements by class name.
+*/
+function childrenByClass(element, name) {
+  var filtered = [];
+
+  for (var i = 0; i < element.children.length; i++) {
+    var child = element.children[i];
+    var classNames = child.className.split(' ');
+    if (classNames.indexOf(name) !== -1) {
+      filtered.push(child);
+    }
+  }
+
+  return filtered;
+}
+
+/*
+  Get an array [width, height] of the window.
+*/
+function getWindowDimensions() {
+  var w = window,
+      d = document,
+      e = d.documentElement,
+      g = d.body,
+      x = w.innerWidth || e.clientWidth || g.clientWidth,
+      y = w.innerHeight || e.clientHeight || g.clientHeight;
+
+  return [x, y];
+}
+
+/*
+  Collapse or show a request/response example.
+*/
+function toggleCollapseButton(event) {
+    var button = event.target.parentNode;
+    var content = button.parentNode.nextSibling;
+    var inner = content.children[0];
+
+    if (button.className.indexOf('collapse-button') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+        // Currently showing, so let's hide it
+        button.className = 'collapse-button';
+        content.style.maxHeight = '0px';
+    } else {
+        // Currently hidden, so let's show it
+        button.className = 'collapse-button show';
+        content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+function toggleTabButton(event) {
+    var i, index;
+    var button = event.target;
+
+    // Get index of the current button.
+    var buttons = childrenByClass(button.parentNode, 'tab-button');
+    for (i = 0; i < buttons.length; i++) {
+        if (buttons[i] === button) {
+            index = i;
+            button.className = 'tab-button active';
+        } else {
+            buttons[i].className = 'tab-button';
+        }
+    }
+
+    // Hide other tabs and show this one.
+    var tabs = childrenByClass(button.parentNode.parentNode, 'tab');
+    for (i = 0; i < tabs.length; i++) {
+        if (i === index) {
+            tabs[i].style.display = 'block';
+        } else {
+            tabs[i].style.display = 'none';
+        }
+    }
+}
+
+/*
+  Collapse or show a navigation menu. It will not be hidden unless it
+  is currently selected or `force` has been passed.
+*/
+function toggleCollapseNav(event, force) {
+    var heading = event.target.parentNode;
+    var content = heading.nextSibling;
+    var inner = content.children[0];
+
+    if (heading.className.indexOf('heading') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+      // Currently showing, so let's hide it, but only if this nav item
+      // is already selected. This prevents newly selected items from
+      // collapsing in an annoying fashion.
+      if (force || window.location.hash && endsWith(event.target.href, window.location.hash)) {
+        content.style.maxHeight = '0px';
+      }
+    } else {
+      // Currently hidden, so let's show it
+      content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+/*
+  Refresh the page after a live update from the server. This only
+  works in live preview mode (using the `--server` parameter).
+*/
+function refresh(body) {
+    document.querySelector('body').className = 'preload';
+    document.body.innerHTML = body;
+
+    // Re-initialize the page
+    init();
+    autoCollapse();
+
+    document.querySelector('body').className = '';
+}
+
+/*
+  Determine which navigation items should be auto-collapsed to show as many
+  as possible on the screen, based on the current window height. This also
+  collapses them.
+*/
+function autoCollapse() {
+  var windowHeight = getWindowDimensions()[1];
+  var itemsHeight = 64; /* Account for some padding */
+  var itemsArray = Array.prototype.slice.call(
+    document.querySelectorAll('nav .resource-group .heading'));
+
+  // Get the total height of the navigation items
+  itemsArray.forEach(function (item) {
+    itemsHeight += item.parentNode.offsetHeight;
+  });
+
+  // Should we auto-collapse any nav items? Try to find the smallest item
+  // that can be collapsed to show all items on the screen. If not possible,
+  // then collapse the largest item and do it again. First, sort the items
+  // by height from smallest to largest.
+  var sortedItems = itemsArray.sort(function (a, b) {
+    return a.parentNode.offsetHeight - b.parentNode.offsetHeight;
+  });
+
+  while (sortedItems.length && itemsHeight > windowHeight) {
+    for (var i = 0; i < sortedItems.length; i++) {
+      // Will collapsing this item help?
+      var itemHeight = sortedItems[i].nextSibling.offsetHeight;
+      if ((itemsHeight - itemHeight <= windowHeight) || i === sortedItems.length - 1) {
+        // It will, so let's collapse it, remove its content height from
+        // our total and then remove it from our list of candidates
+        // that can be collapsed.
+        itemsHeight -= itemHeight;
+        toggleCollapseNav({target: sortedItems[i].children[0]}, true);
+        sortedItems.splice(i, 1);
+        break;
+      }
+    }
+  }
+}
+
+/*
+  Initialize the interactive functionality of the page.
+*/
+function init() {
+    var i, j;
+
+    // Make collapse buttons clickable
+    var buttons = document.querySelectorAll('.collapse-button');
+    for (i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = toggleCollapseButton;
+
+        // Show by default? Then toggle now.
+        if (buttons[i].className.indexOf('show') !== -1) {
+            toggleCollapseButton({target: buttons[i].children[0]});
+        }
+    }
+
+    var responseCodes = document.querySelectorAll('.example-names');
+    for (i = 0; i < responseCodes.length; i++) {
+        var tabButtons = childrenByClass(responseCodes[i], 'tab-button');
+        for (j = 0; j < tabButtons.length; j++) {
+            tabButtons[j].onclick = toggleTabButton;
+
+            // Show by default?
+            if (j === 0) {
+                toggleTabButton({target: tabButtons[j]});
+            }
+        }
+    }
+
+    // Make nav items clickable to collapse/expand their content.
+    var navItems = document.querySelectorAll('nav .resource-group .heading');
+    for (i = 0; i < navItems.length; i++) {
+        navItems[i].onclick = toggleCollapseNav;
+
+        // Show all by default
+        toggleCollapseNav({target: navItems[i].children[0]});
+    }
+}
+
+// Initial call to set up buttons
+init();
+
+window.onload = function () {
+    autoCollapse();
+    // Remove the `preload` class to enable animations
+    document.querySelector('body').className = '';
+};
+</script><input type="file" id="" name="file" style="display: none;"><div data-v-0a2a5063="" class="container_selected_area" style="cursor: url(&quot;chrome-extension://ialiedlpfknneamnbemcgmaboleiccdd/assets/images/cursor-imagen.svg&quot;) 9 9, crosshair;"><div data-v-0a2a5063="" class="area"></div></div></body></html>
