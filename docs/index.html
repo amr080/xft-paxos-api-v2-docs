@@ -1559,7 +1559,7 @@ var n=this.pipeline.run(e.tokenizer(t)),r=new e.Vector,i=[],o=this._fields.reduc
       </span>
     </a>
     <div class="toc-wrapper">
-        <img src="logo.png" alt="XFT Logo" style="width: 200px; height: 200px;">
+        <img src="logo.png" alt="XFT Logo" style="width: 215px; height: 215px;">
 
       
         <div class="search">
@@ -29399,4 +29399,2869 @@ This operation does not require authentication
           ]
         }
       },
-      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The SWIFT transfer instructions for depositing fiat to 
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The SWIFT transfer instructions for depositing fiat to XFT from a non-US bank. Read-only.&quot;</span>,
+      <span class="hljs-attr">&quot;required&quot;</span>: [
+        <span class="hljs-string">&quot;memoId&quot;</span>,
+        <span class="hljs-string">&quot;beneficiaryName&quot;</span>,
+        <span class="hljs-string">&quot;accountNumber&quot;</span>,
+        <span class="hljs-string">&quot;swiftBic&quot;</span>,
+        <span class="hljs-string">&quot;bankName&quot;</span>,
+        <span class="hljs-string">&quot;beneficiaryAddress&quot;</span>
+      ]
+    },
+    <span class="hljs-attr">&quot;sen&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+      <span class="hljs-attr">&quot;properties&quot;</span>: {
+        <span class="hljs-attr">&quot;memoId&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A unique personal code for routing the deposited funds at XFT.\nThe customer should put this string in the transfer memo field, for any type\nof transfer.&quot;</span>
+        },
+        <span class="hljs-attr">&quot;senName&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT SEN network name.&quot;</span>
+        },
+        <span class="hljs-attr">&quot;accountNumber&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT account number.&quot;</span>
+        }
+      },
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The SEN transfer instructions for depositing fiat to XFT. Read-only.&quot;</span>,
+      <span class="hljs-attr">&quot;required&quot;</span>: [
+        <span class="hljs-string">&quot;memoId&quot;</span>,
+        <span class="hljs-string">&quot;senName&quot;</span>,
+        <span class="hljs-string">&quot;accountNumber&quot;</span>
+      ]
+    },
+    <span class="hljs-attr">&quot;signet&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+      <span class="hljs-attr">&quot;properties&quot;</span>: {
+        <span class="hljs-attr">&quot;memoId&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A unique personal code for routing the deposited funds at XFT.\nThe customer should use `memo_id` in the transfer-memo field for all transfer types.&quot;</span>
+        },
+        <span class="hljs-attr">&quot;beneficiaryName&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT entity name.&quot;</span>
+        },
+        <span class="hljs-attr">&quot;walletAddress&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT wallet address.&quot;</span>
+        }
+      },
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The SIGNET transfer instructions for depositing fiat to XFT. Read-only.&quot;</span>,
+      <span class="hljs-attr">&quot;required&quot;</span>: [
+        <span class="hljs-string">&quot;memoId&quot;</span>,
+        <span class="hljs-string">&quot;beneficiaryName&quot;</span>,
+        <span class="hljs-string">&quot;walletAddress&quot;</span>
+      ]
+    },
+    <span class="hljs-attr">&quot;cbit&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+      <span class="hljs-attr">&quot;properties&quot;</span>: {
+        <span class="hljs-attr">&quot;memoId&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A unique personal code for routing the deposited funds at XFT.\nThe customer should use `memo_id` in the transfer-memo field for all transfer types.&quot;</span>
+        },
+        <span class="hljs-attr">&quot;beneficiaryName&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT entity name.&quot;</span>
+        },
+        <span class="hljs-attr">&quot;walletAddress&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT wallet address.&quot;</span>
+        }
+      },
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The CBIT transfer instructions for depositing to XFT. Read-only.&quot;</span>,
+      <span class="hljs-attr">&quot;required&quot;</span>: [
+        <span class="hljs-string">&quot;memoId&quot;</span>,
+        <span class="hljs-string">&quot;beneficiaryName&quot;</span>,
+        <span class="hljs-string">&quot;walletAddress&quot;</span>
+      ]
+    },
+    <span class="hljs-attr">&quot;intrabank&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+      <span class="hljs-attr">&quot;properties&quot;</span>: {
+        <span class="hljs-attr">&quot;memoId&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A unique personal code for routing the deposited funds at XFT.\nThe customer should use `memo_id` in the transfer-memo field for all transfer types.&quot;</span>
+        },
+        <span class="hljs-attr">&quot;beneficiaryName&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT entity name.&quot;</span>
+        },
+        <span class="hljs-attr">&quot;accountNumber&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT account number/identifier.&quot;</span>
+        },
+        <span class="hljs-attr">&quot;type&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;enum&quot;</span>: [
+            <span class="hljs-string">&quot;ABA&quot;</span>,
+            <span class="hljs-string">&quot;SWIFT&quot;</span>,
+            <span class="hljs-string">&quot;SEN&quot;</span>,
+            <span class="hljs-string">&quot;ACH&quot;</span>,
+            <span class="hljs-string">&quot;SIGNET&quot;</span>,
+            <span class="hljs-string">&quot;CBIT&quot;</span>
+          ],
+          <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The bank account type: The kind of transfer XFT will perform for a withdrawal.\n\n - ABA: A U.S. domestic wire destination.\n - SWIFT: An international wire destination.\n - SEN: A destination on the \&quot;Silvergate Exchange Network\&quot; (between Silvergate accounts).\n - ACH: ACH\n - SIGNET: A destination on the Signet Platform (between Signature accounts).\n - CBIT: A destination on the CBIT Network (between Customers Bank accounts).&quot;</span>
+        }
+      },
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The intra-bank deposit instructions for depositing to XFT. Intra-bank includes CBIT. Read-only.&quot;</span>,
+      <span class="hljs-attr">&quot;required&quot;</span>: [
+        <span class="hljs-string">&quot;memoId&quot;</span>,
+        <span class="hljs-string">&quot;beneficiaryName&quot;</span>,
+        <span class="hljs-string">&quot;accountNumber&quot;</span>,
+        <span class="hljs-string">&quot;type&quot;</span>
+      ]
+    }
+  },
+  <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;XFTBankAccount is a bank account owned by XFT and used by customers for\ndepositing fiat. Read-only.&quot;</span>
+}
+
+</code></pre>
+<p>XFTBankAccount is a bank account owned by XFT and used by customers for
+depositing fiat. Read-only.</p>
+<h3 id="properties-59">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>memoId</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>A unique personal code for routing the deposited funds at XFT.<br />The customer should put this string in the transfer memo field, for any type<br />of transfer.</td>
+</tr>
+<tr>
+<td>aba</td>
+<td><a href="#schemaabadepositinstructions">ABADepositInstructions</a></td>
+<td>false</td>
+<td>none</td>
+<td>The ABA transfer instructions for depositing fiat to XFT from a US bank. Read-only.</td>
+</tr>
+<tr>
+<td>swift</td>
+<td><a href="#schemaswiftdepositinstructions">SWIFTDepositInstructions</a></td>
+<td>false</td>
+<td>none</td>
+<td>The SWIFT transfer instructions for depositing fiat to XFT from a non-US bank. Read-only.</td>
+</tr>
+<tr>
+<td>sen</td>
+<td><a href="#schemasendepositinstructions">SENDepositInstructions</a></td>
+<td>false</td>
+<td>none</td>
+<td>The SEN transfer instructions for depositing fiat to XFT. Read-only.</td>
+</tr>
+<tr>
+<td>signet</td>
+<td><a href="#schemasignetdepositinstructions">SIGNETDepositInstructions</a></td>
+<td>false</td>
+<td>none</td>
+<td>The SIGNET transfer instructions for depositing fiat to XFT. Read-only.</td>
+</tr>
+<tr>
+<td>cbit</td>
+<td><a href="#schemacbitdepositinstructions">CBITDepositInstructions</a></td>
+<td>false</td>
+<td>none</td>
+<td>The CBIT transfer instructions for depositing to XFT. Read-only.</td>
+</tr>
+<tr>
+<td>intrabank</td>
+<td><a href="#schemaintrabankdepositinstructions">IntrabankDepositInstructions</a></td>
+<td>false</td>
+<td>none</td>
+<td>The intra-bank deposit instructions for depositing to XFT. Intra-bank includes CBIT. Read-only.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocs_XFTcryptoaddress">XFTCryptoAddress</h2>
+<p><a id="schemaXFTcryptoaddress"></a>
+<a id="schema_XFTCryptoAddress"></a>
+<a id="tocSXFTcryptoaddress"></a>
+<a id="tocsXFTcryptoaddress"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+  <span class="hljs-attr">&quot;properties&quot;</span>: {
+    <span class="hljs-attr">&quot;network&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;enum&quot;</span>: [
+        <span class="hljs-string">&quot;NETWORK_BTC&quot;</span>,
+        <span class="hljs-string">&quot;NETWORK_ETH&quot;</span>,
+        <span class="hljs-string">&quot;NETWORK_BCH&quot;</span>,
+        <span class="hljs-string">&quot;NETWORK_LTC&quot;</span>,
+        <span class="hljs-string">&quot;NETWORK_SOL&quot;</span>
+      ],
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;Crypto network.&quot;</span>
+    },
+    <span class="hljs-attr">&quot;address&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    }
+  },
+  <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;XFTCryptoAddress is a crypto address owned by XFT and used by customers\nfor depositing crypto.&quot;</span>
+}
+
+</code></pre>
+<p>XFTCryptoAddress is a crypto address owned by XFT and used by customers
+for depositing crypto.</p>
+<h3 id="properties-60">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>network</td>
+<td><a href="#schemanetwork">Network</a></td>
+<td>false</td>
+<td>none</td>
+<td>Crypto network.</td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocs_profile">Profile</h2>
+<p><a id="schemaprofile"></a>
+<a id="schema_Profile"></a>
+<a id="tocSprofile"></a>
+<a id="tocsprofile"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+  <span class="hljs-attr">&quot;properties&quot;</span>: {
+    <span class="hljs-attr">&quot;id&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    },
+    <span class="hljs-attr">&quot;nickname&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    },
+    <span class="hljs-attr">&quot;description&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    },
+    <span class="hljs-attr">&quot;profileType&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;enum&quot;</span>: [
+        <span class="hljs-string">&quot;NORMAL&quot;</span>,
+        <span class="hljs-string">&quot;DEFAULT&quot;</span>,
+        <span class="hljs-string">&quot;SUB_CUSTOMER&quot;</span>
+      ]
+    },
+    <span class="hljs-attr">&quot;kycId&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    },
+    <span class="hljs-attr">&quot;transferId&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    }
+  }
+}
+
+</code></pre>
+<h3 id="properties-61">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>nickname</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>profileType</td>
+<td><a href="#schemaprofiletype">ProfileType</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>kycId</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>transferId</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocs_profiledepositinstructions">ProfileDepositInstructions</h2>
+<p><a id="schemaprofiledepositinstructions"></a>
+<a id="schema_ProfileDepositInstructions"></a>
+<a id="tocSprofiledepositinstructions"></a>
+<a id="tocsprofiledepositinstructions"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+  <span class="hljs-attr">&quot;properties&quot;</span>: {
+    <span class="hljs-attr">&quot;profileId&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    },
+    <span class="hljs-attr">&quot;transferInstructions&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;array&quot;</span>,
+      <span class="hljs-attr">&quot;items&quot;</span>: {
+        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+        <span class="hljs-attr">&quot;properties&quot;</span>: {
+          <span class="hljs-attr">&quot;realm&quot;</span>: {
+            <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+            <span class="hljs-attr">&quot;enum&quot;</span>: [
+              <span class="hljs-string">&quot;FIAT&quot;</span>,
+              <span class="hljs-string">&quot;CRYPTO&quot;</span>
+            ],
+            <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;Realm (FIAT or CRYPTO).\n\n - FIAT: The traditional fiat banking world.\n - CRYPTO: The cryptocurrency world.&quot;</span>
+          },
+          <span class="hljs-attr">&quot;cryptoNetwork&quot;</span>: {
+            <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+            <span class="hljs-attr">&quot;enum&quot;</span>: [
+              <span class="hljs-string">&quot;NETWORK_BTC&quot;</span>,
+              <span class="hljs-string">&quot;NETWORK_ETH&quot;</span>,
+              <span class="hljs-string">&quot;NETWORK_BCH&quot;</span>,
+              <span class="hljs-string">&quot;NETWORK_LTC&quot;</span>,
+              <span class="hljs-string">&quot;NETWORK_SOL&quot;</span>
+            ],
+            <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;Crypto network.&quot;</span>
+          },
+          <span class="hljs-attr">&quot;autoConversion&quot;</span>: {
+            <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+            <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;True if this transfer will trigger PAX auto-conversion.&quot;</span>
+          },
+          <span class="hljs-attr">&quot;sendToBank&quot;</span>: {
+            <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+            <span class="hljs-attr">&quot;properties&quot;</span>: {
+              <span class="hljs-attr">&quot;memoId&quot;</span>: {
+                <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A unique personal code for routing the deposited funds at XFT.\nThe customer should put this string in the transfer memo field, for any type\nof transfer.&quot;</span>
+              },
+              <span class="hljs-attr">&quot;aba&quot;</span>: {
+                <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+                <span class="hljs-attr">&quot;properties&quot;</span>: {
+                  <span class="hljs-attr">&quot;memoId&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A unique personal code for routing the deposited funds at XFT.\nThe customer should put this string in the transfer memo field, for any type\nof transfer.&quot;</span>
+                  },
+                  <span class="hljs-attr">&quot;beneficiaryName&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT entity name.&quot;</span>
+                  },
+                  <span class="hljs-attr">&quot;accountNumber&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT account number.&quot;</span>
+                  },
+                  <span class="hljs-attr">&quot;routingNumber&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT routing number.&quot;</span>
+                  },
+                  <span class="hljs-attr">&quot;bankName&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The name of the XFT bank.&quot;</span>
+                  },
+                  <span class="hljs-attr">&quot;beneficiaryAddress&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+                    <span class="hljs-attr">&quot;properties&quot;</span>: {
+                      <span class="hljs-attr">&quot;country&quot;</span>: {
+                        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                        <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                        <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                      },
+                      <span class="hljs-attr">&quot;address1&quot;</span>: {
+                        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                        <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                        <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                      },
+                      <span class="hljs-attr">&quot;address2&quot;</span>: {
+                        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                        <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                        <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                      },
+                      <span class="hljs-attr">&quot;city&quot;</span>: {
+                        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                        <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                        <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                      },
+                      <span class="hljs-attr">&quot;province&quot;</span>: {
+                        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                        <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                        <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                      },
+                      <span class="hljs-attr">&quot;zipCode&quot;</span>: {
+                        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                        <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                        <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                      }
+                    },
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A mailing address.&quot;</span>,
+                    <span class="hljs-attr">&quot;required&quot;</span>: [
+                      <span class="hljs-string">&quot;country&quot;</span>
+                    ]
+                  },
+                  <span class="hljs-attr">&quot;bankAddress&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+                    <span class="hljs-attr">&quot;properties&quot;</span>: {
+                      <span class="hljs-attr">&quot;country&quot;</span>: {
+                        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                        <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                        <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                      },
+                      <span class="hljs-attr">&quot;address1&quot;</span>: {
+                        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                        <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                        <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                      },
+                      <span class="hljs-attr">&quot;address2&quot;</span>: {
+                        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                        <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                        <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                      },
+                      <span class="hljs-attr">&quot;city&quot;</span>: {
+                        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                        <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                        <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                      },
+                      <span class="hljs-attr">&quot;province&quot;</span>: {
+                        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                        <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                        <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                      },
+                      <span class="hljs-attr">&quot;zipCode&quot;</span>: {
+                        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                        <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                        <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                      }
+                    },
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A mailing address.&quot;</span>,
+                    <span class="hljs-attr">&quot;required&quot;</span>: [
+                      <span class="hljs-string">&quot;country&quot;</span>
+                    ]
+                  }
+                },
+                <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The ABA transfer instructions for depositing fiat to XFT from a US bank. Read-only.&quot;</span>,
+                <span class="hljs-attr">&quot;required&quot;</span>: [
+                  <span class="hljs-string">&quot;memoId&quot;</span>,
+                  <span class="hljs-string">&quot;beneficiaryName&quot;</span>,
+                  <span class="hljs-string">&quot;accountNumber&quot;</span>,
+                  <span class="hljs-string">&quot;routingNumber&quot;</span>,
+                  <span class="hljs-string">&quot;bankName&quot;</span>,
+                  <span class="hljs-string">&quot;beneficiaryAddress&quot;</span>,
+                  <span class="hljs-string">&quot;bankAddress&quot;</span>
+                ]
+              },
+              <span class="hljs-attr">&quot;swift&quot;</span>: {
+                <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+                <span class="hljs-attr">&quot;properties&quot;</span>: {
+                  <span class="hljs-attr">&quot;memoId&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A unique personal code for routing the deposited funds at XFT.\nThe customer should put this string in the transfer memo field, for any type\nof transfer.&quot;</span>
+                  },
+                  <span class="hljs-attr">&quot;beneficiaryName&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT entity name.&quot;</span>
+                  },
+                  <span class="hljs-attr">&quot;accountNumber&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT account number.&quot;</span>
+                  },
+                  <span class="hljs-attr">&quot;swiftBic&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The SWIFT Bank Identifier Code (BIC) of the XFT bank.&quot;</span>
+                  },
+                  <span class="hljs-attr">&quot;bankName&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The name of the XFT bank or intermediary.&quot;</span>
+                  },
+                  <span class="hljs-attr">&quot;beneficiaryAddress&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+                    <span class="hljs-attr">&quot;properties&quot;</span>: {
+                      <span class="hljs-attr">&quot;country&quot;</span>: {
+                        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                        <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                        <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                      },
+                      <span class="hljs-attr">&quot;address1&quot;</span>: {
+                        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                        <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                        <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                      },
+                      <span class="hljs-attr">&quot;address2&quot;</span>: {
+                        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                        <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                        <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                      },
+                      <span class="hljs-attr">&quot;city&quot;</span>: {
+                        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                        <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                        <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                      },
+                      <span class="hljs-attr">&quot;province&quot;</span>: {
+                        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                        <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                        <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                      },
+                      <span class="hljs-attr">&quot;zipCode&quot;</span>: {
+                        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                        <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                        <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                      }
+                    },
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A mailing address.&quot;</span>,
+                    <span class="hljs-attr">&quot;required&quot;</span>: [
+                      <span class="hljs-string">&quot;country&quot;</span>
+                    ]
+                  },
+                  <span class="hljs-attr">&quot;bankAddress&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+                    <span class="hljs-attr">&quot;properties&quot;</span>: {
+                      <span class="hljs-attr">&quot;country&quot;</span>: {
+                        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                        <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                        <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                      },
+                      <span class="hljs-attr">&quot;address1&quot;</span>: {
+                        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                        <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                        <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                      },
+                      <span class="hljs-attr">&quot;address2&quot;</span>: {
+                        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                        <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                        <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                      },
+                      <span class="hljs-attr">&quot;city&quot;</span>: {
+                        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                        <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                        <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                      },
+                      <span class="hljs-attr">&quot;province&quot;</span>: {
+                        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                        <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                        <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                      },
+                      <span class="hljs-attr">&quot;zipCode&quot;</span>: {
+                        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                        <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                        <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                      }
+                    },
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A mailing address.&quot;</span>,
+                    <span class="hljs-attr">&quot;required&quot;</span>: [
+                      <span class="hljs-string">&quot;country&quot;</span>
+                    ]
+                  }
+                },
+                <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The SWIFT transfer instructions for depositing fiat to XFT from a non-US bank. Read-only.&quot;</span>,
+                <span class="hljs-attr">&quot;required&quot;</span>: [
+                  <span class="hljs-string">&quot;memoId&quot;</span>,
+                  <span class="hljs-string">&quot;beneficiaryName&quot;</span>,
+                  <span class="hljs-string">&quot;accountNumber&quot;</span>,
+                  <span class="hljs-string">&quot;swiftBic&quot;</span>,
+                  <span class="hljs-string">&quot;bankName&quot;</span>,
+                  <span class="hljs-string">&quot;beneficiaryAddress&quot;</span>
+                ]
+              },
+              <span class="hljs-attr">&quot;sen&quot;</span>: {
+                <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+                <span class="hljs-attr">&quot;properties&quot;</span>: {
+                  <span class="hljs-attr">&quot;memoId&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A unique personal code for routing the deposited funds at XFT.\nThe customer should put this string in the transfer memo field, for any type\nof transfer.&quot;</span>
+                  },
+                  <span class="hljs-attr">&quot;senName&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT SEN network name.&quot;</span>
+                  },
+                  <span class="hljs-attr">&quot;accountNumber&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT account number.&quot;</span>
+                  }
+                },
+                <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The SEN transfer instructions for depositing fiat to XFT. Read-only.&quot;</span>,
+                <span class="hljs-attr">&quot;required&quot;</span>: [
+                  <span class="hljs-string">&quot;memoId&quot;</span>,
+                  <span class="hljs-string">&quot;senName&quot;</span>,
+                  <span class="hljs-string">&quot;accountNumber&quot;</span>
+                ]
+              },
+              <span class="hljs-attr">&quot;signet&quot;</span>: {
+                <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+                <span class="hljs-attr">&quot;properties&quot;</span>: {
+                  <span class="hljs-attr">&quot;memoId&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A unique personal code for routing the deposited funds at XFT.\nThe customer should use `memo_id` in the transfer-memo field for all transfer types.&quot;</span>
+                  },
+                  <span class="hljs-attr">&quot;beneficiaryName&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT entity name.&quot;</span>
+                  },
+                  <span class="hljs-attr">&quot;walletAddress&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT wallet address.&quot;</span>
+                  }
+                },
+                <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The SIGNET transfer instructions for depositing fiat to XFT. Read-only.&quot;</span>,
+                <span class="hljs-attr">&quot;required&quot;</span>: [
+                  <span class="hljs-string">&quot;memoId&quot;</span>,
+                  <span class="hljs-string">&quot;beneficiaryName&quot;</span>,
+                  <span class="hljs-string">&quot;walletAddress&quot;</span>
+                ]
+              },
+              <span class="hljs-attr">&quot;cbit&quot;</span>: {
+                <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+                <span class="hljs-attr">&quot;properties&quot;</span>: {
+                  <span class="hljs-attr">&quot;memoId&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A unique personal code for routing the deposited funds at XFT.\nThe customer should use `memo_id` in the transfer-memo field for all transfer types.&quot;</span>
+                  },
+                  <span class="hljs-attr">&quot;beneficiaryName&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT entity name.&quot;</span>
+                  },
+                  <span class="hljs-attr">&quot;walletAddress&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT wallet address.&quot;</span>
+                  }
+                },
+                <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The CBIT transfer instructions for depositing to XFT. Read-only.&quot;</span>,
+                <span class="hljs-attr">&quot;required&quot;</span>: [
+                  <span class="hljs-string">&quot;memoId&quot;</span>,
+                  <span class="hljs-string">&quot;beneficiaryName&quot;</span>,
+                  <span class="hljs-string">&quot;walletAddress&quot;</span>
+                ]
+              },
+              <span class="hljs-attr">&quot;intrabank&quot;</span>: {
+                <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+                <span class="hljs-attr">&quot;properties&quot;</span>: {
+                  <span class="hljs-attr">&quot;memoId&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A unique personal code for routing the deposited funds at XFT.\nThe customer should use `memo_id` in the transfer-memo field for all transfer types.&quot;</span>
+                  },
+                  <span class="hljs-attr">&quot;beneficiaryName&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT entity name.&quot;</span>
+                  },
+                  <span class="hljs-attr">&quot;accountNumber&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT account number/identifier.&quot;</span>
+                  },
+                  <span class="hljs-attr">&quot;type&quot;</span>: {
+                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                    <span class="hljs-attr">&quot;enum&quot;</span>: [
+                      <span class="hljs-string">&quot;ABA&quot;</span>,
+                      <span class="hljs-string">&quot;SWIFT&quot;</span>,
+                      <span class="hljs-string">&quot;SEN&quot;</span>,
+                      <span class="hljs-string">&quot;ACH&quot;</span>,
+                      <span class="hljs-string">&quot;SIGNET&quot;</span>,
+                      <span class="hljs-string">&quot;CBIT&quot;</span>
+                    ],
+                    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The bank account type: The kind of transfer XFT will perform for a withdrawal.\n\n - ABA: A U.S. domestic wire destination.\n - SWIFT: An international wire destination.\n - SEN: A destination on the \&quot;Silvergate Exchange Network\&quot; (between Silvergate accounts).\n - ACH: ACH\n - SIGNET: A destination on the Signet Platform (between Signature accounts).\n - CBIT: A destination on the CBIT Network (between Customers Bank accounts).&quot;</span>
+                  }
+                },
+                <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The intra-bank deposit instructions for depositing to XFT. Intra-bank includes CBIT. Read-only.&quot;</span>,
+                <span class="hljs-attr">&quot;required&quot;</span>: [
+                  <span class="hljs-string">&quot;memoId&quot;</span>,
+                  <span class="hljs-string">&quot;beneficiaryName&quot;</span>,
+                  <span class="hljs-string">&quot;accountNumber&quot;</span>,
+                  <span class="hljs-string">&quot;type&quot;</span>
+                ]
+              }
+            },
+            <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;XFTBankAccount is a bank account owned by XFT and used by customers for\ndepositing fiat. Read-only.&quot;</span>
+          },
+          <span class="hljs-attr">&quot;sendToAddress&quot;</span>: {
+            <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+            <span class="hljs-attr">&quot;properties&quot;</span>: {
+              <span class="hljs-attr">&quot;network&quot;</span>: {
+                <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                <span class="hljs-attr">&quot;enum&quot;</span>: [
+                  <span class="hljs-string">&quot;NETWORK_BTC&quot;</span>,
+                  <span class="hljs-string">&quot;NETWORK_ETH&quot;</span>,
+                  <span class="hljs-string">&quot;NETWORK_BCH&quot;</span>,
+                  <span class="hljs-string">&quot;NETWORK_LTC&quot;</span>,
+                  <span class="hljs-string">&quot;NETWORK_SOL&quot;</span>
+                ],
+                <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;Crypto network.&quot;</span>
+              },
+              <span class="hljs-attr">&quot;address&quot;</span>: {
+                <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+              }
+            },
+            <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;XFTCryptoAddress is a crypto address owned by XFT and used by customers\nfor depositing crypto.&quot;</span>
+          }
+        }
+      }
+    }
+  },
+  <span class="hljs-attr">&quot;title&quot;</span>: <span class="hljs-string">&quot;Deposit instructions for a specific profile&quot;</span>
+}
+
+</code></pre>
+<p>Deposit instructions for a specific profile</p>
+<h3 id="properties-62">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>profileId</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>transferInstructions</td>
+<td>[<a href="#schematransferinstructions">TransferInstructions</a>]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocs_profiletype">ProfileType</h2>
+<p><a id="schemaprofiletype"></a>
+<a id="schema_ProfileType"></a>
+<a id="tocSprofiletype"></a>
+<a id="tocsprofiletype"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;enum&quot;</span>: [
+    <span class="hljs-string">&quot;NORMAL&quot;</span>,
+    <span class="hljs-string">&quot;DEFAULT&quot;</span>,
+    <span class="hljs-string">&quot;SUB_CUSTOMER&quot;</span>
+  ]
+}
+
+</code></pre>
+<h3 id="properties-63">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h4 id="enumerated-values-14">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>NORMAL</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>DEFAULT</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>SUB_CUSTOMER</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocs_realm">Realm</h2>
+<p><a id="schemarealm"></a>
+<a id="schema_Realm"></a>
+<a id="tocSrealm"></a>
+<a id="tocsrealm"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;enum&quot;</span>: [
+    <span class="hljs-string">&quot;FIAT&quot;</span>,
+    <span class="hljs-string">&quot;CRYPTO&quot;</span>
+  ],
+  <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;Realm (FIAT or CRYPTO).\n\n - FIAT: The traditional fiat banking world.\n - CRYPTO: The cryptocurrency world.&quot;</span>
+}
+
+</code></pre>
+<p>Realm (FIAT or CRYPTO).</p>
+<ul>
+<li>FIAT: The traditional fiat banking world.</li>
+<li>CRYPTO: The cryptocurrency world.</li>
+</ul>
+<h3 id="properties-64">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Realm (FIAT or CRYPTO).<br /><br /> - FIAT: The traditional fiat banking world.<br /> - CRYPTO: The cryptocurrency world.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="enumerated-values-15">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>FIAT</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>CRYPTO</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocs_sendepositinstructions">SENDepositInstructions</h2>
+<p><a id="schemasendepositinstructions"></a>
+<a id="schema_SENDepositInstructions"></a>
+<a id="tocSsendepositinstructions"></a>
+<a id="tocssendepositinstructions"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+  <span class="hljs-attr">&quot;properties&quot;</span>: {
+    <span class="hljs-attr">&quot;memoId&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A unique personal code for routing the deposited funds at XFT.\nThe customer should put this string in the transfer memo field, for any type\nof transfer.&quot;</span>
+    },
+    <span class="hljs-attr">&quot;senName&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT SEN network name.&quot;</span>
+    },
+    <span class="hljs-attr">&quot;accountNumber&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT account number.&quot;</span>
+    }
+  },
+  <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The SEN transfer instructions for depositing fiat to XFT. Read-only.&quot;</span>,
+  <span class="hljs-attr">&quot;required&quot;</span>: [
+    <span class="hljs-string">&quot;memoId&quot;</span>,
+    <span class="hljs-string">&quot;senName&quot;</span>,
+    <span class="hljs-string">&quot;accountNumber&quot;</span>
+  ]
+}
+
+</code></pre>
+<p>The SEN transfer instructions for depositing fiat to XFT. Read-only.</p>
+<h3 id="properties-65">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>memoId</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>A unique personal code for routing the deposited funds at XFT.<br />The customer should put this string in the transfer memo field, for any type<br />of transfer.</td>
+</tr>
+<tr>
+<td>senName</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>The XFT SEN network name.</td>
+</tr>
+<tr>
+<td>accountNumber</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>The XFT account number.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocs_senwithdrawalinstructions">SENWithdrawalInstructions</h2>
+<p><a id="schemasenwithdrawalinstructions"></a>
+<a id="schema_SENWithdrawalInstructions"></a>
+<a id="tocSsenwithdrawalinstructions"></a>
+<a id="tocssenwithdrawalinstructions"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+  <span class="hljs-attr">&quot;properties&quot;</span>: {
+    <span class="hljs-attr">&quot;senName&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The SEN network name.&quot;</span>
+    },
+    <span class="hljs-attr">&quot;accountNumber&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The account number.&quot;</span>,
+      <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">20</span>,
+      <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z]+$&quot;</span>
+    }
+  },
+  <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;Instructions for a Silvergate Exchange Network (SEN) withdrawal.&quot;</span>,
+  <span class="hljs-attr">&quot;required&quot;</span>: [
+    <span class="hljs-string">&quot;senName&quot;</span>,
+    <span class="hljs-string">&quot;accountNumber&quot;</span>
+  ]
+}
+
+</code></pre>
+<p>Instructions for a Silvergate Exchange Network (SEN) withdrawal.</p>
+<h3 id="properties-66">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>senName</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>The SEN network name.</td>
+</tr>
+<tr>
+<td>accountNumber</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>The account number.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocs_signetdepositinstructions">SIGNETDepositInstructions</h2>
+<p><a id="schemasignetdepositinstructions"></a>
+<a id="schema_SIGNETDepositInstructions"></a>
+<a id="tocSsignetdepositinstructions"></a>
+<a id="tocssignetdepositinstructions"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+  <span class="hljs-attr">&quot;properties&quot;</span>: {
+    <span class="hljs-attr">&quot;memoId&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A unique personal code for routing the deposited funds at XFT.\nThe customer should use `memo_id` in the transfer-memo field for all transfer types.&quot;</span>
+    },
+    <span class="hljs-attr">&quot;beneficiaryName&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT entity name.&quot;</span>
+    },
+    <span class="hljs-attr">&quot;walletAddress&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT wallet address.&quot;</span>
+    }
+  },
+  <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The SIGNET transfer instructions for depositing fiat to XFT. Read-only.&quot;</span>,
+  <span class="hljs-attr">&quot;required&quot;</span>: [
+    <span class="hljs-string">&quot;memoId&quot;</span>,
+    <span class="hljs-string">&quot;beneficiaryName&quot;</span>,
+    <span class="hljs-string">&quot;walletAddress&quot;</span>
+  ]
+}
+
+</code></pre>
+<p>The SIGNET transfer instructions for depositing fiat to XFT. Read-only.</p>
+<h3 id="properties-67">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>memoId</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>A unique personal code for routing the deposited funds at XFT.<br />The customer should use <code>memo_id</code> in the transfer-memo field for all transfer types.</td>
+</tr>
+<tr>
+<td>beneficiaryName</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>The XFT entity name.</td>
+</tr>
+<tr>
+<td>walletAddress</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>The XFT wallet address.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocs_signetwithdrawalinstructions">SIGNETWithdrawalInstructions</h2>
+<p><a id="schemasignetwithdrawalinstructions"></a>
+<a id="schema_SIGNETWithdrawalInstructions"></a>
+<a id="tocSsignetwithdrawalinstructions"></a>
+<a id="tocssignetwithdrawalinstructions"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+  <span class="hljs-attr">&quot;properties&quot;</span>: {
+    <span class="hljs-attr">&quot;beneficiaryName&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The withdrawal beneficiary.&quot;</span>
+    },
+    <span class="hljs-attr">&quot;walletAddress&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The wallet address.&quot;</span>
+    }
+  },
+  <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;Instructions for a SIGNATURE Network (SIGNET) withdrawal.&quot;</span>,
+  <span class="hljs-attr">&quot;required&quot;</span>: [
+    <span class="hljs-string">&quot;beneficiaryName&quot;</span>,
+    <span class="hljs-string">&quot;walletAddress&quot;</span>
+  ]
+}
+
+</code></pre>
+<p>Instructions for a SIGNATURE Network (SIGNET) withdrawal.</p>
+<h3 id="properties-68">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>beneficiaryName</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>The withdrawal beneficiary.</td>
+</tr>
+<tr>
+<td>walletAddress</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>The wallet address.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocs_soldepositinstructions">SOLDepositInstructions</h2>
+<p><a id="schemasoldepositinstructions"></a>
+<a id="schema_SOLDepositInstructions"></a>
+<a id="tocSsoldepositinstructions"></a>
+<a id="tocssoldepositinstructions"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+  <span class="hljs-attr">&quot;properties&quot;</span>: {
+    <span class="hljs-attr">&quot;depositAddress&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    }
+  }
+}
+
+</code></pre>
+<h3 id="properties-69">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>depositAddress</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocs_swiftdepositinstructions">SWIFTDepositInstructions</h2>
+<p><a id="schemaswiftdepositinstructions"></a>
+<a id="schema_SWIFTDepositInstructions"></a>
+<a id="tocSswiftdepositinstructions"></a>
+<a id="tocsswiftdepositinstructions"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+  <span class="hljs-attr">&quot;properties&quot;</span>: {
+    <span class="hljs-attr">&quot;memoId&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A unique personal code for routing the deposited funds at XFT.\nThe customer should put this string in the transfer memo field, for any type\nof transfer.&quot;</span>
+    },
+    <span class="hljs-attr">&quot;beneficiaryName&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT entity name.&quot;</span>
+    },
+    <span class="hljs-attr">&quot;accountNumber&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT account number.&quot;</span>
+    },
+    <span class="hljs-attr">&quot;swiftBic&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The SWIFT Bank Identifier Code (BIC) of the XFT bank.&quot;</span>
+    },
+    <span class="hljs-attr">&quot;bankName&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The name of the XFT bank or intermediary.&quot;</span>
+    },
+    <span class="hljs-attr">&quot;beneficiaryAddress&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+      <span class="hljs-attr">&quot;properties&quot;</span>: {
+        <span class="hljs-attr">&quot;country&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+          <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+        },
+        <span class="hljs-attr">&quot;address1&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+          <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+        },
+        <span class="hljs-attr">&quot;address2&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+          <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+        },
+        <span class="hljs-attr">&quot;city&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+          <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+        },
+        <span class="hljs-attr">&quot;province&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+          <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+        },
+        <span class="hljs-attr">&quot;zipCode&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+          <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+        }
+      },
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A mailing address.&quot;</span>,
+      <span class="hljs-attr">&quot;required&quot;</span>: [
+        <span class="hljs-string">&quot;country&quot;</span>
+      ]
+    },
+    <span class="hljs-attr">&quot;bankAddress&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+      <span class="hljs-attr">&quot;properties&quot;</span>: {
+        <span class="hljs-attr">&quot;country&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+          <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+        },
+        <span class="hljs-attr">&quot;address1&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+          <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+        },
+        <span class="hljs-attr">&quot;address2&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+          <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+        },
+        <span class="hljs-attr">&quot;city&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+          <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+        },
+        <span class="hljs-attr">&quot;province&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+          <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+        },
+        <span class="hljs-attr">&quot;zipCode&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+          <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+        }
+      },
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A mailing address.&quot;</span>,
+      <span class="hljs-attr">&quot;required&quot;</span>: [
+        <span class="hljs-string">&quot;country&quot;</span>
+      ]
+    }
+  },
+  <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The SWIFT transfer instructions for depositing fiat to XFT from a non-US bank. Read-only.&quot;</span>,
+  <span class="hljs-attr">&quot;required&quot;</span>: [
+    <span class="hljs-string">&quot;memoId&quot;</span>,
+    <span class="hljs-string">&quot;beneficiaryName&quot;</span>,
+    <span class="hljs-string">&quot;accountNumber&quot;</span>,
+    <span class="hljs-string">&quot;swiftBic&quot;</span>,
+    <span class="hljs-string">&quot;bankName&quot;</span>,
+    <span class="hljs-string">&quot;beneficiaryAddress&quot;</span>
+  ]
+}
+
+</code></pre>
+<p>The SWIFT transfer instructions for depositing fiat to XFT from a non-US bank. Read-only.</p>
+<h3 id="properties-70">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>memoId</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>A unique personal code for routing the deposited funds at XFT.<br />The customer should put this string in the transfer memo field, for any type<br />of transfer.</td>
+</tr>
+<tr>
+<td>beneficiaryName</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>The XFT entity name.</td>
+</tr>
+<tr>
+<td>accountNumber</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>The XFT account number.</td>
+</tr>
+<tr>
+<td>swiftBic</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>The SWIFT Bank Identifier Code (BIC) of the XFT bank.</td>
+</tr>
+<tr>
+<td>bankName</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>The name of the XFT bank or intermediary.</td>
+</tr>
+<tr>
+<td>beneficiaryAddress</td>
+<td><a href="#schemamailingaddress">MailingAddress</a></td>
+<td>true</td>
+<td>none</td>
+<td>A mailing address.</td>
+</tr>
+<tr>
+<td>bankAddress</td>
+<td><a href="#schemamailingaddress">MailingAddress</a></td>
+<td>false</td>
+<td>none</td>
+<td>A mailing address.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocs_swiftwithdrawalinstructions">SWIFTWithdrawalInstructions</h2>
+<p><a id="schemaswiftwithdrawalinstructions"></a>
+<a id="schema_SWIFTWithdrawalInstructions"></a>
+<a id="tocSswiftwithdrawalinstructions"></a>
+<a id="tocsswiftwithdrawalinstructions"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+  <span class="hljs-attr">&quot;properties&quot;</span>: {
+    <span class="hljs-attr">&quot;beneficiaryName&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The name of the customer to credit.&quot;</span>,
+      <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+      <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+    },
+    <span class="hljs-attr">&quot;accountNumber&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The account number.&quot;</span>,
+      <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+      <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z]+$&quot;</span>
+    },
+    <span class="hljs-attr">&quot;swiftBic&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The SWIFT Bank Identifier Code (BIC).&quot;</span>,
+      <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">11</span>,
+      <span class="hljs-attr">&quot;minLength&quot;</span>: <span class="hljs-number">8</span>,
+      <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z]+$&quot;</span>
+    },
+    <span class="hljs-attr">&quot;bankName&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The name of the bank.&quot;</span>,
+      <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+      <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+    },
+    <span class="hljs-attr">&quot;beneficiaryAddress&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+      <span class="hljs-attr">&quot;properties&quot;</span>: {
+        <span class="hljs-attr">&quot;country&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+          <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+        },
+        <span class="hljs-attr">&quot;address1&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+          <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+        },
+        <span class="hljs-attr">&quot;address2&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+          <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+        },
+        <span class="hljs-attr">&quot;city&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+          <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+        },
+        <span class="hljs-attr">&quot;province&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+          <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+        },
+        <span class="hljs-attr">&quot;zipCode&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+          <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+        }
+      },
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A mailing address.&quot;</span>,
+      <span class="hljs-attr">&quot;required&quot;</span>: [
+        <span class="hljs-string">&quot;country&quot;</span>
+      ]
+    },
+    <span class="hljs-attr">&quot;forFurtherCredit&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;Additional account ID. Optional.&quot;</span>,
+      <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">105</span>,
+      <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]*$&quot;</span>
+    },
+    <span class="hljs-attr">&quot;intermediary&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+      <span class="hljs-attr">&quot;properties&quot;</span>: {
+        <span class="hljs-attr">&quot;name&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The name of the intermediary bank.&quot;</span>,
+          <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+          <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+        },
+        <span class="hljs-attr">&quot;swiftBic&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The SWIFT Bank Identifier Code (BIC) of the intermediary bank.&quot;</span>,
+          <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">11</span>,
+          <span class="hljs-attr">&quot;minLength&quot;</span>: <span class="hljs-number">8</span>,
+          <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z]+$&quot;</span>
+        },
+        <span class="hljs-attr">&quot;address&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;title&quot;</span>: <span class="hljs-string">&quot;The mailing address of the intermediary bank in one text box.\nAll printable characters. Synonymous to [\\x20-\\x7e]&quot;</span>,
+          <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">105</span>
+        }
+      },
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;An intermediary bank for SWIFT withdrawals.&quot;</span>,
+      <span class="hljs-attr">&quot;required&quot;</span>: [
+        <span class="hljs-string">&quot;name&quot;</span>,
+        <span class="hljs-string">&quot;swiftBic&quot;</span>
+      ]
+    }
+  },
+  <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;Instructions for a SWIFT wire withdrawal.&quot;</span>,
+  <span class="hljs-attr">&quot;required&quot;</span>: [
+    <span class="hljs-string">&quot;beneficiaryName&quot;</span>,
+    <span class="hljs-string">&quot;accountNumber&quot;</span>,
+    <span class="hljs-string">&quot;swiftBic&quot;</span>,
+    <span class="hljs-string">&quot;bankName&quot;</span>,
+    <span class="hljs-string">&quot;beneficiaryAddress&quot;</span>
+  ]
+}
+
+</code></pre>
+<p>Instructions for a SWIFT wire withdrawal.</p>
+<h3 id="properties-71">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>beneficiaryName</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>The name of the customer to credit.</td>
+</tr>
+<tr>
+<td>accountNumber</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>The account number.</td>
+</tr>
+<tr>
+<td>swiftBic</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>The SWIFT Bank Identifier Code (BIC).</td>
+</tr>
+<tr>
+<td>bankName</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>The name of the bank.</td>
+</tr>
+<tr>
+<td>beneficiaryAddress</td>
+<td><a href="#schemamailingaddress">MailingAddress</a></td>
+<td>true</td>
+<td>none</td>
+<td>A mailing address.</td>
+</tr>
+<tr>
+<td>forFurtherCredit</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Additional account ID. Optional.</td>
+</tr>
+<tr>
+<td>intermediary</td>
+<td><a href="#schemaswiftwithdrawalinstructionsintermediary">SWIFTWithdrawalInstructionsIntermediary</a></td>
+<td>false</td>
+<td>none</td>
+<td>An intermediary bank for SWIFT withdrawals.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocs_secondarystatus">SecondaryStatus</h2>
+<p><a id="schemasecondarystatus"></a>
+<a id="schema_SecondaryStatus"></a>
+<a id="tocSsecondarystatus"></a>
+<a id="tocssecondarystatus"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+  <span class="hljs-attr">&quot;properties&quot;</span>: {
+    <span class="hljs-attr">&quot;name&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;enum&quot;</span>: [
+        <span class="hljs-string">&quot;TRAVEL_RULE_INFO_REQUESTED&quot;</span>
+      ],
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;Identifier for secondary status.\n\n - TRAVEL_RULE_INFO_REQUESTED: Travel rule information is required to continue processing the transfer.&quot;</span>
+    },
+    <span class="hljs-attr">&quot;detail&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;Additional information about the current status of the transfer (e.g. if information is missing).&quot;</span>
+    }
+  },
+  <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;Secondary status for the transfer, used for more granular explanation of the transfer status.&quot;</span>
+}
+
+</code></pre>
+<p>Secondary status for the transfer, used for more granular explanation of the transfer status.</p>
+<h3 id="properties-72">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="#schemasecondarystatusname">SecondaryStatusName</a></td>
+<td>false</td>
+<td>none</td>
+<td>Identifier for secondary status.<br /><br /> - TRAVEL_RULE_INFO_REQUESTED: Travel rule information is required to continue processing the transfer.</td>
+</tr>
+<tr>
+<td>detail</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Additional information about the current status of the transfer (e.g. if information is missing).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocs_secondarystatusname">SecondaryStatusName</h2>
+<p><a id="schemasecondarystatusname"></a>
+<a id="schema_SecondaryStatusName"></a>
+<a id="tocSsecondarystatusname"></a>
+<a id="tocssecondarystatusname"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;enum&quot;</span>: [
+    <span class="hljs-string">&quot;TRAVEL_RULE_INFO_REQUESTED&quot;</span>
+  ],
+  <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;Identifier for secondary status.\n\n - TRAVEL_RULE_INFO_REQUESTED: Travel rule information is required to continue processing the transfer.&quot;</span>
+}
+
+</code></pre>
+<p>Identifier for secondary status.</p>
+<ul>
+<li>TRAVEL_RULE_INFO_REQUESTED: Travel rule information is required to continue processing the transfer.</li>
+</ul>
+<h3 id="properties-73">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Identifier for secondary status.<br /><br /> - TRAVEL_RULE_INFO_REQUESTED: Travel rule information is required to continue processing the transfer.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="enumerated-values-16">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>TRAVEL_RULE_INFO_REQUESTED</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocs_timestamprange">TimestampRange</h2>
+<p><a id="schematimestamprange"></a>
+<a id="schema_TimestampRange"></a>
+<a id="tocStimestamprange"></a>
+<a id="tocstimestamprange"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+  <span class="hljs-attr">&quot;properties&quot;</span>: {
+    <span class="hljs-attr">&quot;begin&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;format&quot;</span>: <span class="hljs-string">&quot;date-time&quot;</span>,
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;Only return records after this timestamp, inclusive. RFC3339 format, like `2006-01-02T15:04:05Z`.&quot;</span>
+    },
+    <span class="hljs-attr">&quot;end&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;format&quot;</span>: <span class="hljs-string">&quot;date-time&quot;</span>,
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;Only return records before this timestamp, inclusive. RFC3339 format, like `2006-01-02T15:04:05Z`.&quot;</span>
+    }
+  }
+}
+
+</code></pre>
+<h3 id="properties-74">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>begin</td>
+<td>string(date-time)</td>
+<td>false</td>
+<td>none</td>
+<td>Only return records after this timestamp, inclusive. RFC3339 format, like <code>2006-01-02T15:04:05Z</code>.</td>
+</tr>
+<tr>
+<td>end</td>
+<td>string(date-time)</td>
+<td>false</td>
+<td>none</td>
+<td>Only return records before this timestamp, inclusive. RFC3339 format, like <code>2006-01-02T15:04:05Z</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocs_transferinstructions">TransferInstructions</h2>
+<p><a id="schematransferinstructions"></a>
+<a id="schema_TransferInstructions"></a>
+<a id="tocStransferinstructions"></a>
+<a id="tocstransferinstructions"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+  <span class="hljs-attr">&quot;properties&quot;</span>: {
+    <span class="hljs-attr">&quot;realm&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;enum&quot;</span>: [
+        <span class="hljs-string">&quot;FIAT&quot;</span>,
+        <span class="hljs-string">&quot;CRYPTO&quot;</span>
+      ],
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;Realm (FIAT or CRYPTO).\n\n - FIAT: The traditional fiat banking world.\n - CRYPTO: The cryptocurrency world.&quot;</span>
+    },
+    <span class="hljs-attr">&quot;cryptoNetwork&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;enum&quot;</span>: [
+        <span class="hljs-string">&quot;NETWORK_BTC&quot;</span>,
+        <span class="hljs-string">&quot;NETWORK_ETH&quot;</span>,
+        <span class="hljs-string">&quot;NETWORK_BCH&quot;</span>,
+        <span class="hljs-string">&quot;NETWORK_LTC&quot;</span>,
+        <span class="hljs-string">&quot;NETWORK_SOL&quot;</span>
+      ],
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;Crypto network.&quot;</span>
+    },
+    <span class="hljs-attr">&quot;autoConversion&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;True if this transfer will trigger PAX auto-conversion.&quot;</span>
+    },
+    <span class="hljs-attr">&quot;sendToBank&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+      <span class="hljs-attr">&quot;properties&quot;</span>: {
+        <span class="hljs-attr">&quot;memoId&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A unique personal code for routing the deposited funds at XFT.\nThe customer should put this string in the transfer memo field, for any type\nof transfer.&quot;</span>
+        },
+        <span class="hljs-attr">&quot;aba&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+          <span class="hljs-attr">&quot;properties&quot;</span>: {
+            <span class="hljs-attr">&quot;memoId&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A unique personal code for routing the deposited funds at XFT.\nThe customer should put this string in the transfer memo field, for any type\nof transfer.&quot;</span>
+            },
+            <span class="hljs-attr">&quot;beneficiaryName&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT entity name.&quot;</span>
+            },
+            <span class="hljs-attr">&quot;accountNumber&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT account number.&quot;</span>
+            },
+            <span class="hljs-attr">&quot;routingNumber&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT routing number.&quot;</span>
+            },
+            <span class="hljs-attr">&quot;bankName&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The name of the XFT bank.&quot;</span>
+            },
+            <span class="hljs-attr">&quot;beneficiaryAddress&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+              <span class="hljs-attr">&quot;properties&quot;</span>: {
+                <span class="hljs-attr">&quot;country&quot;</span>: {
+                  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                  <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                  <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                },
+                <span class="hljs-attr">&quot;address1&quot;</span>: {
+                  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                  <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                  <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                },
+                <span class="hljs-attr">&quot;address2&quot;</span>: {
+                  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                  <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                  <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                },
+                <span class="hljs-attr">&quot;city&quot;</span>: {
+                  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                  <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                  <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                },
+                <span class="hljs-attr">&quot;province&quot;</span>: {
+                  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                  <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                  <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                },
+                <span class="hljs-attr">&quot;zipCode&quot;</span>: {
+                  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                  <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                  <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                }
+              },
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A mailing address.&quot;</span>,
+              <span class="hljs-attr">&quot;required&quot;</span>: [
+                <span class="hljs-string">&quot;country&quot;</span>
+              ]
+            },
+            <span class="hljs-attr">&quot;bankAddress&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+              <span class="hljs-attr">&quot;properties&quot;</span>: {
+                <span class="hljs-attr">&quot;country&quot;</span>: {
+                  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                  <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                  <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                },
+                <span class="hljs-attr">&quot;address1&quot;</span>: {
+                  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                  <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                  <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                },
+                <span class="hljs-attr">&quot;address2&quot;</span>: {
+                  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                  <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                  <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                },
+                <span class="hljs-attr">&quot;city&quot;</span>: {
+                  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                  <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                  <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                },
+                <span class="hljs-attr">&quot;province&quot;</span>: {
+                  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                  <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                  <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                },
+                <span class="hljs-attr">&quot;zipCode&quot;</span>: {
+                  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                  <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                  <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                }
+              },
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A mailing address.&quot;</span>,
+              <span class="hljs-attr">&quot;required&quot;</span>: [
+                <span class="hljs-string">&quot;country&quot;</span>
+              ]
+            }
+          },
+          <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The ABA transfer instructions for depositing fiat to XFT from a US bank. Read-only.&quot;</span>,
+          <span class="hljs-attr">&quot;required&quot;</span>: [
+            <span class="hljs-string">&quot;memoId&quot;</span>,
+            <span class="hljs-string">&quot;beneficiaryName&quot;</span>,
+            <span class="hljs-string">&quot;accountNumber&quot;</span>,
+            <span class="hljs-string">&quot;routingNumber&quot;</span>,
+            <span class="hljs-string">&quot;bankName&quot;</span>,
+            <span class="hljs-string">&quot;beneficiaryAddress&quot;</span>,
+            <span class="hljs-string">&quot;bankAddress&quot;</span>
+          ]
+        },
+        <span class="hljs-attr">&quot;swift&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+          <span class="hljs-attr">&quot;properties&quot;</span>: {
+            <span class="hljs-attr">&quot;memoId&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A unique personal code for routing the deposited funds at XFT.\nThe customer should put this string in the transfer memo field, for any type\nof transfer.&quot;</span>
+            },
+            <span class="hljs-attr">&quot;beneficiaryName&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT entity name.&quot;</span>
+            },
+            <span class="hljs-attr">&quot;accountNumber&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT account number.&quot;</span>
+            },
+            <span class="hljs-attr">&quot;swiftBic&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The SWIFT Bank Identifier Code (BIC) of the XFT bank.&quot;</span>
+            },
+            <span class="hljs-attr">&quot;bankName&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The name of the XFT bank or intermediary.&quot;</span>
+            },
+            <span class="hljs-attr">&quot;beneficiaryAddress&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+              <span class="hljs-attr">&quot;properties&quot;</span>: {
+                <span class="hljs-attr">&quot;country&quot;</span>: {
+                  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                  <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                  <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                },
+                <span class="hljs-attr">&quot;address1&quot;</span>: {
+                  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                  <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                  <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                },
+                <span class="hljs-attr">&quot;address2&quot;</span>: {
+                  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                  <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                  <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                },
+                <span class="hljs-attr">&quot;city&quot;</span>: {
+                  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                  <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                  <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                },
+                <span class="hljs-attr">&quot;province&quot;</span>: {
+                  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                  <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                  <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                },
+                <span class="hljs-attr">&quot;zipCode&quot;</span>: {
+                  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                  <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                  <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                }
+              },
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A mailing address.&quot;</span>,
+              <span class="hljs-attr">&quot;required&quot;</span>: [
+                <span class="hljs-string">&quot;country&quot;</span>
+              ]
+            },
+            <span class="hljs-attr">&quot;bankAddress&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+              <span class="hljs-attr">&quot;properties&quot;</span>: {
+                <span class="hljs-attr">&quot;country&quot;</span>: {
+                  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                  <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                  <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                },
+                <span class="hljs-attr">&quot;address1&quot;</span>: {
+                  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                  <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                  <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                },
+                <span class="hljs-attr">&quot;address2&quot;</span>: {
+                  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                  <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                  <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                },
+                <span class="hljs-attr">&quot;city&quot;</span>: {
+                  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                  <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                  <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                },
+                <span class="hljs-attr">&quot;province&quot;</span>: {
+                  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                  <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                  <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                },
+                <span class="hljs-attr">&quot;zipCode&quot;</span>: {
+                  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                  <span class="hljs-attr">&quot;maxLength&quot;</span>: <span class="hljs-number">35</span>,
+                  <span class="hljs-attr">&quot;pattern&quot;</span>: <span class="hljs-string">&quot;^[0-9A-Za-z /?:().,&amp;&#x27;+-]+$&quot;</span>
+                }
+              },
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A mailing address.&quot;</span>,
+              <span class="hljs-attr">&quot;required&quot;</span>: [
+                <span class="hljs-string">&quot;country&quot;</span>
+              ]
+            }
+          },
+          <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The SWIFT transfer instructions for depositing fiat to XFT from a non-US bank. Read-only.&quot;</span>,
+          <span class="hljs-attr">&quot;required&quot;</span>: [
+            <span class="hljs-string">&quot;memoId&quot;</span>,
+            <span class="hljs-string">&quot;beneficiaryName&quot;</span>,
+            <span class="hljs-string">&quot;accountNumber&quot;</span>,
+            <span class="hljs-string">&quot;swiftBic&quot;</span>,
+            <span class="hljs-string">&quot;bankName&quot;</span>,
+            <span class="hljs-string">&quot;beneficiaryAddress&quot;</span>
+          ]
+        },
+        <span class="hljs-attr">&quot;sen&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+          <span class="hljs-attr">&quot;properties&quot;</span>: {
+            <span class="hljs-attr">&quot;memoId&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A unique personal code for routing the deposited funds at XFT.\nThe customer should put this string in the transfer memo field, for any type\nof transfer.&quot;</span>
+            },
+            <span class="hljs-attr">&quot;senName&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT SEN network name.&quot;</span>
+            },
+            <span class="hljs-attr">&quot;accountNumber&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT account number.&quot;</span>
+            }
+          },
+          <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The SEN transfer instructions for depositing fiat to XFT. Read-only.&quot;</span>,
+          <span class="hljs-attr">&quot;required&quot;</span>: [
+            <span class="hljs-string">&quot;memoId&quot;</span>,
+            <span class="hljs-string">&quot;senName&quot;</span>,
+            <span class="hljs-string">&quot;accountNumber&quot;</span>
+          ]
+        },
+        <span class="hljs-attr">&quot;signet&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+          <span class="hljs-attr">&quot;properties&quot;</span>: {
+            <span class="hljs-attr">&quot;memoId&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A unique personal code for routing the deposited funds at XFT.\nThe customer should use `memo_id` in the transfer-memo field for all transfer types.&quot;</span>
+            },
+            <span class="hljs-attr">&quot;beneficiaryName&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT entity name.&quot;</span>
+            },
+            <span class="hljs-attr">&quot;walletAddress&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT wallet address.&quot;</span>
+            }
+          },
+          <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The SIGNET transfer instructions for depositing fiat to XFT. Read-only.&quot;</span>,
+          <span class="hljs-attr">&quot;required&quot;</span>: [
+            <span class="hljs-string">&quot;memoId&quot;</span>,
+            <span class="hljs-string">&quot;beneficiaryName&quot;</span>,
+            <span class="hljs-string">&quot;walletAddress&quot;</span>
+          ]
+        },
+        <span class="hljs-attr">&quot;cbit&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+          <span class="hljs-attr">&quot;properties&quot;</span>: {
+            <span class="hljs-attr">&quot;memoId&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A unique personal code for routing the deposited funds at XFT.\nThe customer should use `memo_id` in the transfer-memo field for all transfer types.&quot;</span>
+            },
+            <span class="hljs-attr">&quot;beneficiaryName&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT entity name.&quot;</span>
+            },
+            <span class="hljs-attr">&quot;walletAddress&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT wallet address.&quot;</span>
+            }
+          },
+          <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The CBIT transfer instructions for depositing to XFT. Read-only.&quot;</span>,
+          <span class="hljs-attr">&quot;required&quot;</span>: [
+            <span class="hljs-string">&quot;memoId&quot;</span>,
+            <span class="hljs-string">&quot;beneficiaryName&quot;</span>,
+            <span class="hljs-string">&quot;walletAddress&quot;</span>
+          ]
+        },
+        <span class="hljs-attr">&quot;intrabank&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+          <span class="hljs-attr">&quot;properties&quot;</span>: {
+            <span class="hljs-attr">&quot;memoId&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A unique personal code for routing the deposited funds at XFT.\nThe customer should use `memo_id` in the transfer-memo field for all transfer types.&quot;</span>
+            },
+            <span class="hljs-attr">&quot;beneficiaryName&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT entity name.&quot;</span>
+            },
+            <span class="hljs-attr">&quot;accountNumber&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The XFT account number/identifier.&quot;</span>
+            },
+            <span class="hljs-attr">&quot;type&quot;</span>: {
+              <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+              <span class="hljs-attr">&quot;enum&quot;</span>: [
+                <span class="hljs-string">&quot;ABA&quot;</span>,
+                <span class="hljs-string">&quot;SWIFT&quot;</span>,
+                <span class="hljs-string">&quot;SEN&quot;</span>,
+                <span class="hljs-string">&quot;ACH&quot;</span>,
+                <span class="hljs-string">&quot;SIGNET&quot;</span>,
+                <span class="hljs-string">&quot;CBIT&quot;</span>
+              ],
+              <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The bank account type: The kind of transfer XFT will perform for a withdrawal.\n\n - ABA: A U.S. domestic wire destination.\n - SWIFT: An international wire destination.\n - SEN: A destination on the \&quot;Silvergate Exchange Network\&quot; (between Silvergate accounts).\n - ACH: ACH\n - SIGNET: A destination on the Signet Platform (between Signature accounts).\n - CBIT: A destination on the CBIT Network (between Customers Bank accounts).&quot;</span>
+            }
+          },
+          <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;The intra-bank deposit instructions for depositing to XFT. Intra-bank includes CBIT. Read-only.&quot;</span>,
+          <span class="hljs-attr">&quot;required&quot;</span>: [
+            <span class="hljs-string">&quot;memoId&quot;</span>,
+            <span class="hljs-string">&quot;beneficiaryName&quot;</span>,
+            <span class="hljs-string">&quot;accountNumber&quot;</span>,
+            <span class="hljs-string">&quot;type&quot;</span>
+          ]
+        }
+      },
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;XFTBankAccount is a bank account owned by XFT and used by customers for\ndepositing fiat. Read-only.&quot;</span>
+    },
+    <span class="hljs-attr">&quot;sendToAddress&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+      <span class="hljs-attr">&quot;properties&quot;</span>: {
+        <span class="hljs-attr">&quot;network&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;enum&quot;</span>: [
+            <span class="hljs-string">&quot;NETWORK_BTC&quot;</span>,
+            <span class="hljs-string">&quot;NETWORK_ETH&quot;</span>,
+            <span class="hljs-string">&quot;NETWORK_BCH&quot;</span>,
+            <span class="hljs-string">&quot;NETWORK_LTC&quot;</span>,
+            <span class="hljs-string">&quot;NETWORK_SOL&quot;</span>
+          ],
+          <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;Crypto network.&quot;</span>
+        },
+        <span class="hljs-attr">&quot;address&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+        }
+      },
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;XFTCryptoAddress is a crypto address owned by XFT and used by customers\nfor depositing crypto.&quot;</span>
+    }
+  }
+}
+
+</code></pre>
+<h3 id="properties-75">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>realm</td>
+<td><a href="#schemarealm">Realm</a></td>
+<td>false</td>
+<td>none</td>
+<td>Realm (FIAT or CRYPTO).<br /><br /> - FIAT: The traditional fiat banking world.<br /> - CRYPTO: The cryptocurrency world.</td>
+</tr>
+<tr>
+<td>cryptoNetwork</td>
+<td><a href="#schemanetwork">Network</a></td>
+<td>false</td>
+<td>none</td>
+<td>Crypto network.</td>
+</tr>
+<tr>
+<td>autoConversion</td>
+<td>boolean</td>
+<td>false</td>
+<td>none</td>
+<td>True if this transfer will trigger PAX auto-conversion.</td>
+</tr>
+<tr>
+<td>sendToBank</td>
+<td><a href="#schemaXFTbankaccount">XFTBankAccount</a></td>
+<td>false</td>
+<td>none</td>
+<td>XFTBankAccount is a bank account owned by XFT and used by customers for<br />depositing fiat. Read-only.</td>
+</tr>
+<tr>
+<td>sendToAddress</td>
+<td><a href="#schemaXFTcryptoaddress">XFTCryptoAddress</a></td>
+<td>false</td>
+<td>none</td>
+<td>XFTCryptoAddress is a crypto address owned by XFT and used by customers<br />for depositing crypto.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocs_wiredepositinstructions">WireDepositInstructions</h2>
+<p><a id="schemawiredepositinstructions"></a>
+<a id="schema_WireDepositInstructions"></a>
+<a id="tocSwiredepositinstructions"></a>
+<a id="tocswiredepositinstructions"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+  <span class="hljs-attr">&quot;properties&quot;</span>: {
+    <span class="hljs-attr">&quot;depositMemo&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+      <span class="hljs-attr">&quot;properties&quot;</span>: {
+        <span class="hljs-attr">&quot;memo&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+        },
+        <span class="hljs-attr">&quot;destinationAssetType&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;enum&quot;</span>: [
+            <span class="hljs-string">&quot;USD&quot;</span>,
+            <span class="hljs-string">&quot;BTC&quot;</span>,
+            <span class="hljs-string">&quot;ETH&quot;</span>,
+            <span class="hljs-string">&quot;PAX&quot;</span>,
+            <span class="hljs-string">&quot;PAXG&quot;</span>,
+            <span class="hljs-string">&quot;UNALLOCATED_GOLD&quot;</span>,
+            <span class="hljs-string">&quot;ALLOCATED_GOLD&quot;</span>,
+            <span class="hljs-string">&quot;BUSD&quot;</span>,
+            <span class="hljs-string">&quot;HUSD&quot;</span>,
+            <span class="hljs-string">&quot;EUR&quot;</span>,
+            <span class="hljs-string">&quot;SGD&quot;</span>,
+            <span class="hljs-string">&quot;BCH&quot;</span>,
+            <span class="hljs-string">&quot;LTC&quot;</span>,
+            <span class="hljs-string">&quot;USDP&quot;</span>,
+            <span class="hljs-string">&quot;AAVE&quot;</span>,
+            <span class="hljs-string">&quot;UNI&quot;</span>,
+            <span class="hljs-string">&quot;MATIC&quot;</span>,
+            <span class="hljs-string">&quot;PYUSD&quot;</span>,
+            <span class="hljs-string">&quot;LINK&quot;</span>,
+            <span class="hljs-string">&quot;SOL&quot;</span>
+          ],
+          <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;&quot;</span>,
+          <span class="hljs-attr">&quot;title&quot;</span>: <span class="hljs-string">&quot;AssetType&quot;</span>
+        }
+      }
+    },
+    <span class="hljs-attr">&quot;bank&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+      <span class="hljs-attr">&quot;properties&quot;</span>: {
+        <span class="hljs-attr">&quot;name&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+        },
+        <span class="hljs-attr">&quot;country&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+        },
+        <span class="hljs-attr">&quot;address&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+        },
+        <span class="hljs-attr">&quot;routingNumber&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+        },
+        <span class="hljs-attr">&quot;recipientName&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+        },
+        <span class="hljs-attr">&quot;recipientAddress&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+        },
+        <span class="hljs-attr">&quot;accountNumber&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+        },
+        <span class="hljs-attr">&quot;swiftIntermediaryBankName&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+        },
+        <span class="hljs-attr">&quot;swiftIntermediaryBankAddress&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+        },
+        <span class="hljs-attr">&quot;swiftCode&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+        }
+      }
+    }
+  },
+  <span class="hljs-attr">&quot;required&quot;</span>: [
+    <span class="hljs-string">&quot;depositMemo&quot;</span>,
+    <span class="hljs-string">&quot;bank&quot;</span>
+  ]
+}
+
+</code></pre>
+<h3 id="properties-76">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>depositMemo</td>
+<td><a href="#schemadepositmemo">DepositMemo</a></td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>bank</td>
+<td><a href="#schemabankinformation">BankInformation</a></td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocs_customeraccountstatus">CustomerAccountStatus</h2>
+<p><a id="schemacustomeraccountstatus"></a>
+<a id="schema_CustomerAccountStatus"></a>
+<a id="tocScustomeraccountstatus"></a>
+<a id="tocscustomeraccountstatus"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;enum&quot;</span>: [
+    <span class="hljs-string">&quot;APPROVED&quot;</span>,
+    <span class="hljs-string">&quot;DISABLED&quot;</span>,
+    <span class="hljs-string">&quot;KYC_NOT_SUBMITTED&quot;</span>,
+    <span class="hljs-string">&quot;KYC_IN_PROGRESS&quot;</span>
+  ]
+}
+
+</code></pre>
+<h3 id="properties-77">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h4 id="enumerated-values-17">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>APPROVED</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>DISABLED</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>KYC_NOT_SUBMITTED</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>KYC_IN_PROGRESS</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocs_customerinstitutionality">CustomerInstitutionality</h2>
+<p><a id="schemacustomerinstitutionality"></a>
+<a id="schema_CustomerInstitutionality"></a>
+<a id="tocScustomerinstitutionality"></a>
+<a id="tocscustomerinstitutionality"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;enum&quot;</span>: [
+    <span class="hljs-string">&quot;INDIVIDUAL&quot;</span>,
+    <span class="hljs-string">&quot;INSTITUTION&quot;</span>
+  ]
+}
+
+</code></pre>
+<h3 id="properties-78">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h4 id="enumerated-values-18">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>INDIVIDUAL</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>INSTITUTION</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocs_customerkycstatus">CustomerKycStatus</h2>
+<p><a id="schemacustomerkycstatus"></a>
+<a id="schema_CustomerKycStatus"></a>
+<a id="tocScustomerkycstatus"></a>
+<a id="tocscustomerkycstatus"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;enum&quot;</span>: [
+    <span class="hljs-string">&quot;KYC_STATUS_NOT_STARTED&quot;</span>,
+    <span class="hljs-string">&quot;KYC_STATUS_IN_PROGRESS&quot;</span>,
+    <span class="hljs-string">&quot;KYC_STATUS_PROCESSING&quot;</span>,
+    <span class="hljs-string">&quot;KYC_STATUS_FAILED_JUMIO&quot;</span>,
+    <span class="hljs-string">&quot;KYC_STATUS_FAILED_COMPLYADVANTAGE&quot;</span>,
+    <span class="hljs-string">&quot;KYC_STATUS_DENIED&quot;</span>,
+    <span class="hljs-string">&quot;KYC_STATUS_PENDING&quot;</span>,
+    <span class="hljs-string">&quot;KYC_STATUS_PENDING_INSTITUTION&quot;</span>,
+    <span class="hljs-string">&quot;KYC_STATUS_APPROVED&quot;</span>,
+    <span class="hljs-string">&quot;KYC_STATUS_SET_FOR_CLOSURE&quot;</span>
+  ],
+  <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;TODO: Admins need more visibility into KYC status.&quot;</span>
+}
+
+</code></pre>
+<p>TODO: Admins need more visibility into KYC status.</p>
+<h3 id="properties-79">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>TODO: Admins need more visibility into KYC status.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="enumerated-values-19">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>KYC_STATUS_NOT_STARTED</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>KYC_STATUS_IN_PROGRESS</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>KYC_STATUS_PROCESSING</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>KYC_STATUS_FAILED_JUMIO</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>KYC_STATUS_FAILED_COMPLYADVANTAGE</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>KYC_STATUS_DENIED</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>KYC_STATUS_PENDING</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>KYC_STATUS_PENDING_INSTITUTION</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>KYC_STATUS_APPROVED</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>KYC_STATUS_SET_FOR_CLOSURE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocs_custstatus">CustStatus</h2>
+<p><a id="schemacuststatus"></a>
+<a id="schema_CustStatus"></a>
+<a id="tocScuststatus"></a>
+<a id="tocscuststatus"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+  <span class="hljs-attr">&quot;properties&quot;</span>: {
+    <span class="hljs-attr">&quot;kycStatus&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;enum&quot;</span>: [
+        <span class="hljs-string">&quot;KYC_STATUS_NOT_STARTED&quot;</span>,
+        <span class="hljs-string">&quot;KYC_STATUS_IN_PROGRESS&quot;</span>,
+        <span class="hljs-string">&quot;KYC_STATUS_PROCESSING&quot;</span>,
+        <span class="hljs-string">&quot;KYC_STATUS_FAILED_JUMIO&quot;</span>,
+        <span class="hljs-string">&quot;KYC_STATUS_FAILED_COMPLYADVANTAGE&quot;</span>,
+        <span class="hljs-string">&quot;KYC_STATUS_DENIED&quot;</span>,
+        <span class="hljs-string">&quot;KYC_STATUS_PENDING&quot;</span>,
+        <span class="hljs-string">&quot;KYC_STATUS_PENDING_INSTITUTION&quot;</span>,
+        <span class="hljs-string">&quot;KYC_STATUS_APPROVED&quot;</span>,
+        <span class="hljs-string">&quot;KYC_STATUS_SET_FOR_CLOSURE&quot;</span>
+      ],
+      <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;TODO: Admins need more visibility into KYC status.&quot;</span>
+    },
+    <span class="hljs-attr">&quot;accountStatus&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;enum&quot;</span>: [
+        <span class="hljs-string">&quot;APPROVED&quot;</span>,
+        <span class="hljs-string">&quot;DISABLED&quot;</span>,
+        <span class="hljs-string">&quot;KYC_NOT_SUBMITTED&quot;</span>,
+        <span class="hljs-string">&quot;KYC_IN_PROGRESS&quot;</span>
+      ]
+    },
+    <span class="hljs-attr">&quot;institutionality&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;enum&quot;</span>: [
+        <span class="hljs-string">&quot;INDIVIDUAL&quot;</span>,
+        <span class="hljs-string">&quot;INSTITUTION&quot;</span>
+      ]
+    }
+  }
+}
+
+</code></pre>
+<h3 id="properties-80">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kycStatus</td>
+<td><a href="#schemacustomerkycstatus">CustomerKycStatus</a></td>
+<td>false</td>
+<td>none</td>
+<td>TODO: Admins need more visibility into KYC status.</td>
+</tr>
+<tr>
+<td>accountStatus</td>
+<td><a href="#schemacustomeraccountstatus">CustomerAccountStatus</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>institutionality</td>
+<td><a href="#schemacustomerinstitutionality">CustomerInstitutionality</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocs_customeraddress">CustomerAddress</h2>
+<p><a id="schemacustomeraddress"></a>
+<a id="schema_CustomerAddress"></a>
+<a id="tocScustomeraddress"></a>
+<a id="tocscustomeraddress"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+  <span class="hljs-attr">&quot;properties&quot;</span>: {
+    <span class="hljs-attr">&quot;country&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    },
+    <span class="hljs-attr">&quot;address1&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    },
+    <span class="hljs-attr">&quot;address2&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    },
+    <span class="hljs-attr">&quot;city&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    },
+    <span class="hljs-attr">&quot;province&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    },
+    <span class="hljs-attr">&quot;zipCode&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    }
+  }
+}
+
+</code></pre>
+<h3 id="properties-81">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>country</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>address1</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>address2</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>city</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>province</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>zipCode</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocs_getcuststatusresponse">GetCustStatusResponse</h2>
+<p><a id="schemagetcuststatusresponse"></a>
+<a id="schema_GetCustStatusResponse"></a>
+<a id="tocSgetcuststatusresponse"></a>
+<a id="tocsgetcuststatusresponse"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+  <span class="hljs-attr">&quot;properties&quot;</span>: {
+    <span class="hljs-attr">&quot;custStatus&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+      <span class="hljs-attr">&quot;properties&quot;</span>: {
+        <span class="hljs-attr">&quot;kycStatus&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;enum&quot;</span>: [
+            <span class="hljs-string">&quot;KYC_STATUS_NOT_STARTED&quot;</span>,
+            <span class="hljs-string">&quot;KYC_STATUS_IN_PROGRESS&quot;</span>,
+            <span class="hljs-string">&quot;KYC_STATUS_PROCESSING&quot;</span>,
+            <span class="hljs-string">&quot;KYC_STATUS_FAILED_JUMIO&quot;</span>,
+            <span class="hljs-string">&quot;KYC_STATUS_FAILED_COMPLYADVANTAGE&quot;</span>,
+            <span class="hljs-string">&quot;KYC_STATUS_DENIED&quot;</span>,
+            <span class="hljs-string">&quot;KYC_STATUS_PENDING&quot;</span>,
+            <span class="hljs-string">&quot;KYC_STATUS_PENDING_INSTITUTION&quot;</span>,
+            <span class="hljs-string">&quot;KYC_STATUS_APPROVED&quot;</span>,
+            <span class="hljs-string">&quot;KYC_STATUS_SET_FOR_CLOSURE&quot;</span>
+          ],
+          <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;TODO: Admins need more visibility into KYC status.&quot;</span>
+        },
+        <span class="hljs-attr">&quot;accountStatus&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;enum&quot;</span>: [
+            <span class="hljs-string">&quot;APPROVED&quot;</span>,
+            <span class="hljs-string">&quot;DISABLED&quot;</span>,
+            <span class="hljs-string">&quot;KYC_NOT_SUBMITTED&quot;</span>,
+            <span class="hljs-string">&quot;KYC_IN_PROGRESS&quot;</span>
+          ]
+        },
+        <span class="hljs-attr">&quot;institutionality&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+          <span class="hljs-attr">&quot;enum&quot;</span>: [
+            <span class="hljs-string">&quot;INDIVIDUAL&quot;</span>,
+            <span class="hljs-string">&quot;INSTITUTION&quot;</span>
+          ]
+        }
+      }
+    },
+    <span class="hljs-attr">&quot;customerId&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    },
+    <span class="hljs-attr">&quot;firstName&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    },
+    <span class="hljs-attr">&quot;lastName&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    },
+    <span class="hljs-attr">&quot;institutionName&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    },
+    <span class="hljs-attr">&quot;officialName&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    },
+    <span class="hljs-attr">&quot;address&quot;</span>: {
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+      <span class="hljs-attr">&quot;properties&quot;</span>: {
+        <span class="hljs-attr">&quot;country&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+        },
+        <span class="hljs-attr">&quot;address1&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+        },
+        <span class="hljs-attr">&quot;address2&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+        },
+        <span class="hljs-attr">&quot;city&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+        },
+        <span class="hljs-attr">&quot;province&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+        },
+        <span class="hljs-attr">&quot;zipCode&quot;</span>: {
+          <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+        }
+      }
+    }
+  }
+}
+
+</code></pre>
+<h3 id="properties-82">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>custStatus</td>
+<td><a href="#schemacuststatus">CustStatus</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>customerId</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>firstName</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>lastName</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>institutionName</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>officialName</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>address</td>
+<td><a href="#schemacustomeraddress">CustomerAddress</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<!-- Renderer: Shins v2.6.0 -->
+<!-- Generator: Widdershins v4.0.1 -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+      </div>
+      <div class="dark-box">
+        
+      </div>
+    </div>
+  </body>
+</html>
